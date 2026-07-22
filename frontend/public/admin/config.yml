@@ -1,0 +1,161 @@
+backend:
+  name: github
+  repo: yaroslavmilkevych/geniq-website
+  branch: main
+  base_url: https://frontend-ruddy-three-52.vercel.app
+  auth_endpoint: api/auth
+
+local_backend: true
+publish_mode: simple
+media_folder: frontend/public/uploads
+public_folder: /uploads
+site_url: https://frontend-ruddy-three-52.vercel.app
+display_url: https://frontend-ruddy-three-52.vercel.app
+logo_url: /logo192.png
+
+collections:
+  - name: settings
+    label: Настройки сайта
+    files:
+      - name: site
+        label: Общие настройки
+        file: frontend/src/content/site.json
+        format: json
+        fields:
+          - label: Бренд
+            name: brand
+            widget: object
+            fields:
+              - { label: Подпись возле логотипа, name: tagline_lines, widget: list }
+              - { label: Описание в футере, name: footer_description, widget: text }
+          - label: Навигация
+            name: navigation
+            widget: list
+            fields:
+              - { label: Название, name: label, widget: string }
+              - { label: Ссылка, name: to, widget: string }
+          - label: Ссылки и медиа
+            name: links
+            widget: object
+            fields:
+              - { label: Ссылка на форму, name: form_url, widget: string }
+              - { label: Telegram URL, name: telegram_url, widget: string }
+              - { label: Telegram, name: telegram_handle, widget: string }
+              - { label: Instagram URL, name: instagram_url, widget: string }
+              - { label: Фото автора, name: author_photo, widget: image, required: false }
+          - label: Анимации страниц
+            name: media
+            widget: object
+            hint: Можно загрузить изображение или видео. Пустое поле оставляет текущую интерактивную SVG-анимацию.
+            fields:
+              - { label: О системе — корзина, name: about_animation, widget: file, required: false }
+              - { label: Нейротипы — линза, name: neurotypes_animation, widget: file, required: false }
+              - { label: Партнёрам — рукопожатие, name: partners_animation, widget: file, required: false }
+          - label: Юридическая информация
+            name: legal
+            widget: object
+            fields:
+              - { label: ИП, name: ip, widget: string }
+              - { label: ИНН, name: inn, widget: string }
+              - { label: ОГРНИП, name: ogrnip, widget: string }
+              - { label: Email, name: email, widget: string }
+              - { label: Телефон, name: phone, widget: string }
+              - { label: Сайт, name: site, widget: string }
+
+      - name: home
+        label: Главная страница
+        file: frontend/src/content/home.json
+        format: json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть заголовка, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Текст кнопки, name: button, widget: string }
+              - { label: Подпись возле кнопки, name: meta, widget: string }
+              - { label: Видео головы, name: video, widget: file }
+              - label: Разделы
+                name: axes
+                widget: list
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Название, name: title, widget: string }
+                  - { label: Подпись, name: subtitle, widget: string }
+                  - { label: Иконка, name: icon, widget: select, options: [brain, sparkles, fingerprint, battery, eye] }
+          - label: Услуги
+            name: products
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Примечание, name: note, widget: text }
+              - label: Карточки
+                name: items
+                widget: list
+                summary: "{{fields.title}} — {{fields.price}}"
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Иконка, name: icon, widget: select, options: [compass, sparkles, map] }
+                  - { label: Надпись сверху, name: step, widget: string }
+                  - { label: Запрос клиента, name: intent, widget: text }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Стоимость, name: price, widget: string }
+                  - { label: Длительность, name: duration, widget: string }
+                  - { label: Описание, name: description, widget: text }
+                  - { label: Пункты, name: bullets, widget: list }
+                  - { label: Кнопка, name: cta, widget: string }
+                  - { label: Рекомендуемая, name: featured, widget: boolean, default: false }
+
+      - name: blog
+        label: Блог
+        file: frontend/src/content/blog.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Продолжение заголовка, name: title_suffix, widget: string }
+              - { label: Описание, name: description, widget: text }
+          - label: Статус
+            name: status
+            widget: object
+            fields:
+              - { label: Надпись, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Описание, name: description, widget: text }
+          - label: Категории
+            name: categories
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Название, name: name, widget: string }
+              - { label: Иконка, name: icon, widget: select, options: [brain, compass, layers, heart, sparkles, book] }
+              - { label: Число статей, name: count, widget: number, value_type: int }
+          - label: Карточки статей
+            name: articles
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Категория, name: category, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Анонс, name: excerpt, widget: text }
+              - { label: Дата или статус, name: date, widget: string }
+              - { label: Изображение, name: image, widget: image, required: false }
+              - { label: Ссылка, name: url, widget: string, required: false }
+          - label: Финальный призыв
+            name: cta
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Кнопка, name: button, widget: string }

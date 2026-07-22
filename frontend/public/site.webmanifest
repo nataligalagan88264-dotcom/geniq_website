@@ -1,0 +1,17 @@
+{
+  "name": "GENIQ — система нейропрофилирования",
+  "short_name": "GENIQ",
+  "lang": "ru-RU",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C0A18",
+  "theme_color": "#0C0A18",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
