@@ -197,7 +197,7 @@ collections:
               - label: Главная
                 name: "/"
                 widget: object
-                fields: &seo_page_fields
+                fields:
                   - { label: Title, name: title, widget: string }
                   - { label: Description, name: description, widget: text }
                   - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
@@ -207,10 +207,94 @@ collections:
                     fields:
                       - { label: Название, name: name, widget: string }
                       - { label: Путь, name: path, widget: string }
-              - { label: О системе, name: "/system", widget: object, fields: *seo_page_fields }
-              - { label: Нейротипы, name: "/neurotypes", widget: object, fields: *seo_page_fields }
-              - { label: Подход, name: "/approach", widget: object, fields: *seo_page_fields }
-              - { label: Партнёрам, name: "/partners", widget: object, fields: *seo_page_fields }
-              - { label: Блог, name: "/blog", widget: object, fields: *seo_page_fields }
-              - { label: Частые вопросы, name: "/faq", widget: object, fields: *seo_page_fields }
-              - { label: Политика конфиденциальности, name: "/privacy", widget: object, fields: *seo_page_fields }
+              - label: О системе
+                name: "/system"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Нейротипы
+                name: "/neurotypes"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Подход
+                name: "/approach"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Партнёрам
+                name: "/partners"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Блог
+                name: "/blog"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Частые вопросы
+                name: "/faq"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - label: Политика конфиденциальности
+                name: "/privacy"
+                widget: object
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
