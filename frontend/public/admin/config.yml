@@ -1,17 +1,18 @@
 backend:
   name: github
-  repo: yaroslavmilkevych/geniq-website
+  repo: nataligalagan88264-dotcom/geniq_website
   branch: main
-  base_url: https://frontend-ruddy-three-52.vercel.app
+  base_url: https://geniq-system.ru
   auth_endpoint: api/auth
 
 local_backend: true
 publish_mode: simple
+locale: ru
 media_folder: frontend/public/uploads
 public_folder: /uploads
-site_url: https://frontend-ruddy-three-52.vercel.app
-display_url: https://frontend-ruddy-three-52.vercel.app
-logo_url: /logo192.png
+site_url: https://geniq-system.ru
+display_url: https://geniq-system.ru
+logo_url: /favicon.svg
 
 collections:
   - name: settings
@@ -159,3 +160,57 @@ collections:
               - { label: Заголовок, name: title, widget: string }
               - { label: Цветная часть, name: accent_title, widget: string }
               - { label: Кнопка, name: button, widget: string }
+
+      - name: faq
+        label: Вопросы и ответы
+        file: frontend/src/content/faq.json
+        format: json
+        fields:
+          - label: Вопросы
+            name: items
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - { label: Вопрос, name: q, widget: string }
+              - { label: Ответ, name: a, widget: text }
+
+      - name: seo
+        label: SEO
+        file: frontend/src/content/seo.json
+        format: json
+        fields:
+          - label: Настройки сайта
+            name: site
+            widget: object
+            fields:
+              - { label: Название сайта, name: name, widget: string }
+              - { label: Основной адрес, name: url, widget: string }
+              - { label: Локаль Open Graph, name: locale, widget: string }
+              - { label: Язык, name: language, widget: string }
+              - { label: Изображение для соцсетей, name: image, widget: image }
+              - { label: Описание изображения, name: image_alt, widget: string }
+              - { label: Дата обновления, name: last_modified, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+          - label: SEO страниц
+            name: pages
+            widget: object
+            fields:
+              - label: Главная
+                name: "/"
+                widget: object
+                fields: &seo_page_fields
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
+                  - label: Хлебные крошки
+                    name: breadcrumbs
+                    widget: list
+                    fields:
+                      - { label: Название, name: name, widget: string }
+                      - { label: Путь, name: path, widget: string }
+              - { label: О системе, name: "/system", widget: object, fields: *seo_page_fields }
+              - { label: Нейротипы, name: "/neurotypes", widget: object, fields: *seo_page_fields }
+              - { label: Подход, name: "/approach", widget: object, fields: *seo_page_fields }
+              - { label: Партнёрам, name: "/partners", widget: object, fields: *seo_page_fields }
+              - { label: Блог, name: "/blog", widget: object, fields: *seo_page_fields }
+              - { label: Частые вопросы, name: "/faq", widget: object, fields: *seo_page_fields }
+              - { label: Политика конфиденциальности, name: "/privacy", widget: object, fields: *seo_page_fields }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import seoContent from "@/content/seo.json";
 import siteContent from "@/content/site.json";
-import faqItems from "@/content/faq.json";
+import faqContent from "@/content/faq.json";
 
 const SITE_URL = seoContent.site.url;
 const SEO = seoContent.pages;
@@ -88,7 +88,7 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
     graph.push({
       "@type": "FAQPage",
       "@id": `${canonicalUrl}#faq`,
-      mainEntity: faqItems.map((item) => ({
+      mainEntity: faqContent.items.map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: { "@type": "Answer", text: item.a },

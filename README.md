@@ -80,6 +80,26 @@ cp frontend/.env.example frontend/.env.local
 
 Остальные правила маршрутизации, заголовки и редиректы заданы в [`frontend/vercel.json`](./frontend/vercel.json).
 
+## Редактор сайта
+
+Редактор Decap CMS доступен по адресу [https://geniq-system.ru/admin/](https://geniq-system.ru/admin/). Он сохраняет изменения напрямую в ветку `main`, после чего Vercel автоматически публикует новую версию.
+
+Для первого запуска нужно один раз настроить GitHub OAuth:
+
+1. В GitHub откройте **Settings → Developer settings → OAuth Apps → New OAuth App**.
+2. Укажите:
+   - **Application name:** `GENIQ CMS`;
+   - **Homepage URL:** `https://geniq-system.ru`;
+   - **Authorization callback URL:** `https://geniq-system.ru/api/callback`.
+3. В проекте Vercel откройте **Settings → Environment Variables** и добавьте для Production:
+   - `GITHUB_CLIENT_ID`;
+   - `GITHUB_CLIENT_SECRET` как Sensitive.
+4. Выполните новый Production Deployment.
+
+Секрет OAuth нельзя добавлять в репозиторий или пересылать в открытом сообщении. Пользователь редактора должен иметь право записи в репозиторий `nataligalagan88264-dotcom/geniq_website`.
+
+Через редактор доступны общие ссылки и медиа, первый экран и услуги главной страницы, блог, FAQ и SEO основных маршрутов.
+
 ## SEO
 
 Проект содержит:

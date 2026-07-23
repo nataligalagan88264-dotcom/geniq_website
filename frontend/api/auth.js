@@ -13,7 +13,7 @@ module.exports = function handler(req, res) {
 
   authorizeUrl.searchParams.set("client_id", clientId);
   authorizeUrl.searchParams.set("redirect_uri", `${protocol}://${host}/api/callback`);
-  authorizeUrl.searchParams.set("scope", "repo user");
+  authorizeUrl.searchParams.set("scope", "public_repo");
   authorizeUrl.searchParams.set("state", state);
 
   res.setHeader(

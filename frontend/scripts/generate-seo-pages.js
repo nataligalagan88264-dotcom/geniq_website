@@ -3,7 +3,7 @@ const path = require("path");
 
 const seo = require("../src/content/seo.json");
 const siteContent = require("../src/content/site.json");
-const faqItems = require("../src/content/faq.json");
+const faqContent = require("../src/content/faq.json");
 
 const buildDirectory = path.resolve(__dirname, "../build");
 const templatePath = path.join(buildDirectory, "index.html");
@@ -82,7 +82,7 @@ const buildStructuredData = (pathname, page) => {
     graph.push({
       "@type": "FAQPage",
       "@id": `${canonicalUrl}#faq`,
-      mainEntity: faqItems.map((item) => ({
+      mainEntity: faqContent.items.map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: { "@type": "Answer", text: item.a },

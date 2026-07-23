@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import CtaButton from "./CtaButton";
 import faqItems from "@/content/faq.json";
 
-export const FAQ_ITEMS = faqItems;
+export const FAQ_ITEMS = faqItems.items;
 
 const useReveal = () => {
   const ref = useRef(null);
