@@ -17,6 +17,7 @@ const escapeHtml = (value) =>
 
 const pageUrl = (pathname) =>
   `${seo.site.url}${pathname === "/" ? "" : pathname}`;
+const absoluteUrl = (value) => new URL(value, `${seo.site.url}/`).toString();
 
 const buildStructuredData = (pathname, page) => {
   const canonicalUrl = pageUrl(pathname);
@@ -42,7 +43,7 @@ const buildStructuredData = (pathname, page) => {
       "@id": personId,
       name: "Натали Галаган",
       jobTitle: "Психодиагност и нейрокоуч",
-      image: siteContent.links.author_photo,
+      image: absoluteUrl(siteContent.links.author_photo),
       worksFor: { "@id": organizationId },
       sameAs: [siteContent.links.telegram_url, siteContent.links.instagram_url],
     },

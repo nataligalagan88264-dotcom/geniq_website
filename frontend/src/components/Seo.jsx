@@ -6,6 +6,7 @@ import faqItems from "@/content/faq.json";
 
 const SITE_URL = seoContent.site.url;
 const SEO = seoContent.pages;
+const absoluteUrl = (value) => new URL(value, `${SITE_URL}/`).toString();
 
 const setMeta = (selector, attributes) => {
   let element = document.head.querySelector(selector);
@@ -48,7 +49,7 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
       "@id": personId,
       name: "Натали Галаган",
       jobTitle: "Психодиагност и нейрокоуч",
-      image: siteContent.links.author_photo,
+      image: absoluteUrl(siteContent.links.author_photo),
       worksFor: { "@id": organizationId },
       sameAs: [siteContent.links.telegram_url, siteContent.links.instagram_url],
     },
