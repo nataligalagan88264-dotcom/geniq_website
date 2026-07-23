@@ -162,6 +162,34 @@ const renderPage = (template, pathname, page) => {
   return html;
 };
 
+const renderNotFoundPage = (template) => {
+  const title = "Страница не найдена — GENIQ";
+  const description = "Запрашиваемая страница не найдена. Перейдите на главную страницу GENIQ.";
+  let html = template;
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
+  html = replaceMeta(html, "name", "description", description);
+  html = replaceMeta(html, "name", "robots", "noindex, follow");
+  html = html.replace(
+    /\s*<link\s+rel="canonical"\s+href="[^"]*"\s*\/?\s*>/i,
+    "",
+  );
+  html = html.replace(
+    /\s*<link\s+rel="alternate"\s+hreflang="ru-RU"\s+href="[^"]*"\s*\/?\s*>/i,
+    "",
+  );
+  html = html.replace(
+    /\s*<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*"\s*\/?\s*>/i,
+    "",
+  );
+  html = html.replace(
+    /\s*<script id="seo-jsonld" type="application\/ld\+json">[\s\S]*?<\/script>/i,
+    "",
+  );
+
+  return html;
+};
+
 if (!fs.existsSync(templatePath)) {
   throw new Error("SEO generation requires an existing CRA build/index.html");
 }
@@ -199,7 +227,11 @@ const sitemap = [
   "",
 ].join("\n");
 fs.writeFileSync(path.join(buildDirectory, "sitemap.xml"), sitemap);
+fs.writeFileSync(
+  path.join(buildDirectory, "404.html"),
+  renderNotFoundPage(template),
+);
 
 console.log(
-  `Generated SEO entry HTML and sitemap for ${Object.keys(seo.pages).length} routes.`,
+  `Generated SEO entry HTML, sitemap and 404 page for ${Object.keys(seo.pages).length} routes.`,
 );

@@ -118,4 +118,16 @@ assert(
   "sitemap.xml must include lastmod for every route",
 );
 
+const notFoundPath = path.join(buildDirectory, "404.html");
+assert(fs.existsSync(notFoundPath), "Missing generated 404.html");
+const notFoundHtml = fs.readFileSync(notFoundPath, "utf8");
+assert(
+  notFoundHtml.includes('<meta name="robots" content="noindex, follow" />'),
+  "404.html must be noindex",
+);
+assert(
+  !notFoundHtml.includes('rel="canonical"'),
+  "404.html must not contain a canonical URL",
+);
+
 console.log(`Validated technical SEO for ${expectedUrls.length} routes.`);
