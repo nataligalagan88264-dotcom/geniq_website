@@ -148,21 +148,8 @@ const MATRIX = [
   ["T — материя", "T1 Систематик", "T2 Координатор", "T3 Оптимизатор"],
 ];
 
-const setMeta = (name, content) => {
-  let tag = document.querySelector(`meta[name="${name}"]`);
-  if (!tag) {
-    tag = document.createElement("meta");
-    tag.setAttribute("name", name);
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute("content", content);
-};
-
 const useReveal = () => {
   useEffect(() => {
-    document.title = "О системе GENIQ — карта личности, нейротипы и внутренняя архитектура человека";
-    setMeta("description", "GENIQ — авторская система диагностики: нейротип, мотивация, стиль действия, восстановление и теневые зоны. Узнайте, как устроена ваша конфигурация.");
-
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); });
     }, { threshold: 0.1 });

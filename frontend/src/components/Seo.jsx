@@ -26,12 +26,13 @@ const setLink = (selector, attributes) => {
   Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
 };
 
-const pageUrl = (pathname) => `${SITE_URL}${pathname === "/" ? "" : pathname}`;
+const pageUrl = (pathname) => `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
 
 const buildStructuredData = (pathname, page, canonicalUrl) => {
   const organizationId = `${SITE_URL}/#organization`;
   const personId = `${SITE_URL}/#person`;
   const websiteId = `${SITE_URL}/#website`;
+  const imageId = `${SITE_URL}/#primaryimage`;
   const graph = [
     {
       "@type": "Organization",
@@ -41,6 +42,7 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
       url: SITE_URL,
       email: siteContent.legal.email,
       telephone: siteContent.legal.phone,
+      logo: absoluteUrl("/favicon.svg"),
       founder: { "@id": personId },
       sameAs: [siteContent.links.telegram_url, siteContent.links.instagram_url],
     },
@@ -62,6 +64,16 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
       publisher: { "@id": organizationId },
     },
     {
+      "@type": "ImageObject",
+      "@id": imageId,
+      url: seoContent.site.image,
+      contentUrl: seoContent.site.image,
+      width: seoContent.site.image_width,
+      height: seoContent.site.image_height,
+      caption: seoContent.site.image_alt,
+      inLanguage: seoContent.site.language,
+    },
+    {
       "@type": "WebPage",
       "@id": `${canonicalUrl}#webpage`,
       url: canonicalUrl,
@@ -70,6 +82,8 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
       inLanguage: seoContent.site.language,
       isPartOf: { "@id": websiteId },
       about: { "@id": organizationId },
+      primaryImageOfPage: { "@id": imageId },
+      dateModified: seoContent.site.last_modified,
       breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
     },
     {
@@ -110,21 +124,26 @@ export default function Seo() {
     const canonicalUrl = pageUrl(isIndexable ? canonicalPath : "/");
 
     document.title = page.title;
-    document.documentElement.lang = "ru";
+    document.documentElement.lang = seoContent.site.language;
 
     setMeta('meta[name="description"]', { name: "description", content: page.description });
     setMeta('meta[name="robots"]', {
       name: "robots",
-      content: isIndexable ? "index, follow, max-image-preview:large" : "noindex, follow",
+      content: isIndexable
+        ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        : "noindex, follow",
     });
     setMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
-    setMeta('meta[property="og:locale"]', { property: "og:locale", content: "ru_RU" });
-    setMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "GENIQ" });
+    setMeta('meta[property="og:locale"]', { property: "og:locale", content: seoContent.site.locale });
+    setMeta('meta[property="og:site_name"]', { property: "og:site_name", content: seoContent.site.name });
     setMeta('meta[property="og:title"]', { property: "og:title", content: page.title });
     setMeta('meta[property="og:description"]', { property: "og:description", content: page.description });
     setMeta('meta[property="og:url"]', { property: "og:url", content: canonicalUrl });
     setMeta('meta[property="og:image"]', { property: "og:image", content: seoContent.site.image });
     setMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: seoContent.site.image_alt });
+    setMeta('meta[property="og:image:width"]', { property: "og:image:width", content: seoContent.site.image_width });
+    setMeta('meta[property="og:image:height"]', { property: "og:image:height", content: seoContent.site.image_height });
+    setMeta('meta[property="og:image:type"]', { property: "og:image:type", content: seoContent.site.image_type });
     setMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
     setMeta('meta[name="twitter:title"]', { name: "twitter:title", content: page.title });
     setMeta('meta[name="twitter:description"]', { name: "twitter:description", content: page.description });

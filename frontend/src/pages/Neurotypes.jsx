@@ -207,21 +207,8 @@ const NEUROTYPES = [
   },
 ];
 
-const setMeta = (name, content) => {
-  let tag = document.querySelector(`meta[name="${name}"]`);
-  if (!tag) {
-    tag = document.createElement("meta");
-    tag.setAttribute("name", name);
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute("content", content);
-};
-
 const useReveal = () => {
   useEffect(() => {
-    document.title = "Нейротипы GENIQ — 9 типов мышления, восприятия и реализации";
-    setMeta("description", "В системе GENIQ 9 нейротипов: Мыслитель, Оратор, Стратег, Эмпат, Артист, Драйвер, Систематик, Координатор и Оптимизатор. Узнайте свой через 3 мира восприятия — S, E, T.");
-
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); });
     }, { threshold: 0.08 });

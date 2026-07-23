@@ -16,7 +16,7 @@ const escapeHtml = (value) =>
     .replace(/>/g, "&gt;");
 
 const pageUrl = (pathname) =>
-  `${seo.site.url}${pathname === "/" ? "" : pathname}`;
+  `${seo.site.url}${pathname === "/" ? "/" : pathname}`;
 const absoluteUrl = (value) => new URL(value, `${seo.site.url}/`).toString();
 
 const buildStructuredData = (pathname, page) => {
@@ -24,6 +24,7 @@ const buildStructuredData = (pathname, page) => {
   const organizationId = `${seo.site.url}/#organization`;
   const personId = `${seo.site.url}/#person`;
   const websiteId = `${seo.site.url}/#website`;
+  const imageId = `${seo.site.url}/#primaryimage`;
   const webpageId = `${canonicalUrl}#webpage`;
 
   const graph = [
@@ -35,6 +36,7 @@ const buildStructuredData = (pathname, page) => {
       url: seo.site.url,
       email: siteContent.legal.email,
       telephone: siteContent.legal.phone,
+      logo: absoluteUrl("/favicon.svg"),
       founder: { "@id": personId },
       sameAs: [siteContent.links.telegram_url, siteContent.links.instagram_url],
     },
@@ -56,6 +58,16 @@ const buildStructuredData = (pathname, page) => {
       publisher: { "@id": organizationId },
     },
     {
+      "@type": "ImageObject",
+      "@id": imageId,
+      url: seo.site.image,
+      contentUrl: seo.site.image,
+      width: seo.site.image_width,
+      height: seo.site.image_height,
+      caption: seo.site.image_alt,
+      inLanguage: seo.site.language,
+    },
+    {
       "@type": "WebPage",
       "@id": webpageId,
       url: canonicalUrl,
@@ -64,6 +76,8 @@ const buildStructuredData = (pathname, page) => {
       inLanguage: seo.site.language,
       isPartOf: { "@id": websiteId },
       about: { "@id": organizationId },
+      primaryImageOfPage: { "@id": imageId },
+      dateModified: seo.site.last_modified,
       breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
     },
     {
@@ -110,12 +124,20 @@ const renderPage = (template, pathname, page) => {
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(page.title)}</title>`);
   html = replaceMeta(html, "name", "description", page.description);
-  html = replaceMeta(html, "name", "robots", "index, follow, max-image-preview:large");
+  html = replaceMeta(
+    html,
+    "name",
+    "robots",
+    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  );
   html = replaceMeta(html, "property", "og:title", page.title);
   html = replaceMeta(html, "property", "og:description", page.description);
   html = replaceMeta(html, "property", "og:url", canonicalUrl);
   html = replaceMeta(html, "property", "og:image", seo.site.image);
   html = replaceMeta(html, "property", "og:image:alt", seo.site.image_alt);
+  html = replaceMeta(html, "property", "og:image:width", seo.site.image_width);
+  html = replaceMeta(html, "property", "og:image:height", seo.site.image_height);
+  html = replaceMeta(html, "property", "og:image:type", seo.site.image_type);
   html = replaceMeta(html, "name", "twitter:title", page.title);
   html = replaceMeta(html, "name", "twitter:description", page.description);
   html = replaceMeta(html, "name", "twitter:image", seo.site.image);
@@ -157,4 +179,27 @@ Object.entries(seo.pages).forEach(([pathname, page]) => {
   fs.writeFileSync(outputPath, html);
 });
 
-console.log(`Generated SEO entry HTML for ${Object.keys(seo.pages).length} routes.`);
+const sitemapEntries = Object.entries(seo.pages)
+  .map(([pathname, page]) => {
+    const lastModified = page.last_modified || seo.site.last_modified;
+    return [
+      "  <url>",
+      `    <loc>${escapeHtml(pageUrl(pathname))}</loc>`,
+      `    <lastmod>${escapeHtml(lastModified)}</lastmod>`,
+      `    <priority>${escapeHtml(page.priority)}</priority>`,
+      "  </url>",
+    ].join("\n");
+  })
+  .join("\n");
+const sitemap = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  sitemapEntries,
+  "</urlset>",
+  "",
+].join("\n");
+fs.writeFileSync(path.join(buildDirectory, "sitemap.xml"), sitemap);
+
+console.log(
+  `Generated SEO entry HTML and sitemap for ${Object.keys(seo.pages).length} routes.`,
+);

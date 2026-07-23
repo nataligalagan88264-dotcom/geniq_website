@@ -189,6 +189,9 @@ collections:
               - { label: Язык, name: language, widget: string }
               - { label: Изображение для соцсетей, name: image, widget: image }
               - { label: Описание изображения, name: image_alt, widget: string }
+              - { label: Ширина изображения, name: image_width, widget: number, value_type: int }
+              - { label: Высота изображения, name: image_height, widget: number, value_type: int }
+              - { label: MIME-тип изображения, name: image_type, widget: select, options: [image/png, image/jpeg, image/webp] }
               - { label: Дата обновления, name: last_modified, widget: datetime, format: "YYYY-MM-DD", time_format: false }
           - label: SEO страниц
             name: pages
