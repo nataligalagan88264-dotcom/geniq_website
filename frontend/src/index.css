@@ -2,22 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'LINE Seed JP';
-  src: url('https://cdn.jsdelivr.net/gh/line/seed-sans@main/packages/line-seed-sans-jp/fonts/otf/LINESeedJP_OTF_Rg.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LINE Seed JP';
-  src: url('https://cdn.jsdelivr.net/gh/line/seed-sans@main/packages/line-seed-sans-jp/fonts/otf/LINESeedJP_OTF_Bd.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --geniq-black: #0C0A18;
   --geniq-violet: #764CB0;
@@ -28,7 +12,7 @@
   --geniq-dark-gray: #33313A;
   --geniq-gray-violet: #605B67;
   --geniq-bg-card: rgba(8, 6, 18, 0.7);
-  --font-body: 'LINE Seed JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-heading: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 

@@ -130,4 +130,13 @@ assert(
   "404.html must not contain a canonical URL",
 );
 
+const llmsPath = path.join(buildDirectory, "llms.txt");
+assert(fs.existsSync(llmsPath), "Missing llms.txt");
+const llms = fs.readFileSync(llmsPath, "utf8");
+assert(/^#\s+\S+/m.test(llms), "llms.txt must contain an H1 heading");
+assert(
+  /\[[^\]]+\]\(https:\/\/[^)]+\)/.test(llms),
+  "llms.txt must contain at least one HTTPS Markdown link",
+);
+
 console.log(`Validated technical SEO for ${expectedUrls.length} routes.`);
