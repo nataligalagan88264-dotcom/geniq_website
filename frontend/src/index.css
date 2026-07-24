@@ -1140,6 +1140,7 @@ body.geniq-day-readable .dot-grid {
   }
 
   .orbit-card-expanded {
+    width: clamp(232px, 20vw, 312px);
     height: 560px;
   }
 
