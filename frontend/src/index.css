@@ -913,6 +913,30 @@ body.geniq-day-readable .dot-grid {
   transform-style: preserve-3d;
 }
 
+.orbit-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 140;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(183, 155, 224, 0.55);
+  border-radius: 999px;
+  background: rgba(12, 10, 24, 0.82);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.orbit-nav:hover { background: rgba(118, 76, 176, 0.55); }
+.orbit-nav-prev { left: 18px; }
+.orbit-nav-next { right: 18px; }
+@media (max-width: 767px) {
+  .orbit-nav { width: 40px; height: 40px; font-size: 29px; }
+  .orbit-nav-prev { left: 8px; }
+  .orbit-nav-next { right: 8px; }
+}
+
 .orbit-card {
   position: absolute;
   left: 50%;

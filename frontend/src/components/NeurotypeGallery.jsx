@@ -132,7 +132,7 @@ export const NeurotypeGallery = () => {
   const centeringFrameRef = useRef(null);
   const centeringTargetRef = useRef(null);
   const width = useViewportWidth();
-  const isPaused = paused || stageHovered || selectedIndex !== null || centeringIndex !== null;
+  const isPaused = true;
 
   useEffect(() => () => cancelAnimationFrame(centeringFrameRef.current), []);
 
@@ -172,6 +172,11 @@ export const NeurotypeGallery = () => {
   const verticalArc = isMobile ? 8 : 0;
   const visibilityThreshold = isMobile ? 0.1 : 0.03;
   const cycle = (angle / (Math.PI * 2)) * TYPES.length;
+
+  const moveBy = (delta) => {
+    const current = ((Math.round(cycle) % TYPES.length) + TYPES.length) % TYPES.length;
+    centerCard((current + delta + TYPES.length) % TYPES.length, true);
+  };
 
   const centerCard = (index, selectAfterMove = false) => {
     if (centeringTargetRef.current !== null) return;
@@ -300,10 +305,7 @@ export const NeurotypeGallery = () => {
       <div
         ref={stageRef}
         className="reveal relative orbit-stage"
-        onPointerEnter={(event) => {
-          if (event.pointerType !== "mouse") return;
-          setStageHovered(true);
-        }}
+        onPointerEnter={() => {}}
         onPointerLeave={(event) => {
           if (event.pointerType !== "mouse") return;
           cancelAnimationFrame(centeringFrameRef.current);
@@ -364,6 +366,9 @@ export const NeurotypeGallery = () => {
             />
           ))}
         </div>
+
+        <button type="button" className="orbit-nav orbit-nav-prev" aria-label="Предыдущий нейротип" onClick={(event) => { event.stopPropagation(); moveBy(-1); }}>‹</button>
+        <button type="button" className="orbit-nav orbit-nav-next" aria-label="Следующий нейротип" onClick={(event) => { event.stopPropagation(); moveBy(1); }}>›</button>
 
         <div
           className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 pointer-events-none z-20"
