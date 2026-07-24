@@ -1174,6 +1174,12 @@ body.geniq-day-readable .dot-grid {
 }
 
 @media (max-width: 767px) {
+  .orbit-card-portrait::before {
+    width: 34%;
+    opacity: 0.5;
+    filter: blur(12px);
+  }
+
   .orbit-stage {
     width: calc(100% + 32px);
     margin-left: -16px;
