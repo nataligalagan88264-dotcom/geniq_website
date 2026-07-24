@@ -299,7 +299,7 @@ export const NeurotypeGallery = () => {
 
       <div
         ref={stageRef}
-        className="reveal relative orbit-stage"
+        className={`reveal relative orbit-stage ${selectedIndex !== null || hoveredIndex !== null || centeringIndex !== null ? "orbit-stage-expanded" : ""}`}
         onPointerEnter={(event) => {
           if (event.pointerType !== "mouse") return;
           setStageHovered(true);
