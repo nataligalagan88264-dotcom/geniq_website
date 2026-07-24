@@ -1160,6 +1160,19 @@ body.geniq-day-readable .dot-grid {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1100px) {
+  .orbit-card,
+  .orbit-card-expanded {
+    width: min(40vw, 330px);
+  }
+
+  .orbit-card .orbit-card-portrait,
+  .orbit-card-expanded .orbit-card-portrait {
+    flex-basis: 260px;
+    height: 260px;
+  }
+}
+
 @media (max-width: 767px) {
   .orbit-stage {
     width: calc(100% + 32px);

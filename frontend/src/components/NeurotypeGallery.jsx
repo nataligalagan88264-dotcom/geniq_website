@@ -161,10 +161,13 @@ export const NeurotypeGallery = () => {
   }, [isPaused]);
 
   const isMobile = width < 768;
+  const isIntermediate = width >= 768 && width <= 1100;
   const orbitWidth = stageWidth || width;
   const cardWidth = isMobile
     ? Math.min(Math.max(orbitWidth * 0.52, 184), 224)
-    : Math.min(Math.max(orbitWidth * 0.2, 232), 312);
+    : isIntermediate
+      ? Math.min(Math.max(orbitWidth * 0.4, 280), 330)
+      : Math.min(Math.max(orbitWidth * 0.2, 232), 312);
   const cardGap = cardWidth * (isMobile ? 0.08 : 0.1);
   const minScale = isMobile ? 0.86 : 0.82;
   const maxVisibleOffset = orbitWidth / 2 / (cardWidth + cardGap) + 1.15;
