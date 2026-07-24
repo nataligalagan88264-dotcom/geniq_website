@@ -1181,13 +1181,17 @@ body.geniq-day-readable .dot-grid {
 
   .orbit-card-expanded {
     width: min(84vw, 326px);
-    height: auto;
-    aspect-ratio: 429 / 657;
+    height: 440px;
+    aspect-ratio: auto;
   }
 
   .orbit-card-expanded .orbit-card-portrait {
     flex-basis: clamp(156px, 44vw, 190px);
     height: clamp(156px, 44vw, 190px);
+  }
+
+  .orbit-card-expanded .orbit-card-facts {
+    margin-top: 12px;
   }
 
   .orbit-card-copy {
