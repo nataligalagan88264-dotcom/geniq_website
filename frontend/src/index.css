@@ -1165,7 +1165,7 @@ body.geniq-day-readable .dot-grid {
     width: calc(100% + 32px);
     margin-left: -16px;
     margin-right: -16px;
-    height: 520px;
+    height: 470px;
   }
 
   .orbit-card {
@@ -1181,7 +1181,7 @@ body.geniq-day-readable .dot-grid {
 
   .orbit-card-expanded {
     width: min(84vw, 326px);
-    height: 440px;
+    height: 420px;
     aspect-ratio: auto;
   }
 
