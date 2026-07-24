@@ -1050,6 +1050,11 @@ body.geniq-day-readable .dot-grid {
   object-position: center bottom;
   user-select: none;
   filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.35));
+  transition: transform 0.28s ease;
+}
+
+.orbit-card-expanded .orbit-card-portrait img {
+  transform: scale(1.05);
 }
 
 .orbit-card-copy {
