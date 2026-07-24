@@ -352,7 +352,9 @@ export const NeurotypeGallery = () => {
               }}
               onSelect={() => {
                 if (!centered) {
-                  if (isMobile) centerCard(index, true);
+                  // Clicking any visible card should center and open it on
+                  // desktop as well as touch devices.
+                  centerCard(index, true);
                   return;
                 }
 
