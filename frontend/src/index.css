@@ -1112,6 +1112,14 @@ body.geniq-day-readable .dot-grid {
   .orbit-stage {
     height: 700px;
   }
+
+  .orbit-card-expanded {
+    height: 540px;
+  }
+
+  .orbit-card-expanded .orbit-card-facts {
+    margin-top: 14px;
+  }
 }
 
 @media (max-width: 767px) {
