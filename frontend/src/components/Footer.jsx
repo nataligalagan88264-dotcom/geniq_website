@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Send, Mail, Phone, Shield } from "lucide-react";
-import { LEGAL, TELEGRAM_URL } from "@/lib/constants";
+import { Send, Mail, Phone, Shield, Instagram } from "lucide-react";
+import { LEGAL, TELEGRAM_URL, INSTAGRAM_URL } from "@/lib/constants";
 
 export const Footer = () => {
   return (
@@ -38,6 +38,10 @@ export const Footer = () => {
                 <li className="flex items-center gap-2.5">
                   <Send size={13} className="text-white/40" />
                   <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#B79BE0] transition-colors">@natali_galagan</a>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Instagram size={13} className="text-white/40" />
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#B79BE0] transition-colors">Instagram</a>
                 </li>
               </ul>
             </div>
