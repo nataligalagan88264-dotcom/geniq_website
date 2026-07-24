@@ -299,16 +299,13 @@ export const NeurotypeGallery = () => {
 
       <div
         ref={stageRef}
-        className={`reveal relative orbit-stage ${selectedIndex !== null || hoveredIndex !== null || centeringIndex !== null ? "orbit-stage-expanded" : ""}`}
+        className="reveal relative orbit-stage"
         onPointerEnter={(event) => {
           if (event.pointerType !== "mouse") return;
           setStageHovered(true);
         }}
         onPointerLeave={(event) => {
           if (event.pointerType !== "mouse") return;
-          // The expanded card can move under the pointer while the carousel
-          // settles. Do not reset selection from this transient leave event.
-          if (selectedIndex !== null) return;
           cancelAnimationFrame(centeringFrameRef.current);
           centeringTargetRef.current = null;
           setCenteringIndex(null);
@@ -343,18 +340,13 @@ export const NeurotypeGallery = () => {
               onRelease={(event) => {
                 if (event?.pointerType && event.pointerType !== "mouse") return;
                 if (centeringTargetRef.current === index) return;
-                // Clicking an expanded card can emit pointerleave during the
-                // re-render; keep the selected card open instead of resetting it.
-                if (selectedIndex !== null) return;
                 setHoveredIndex(null);
                 setSelectedIndex(null);
                 setPaused(false);
               }}
               onSelect={() => {
                 if (!centered) {
-                  // Clicking any visible card should center and open it on
-                  // desktop as well as touch devices.
-                  centerCard(index, true);
+                  if (isMobile) centerCard(index, true);
                   return;
                 }
 

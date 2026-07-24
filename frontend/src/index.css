@@ -951,8 +951,7 @@ body.geniq-day-readable .dot-grid {
 
 .orbit-card-expanded {
   width: clamp(280px, 22vw, 330px);
-  aspect-ratio: auto;
-  height: 657px;
+  aspect-ratio: 429 / 657;
   transition:
     transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
     opacity 0.2s ease,
@@ -1108,23 +1107,12 @@ body.geniq-day-readable .dot-grid {
   line-height: 1.4;
 }
 
-@media (min-width: 768px) {
-  .orbit-stage {
-    /* Intermediate desktop widths need the expanded card's full height. */
-    height: 700px;
-  }
-}
-
 @media (max-width: 767px) {
   .orbit-stage {
     width: calc(100% + 32px);
     margin-left: -16px;
     margin-right: -16px;
     height: 520px;
-  }
-
-  .orbit-stage-expanded {
-    height: 700px;
   }
 
   .orbit-card {
@@ -1134,7 +1122,7 @@ body.geniq-day-readable .dot-grid {
 
   .orbit-card-expanded {
     width: min(84vw, 326px);
-    height: 657px;
+    aspect-ratio: 429 / 657;
   }
 
   .orbit-card-copy {
