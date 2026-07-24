@@ -885,7 +885,7 @@ body.geniq-day-readable .dot-grid {
   width: calc(100% - 40px);
   max-width: 1440px;
   margin: 0 auto;
-  height: clamp(540px, 43vw, 650px);
+  height: clamp(500px, 38vw, 560px);
   overflow: hidden;
   perspective: 1200px;
   background:
@@ -936,7 +936,7 @@ body.geniq-day-readable .dot-grid {
 }
 
 .orbit-card-expanded {
-  width: clamp(326px, 27vw, 429px);
+  width: clamp(280px, 22vw, 330px);
   aspect-ratio: 429 / 657;
   transition:
     transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -948,6 +948,21 @@ body.geniq-day-readable .dot-grid {
 
 .orbit-card-expanded .orbit-card-portrait {
   min-height: 46%;
+}
+
+.orbit-card-expanded .orbit-card-copy,
+.orbit-card-expanded .orbit-card-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.orbit-card-expanded .orbit-card-details {
+  flex: 1;
+}
+
+.orbit-card-expanded .orbit-card-facts {
+  margin-top: auto;
+  padding-top: 14px;
 }
 
 .orbit-card-shell {
@@ -1127,7 +1142,7 @@ body.geniq-day-readable .dot-grid {
   --nt-color: #B79BE0;
   position: relative;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--nt-color) 44%, transparent);
+  border: 1px solid rgba(118, 76, 176, 0.46);
   border-radius: 28px;
   background: #130E24;
   box-shadow: 0 20px 45px -30px rgba(0, 0, 0, 0.8);
@@ -1136,27 +1151,27 @@ body.geniq-day-readable .dot-grid {
 
 .neurotype-accordion:hover,
 .neurotype-accordion[open] {
-  border-color: color-mix(in srgb, var(--nt-color) 76%, transparent);
-  box-shadow: 0 20px 60px -32px color-mix(in srgb, var(--nt-color) 42%, transparent);
+  border-color: rgba(183, 155, 224, 0.68);
+  box-shadow: 0 20px 60px -32px rgba(118, 76, 176, 0.46);
 }
 
 .neurotype-accordion-summary {
   min-height: 126px;
-  padding: 24px 30px;
+  padding: 22px;
 }
 
 .neurotype-accordion-summary:focus-visible {
-  outline: 2px solid var(--nt-color);
+  outline: 2px solid #B79BE0;
   outline-offset: -4px;
   border-radius: 27px;
 }
 
 .neurotype-accordion-heading {
   display: grid;
-  grid-template-columns: 68px minmax(180px, 0.72fr) minmax(280px, 1.6fr) 42px;
+  grid-template-columns: 58px minmax(0, 1fr) 42px;
   align-items: center;
-  gap: 22px;
-  min-height: 76px;
+  gap: 20px;
+  min-height: 82px;
 }
 
 .neurotype-accordion-code {
@@ -1174,26 +1189,40 @@ body.geniq-day-readable .dot-grid {
   box-shadow: 0 0 22px color-mix(in srgb, var(--nt-color) 28%, transparent);
 }
 
+.neurotype-accordion-title > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+
 .neurotype-accordion-title h3 {
   color: #fff;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 600;
   line-height: 1.15;
 }
 
-.neurotype-accordion-title span {
-  display: block;
-  margin-top: 7px;
+.neurotype-accordion-title > div span {
   color: rgba(255, 255, 255, 0.42);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.4;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.02em;
 }
 
-.neurotype-accordion-heading > p {
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 13.5px;
-  line-height: 1.65;
+.neurotype-accordion-summary-lead,
+.neurotype-accordion-summary-copy {
+  margin-top: 5px;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.neurotype-accordion-summary-lead {
+  color: #B79BE0;
+}
+
+.neurotype-accordion-summary-copy {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .neurotype-accordion-toggle {
@@ -1204,9 +1233,9 @@ body.geniq-day-readable .dot-grid {
   align-items: center;
   justify-content: center;
   justify-self: end;
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 1;
-  border: 1px solid color-mix(in srgb, var(--nt-color) 42%, transparent);
+  border: 1px solid rgba(183, 155, 224, 0.5);
   border-radius: 50%;
 }
 
@@ -1214,7 +1243,7 @@ body.geniq-day-readable .dot-grid {
   position: absolute;
   width: 14px;
   height: 1px;
-  background: var(--nt-color);
+  background: #B79BE0;
   transition: transform 0.25s ease;
 }
 
@@ -1228,158 +1257,168 @@ body.geniq-day-readable .dot-grid {
 
 .neurotype-accordion-body {
   display: grid;
-  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 2fr);
-  gap: 30px;
-  padding: 0 30px 30px;
+  grid-template-columns: 294px minmax(0, 1fr);
+  gap: 40px;
+  min-height: 560px;
+  padding: 23px 22px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .neurotype-accordion-avatar {
   position: relative;
-  min-height: 430px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  height: 342px;
   overflow: hidden;
-  border-radius: 24px;
+  border: 1px solid rgba(183, 155, 224, 0.2);
+  border-radius: 22px;
   background:
-    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portrait-color) 46%, transparent), transparent 44%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--portrait-color) 48%, transparent), transparent 47%),
     rgba(7, 5, 14, 0.66);
 }
 
 .neurotype-accordion-avatar img {
   position: absolute;
-  top: 12px;
+  top: 9px;
   left: 50%;
   width: auto;
-  height: 72%;
+  height: 96%;
   transform: translateX(-50%);
   object-fit: contain;
-  object-position: center top;
-}
-
-.neurotype-accordion-avatar > div {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 24px;
-  background: linear-gradient(to top, #0d091a 35%, transparent);
-}
-
-.neurotype-accordion-avatar span,
-.neurotype-accordion-avatar strong,
-.neurotype-accordion-avatar small {
-  display: block;
-}
-
-.neurotype-accordion-avatar span {
-  font-size: 14px;
-  letter-spacing: 0.14em;
-}
-
-.neurotype-accordion-avatar strong {
-  margin-top: 6px;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.neurotype-accordion-avatar small {
-  margin-top: 7px;
-  color: rgba(255, 255, 255, 0.46);
-  font-size: 10px;
-  letter-spacing: 0.13em;
+  object-position: center;
 }
 
 .neurotype-accordion-content {
-  padding-top: 30px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 13px;
 }
 
 .neurotype-accordion-formula {
   color: #fff;
-  font-size: clamp(20px, 2vw, 28px);
-  line-height: 1.3;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.2;
 }
 
-.neurotype-accordion-intro-grid,
-.neurotype-accordion-grid {
+.neurotype-accordion-highlights,
+.neurotype-accordion-narratives,
+.neurotype-accordion-states {
   display: grid;
+}
+
+.neurotype-accordion-highlights {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  margin-top: 18px;
 }
 
-.neurotype-accordion-intro-grid {
-  grid-template-columns: 1fr 0.8fr;
-  margin-top: 24px;
-}
-
-.neurotype-accordion-grid {
+.neurotype-accordion-narratives {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 12px;
+  gap: 24px;
+  margin-top: 22px;
 }
 
-.neurotype-accordion-intro-grid > div,
-.neurotype-accordion-grid > div {
-  padding: 16px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.neurotype-accordion-states {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.neurotype-accordion-highlights > div {
+  position: relative;
+  min-height: 76px;
+  padding: 13px 16px 12px 60px;
+  border: 1px solid rgba(183, 155, 224, 0.64);
   border-radius: 14px;
-  background: rgba(6, 5, 13, 0.38);
+  background: rgba(7, 5, 15, 0.24);
 }
 
-.neurotype-accordion-intro-grid span,
-.neurotype-accordion-grid span {
+.neurotype-accordion-highlights svg,
+.neurotype-state svg {
+  position: absolute;
+  left: 18px;
+  top: 21px;
+  width: 25px;
+  height: 25px;
+  color: #B79BE0;
+  stroke-width: 1.35;
+}
+
+.neurotype-accordion-highlights span,
+.neurotype-accordion-narratives span,
+.neurotype-state span {
   display: block;
-  margin-bottom: 8px;
-  color: var(--nt-color);
-  font-size: 10px;
+  margin-bottom: 6px;
+  color: #B79BE0;
+  font-size: 11px;
   line-height: 1.3;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.neurotype-accordion-grid .neurotype-detail--strength {
-  border-color: rgba(126, 200, 160, 0.28);
+.neurotype-accordion-highlights p,
+.neurotype-accordion-narratives p,
+.neurotype-state p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  line-height: 1.42;
 }
 
-.neurotype-accordion-grid .neurotype-detail--strength span {
-  color: #7EC8A0;
+.neurotype-state {
+  position: relative;
+  min-height: 154px;
+  padding: 16px 14px 14px 56px;
+  border: 1px solid rgba(183, 155, 224, 0.58);
+  border-radius: 16px;
+  background: rgba(7, 5, 15, 0.2);
 }
 
-.neurotype-accordion-grid .neurotype-detail--risk {
-  border-color: rgba(231, 139, 184, 0.3);
+.neurotype-state--drain {
+  border-color: rgba(166, 161, 178, 0.48);
 }
 
-.neurotype-accordion-grid .neurotype-detail--risk span {
-  color: #E78BB8;
+.neurotype-state--drain svg,
+.neurotype-state--drain span {
+  color: rgba(166, 161, 178, 0.76);
 }
 
-.neurotype-accordion-intro-grid p,
-.neurotype-accordion-grid p {
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 12px;
-  line-height: 1.58;
+.neurotype-state--stress {
+  border-color: rgba(255, 82, 105, 0.76);
+}
+
+.neurotype-state--stress svg,
+.neurotype-state--stress span {
+  color: #FF5269;
+}
+
+.neurotype-state--questions {
+  border-color: rgba(222, 179, 111, 0.74);
+}
+
+.neurotype-state--questions svg,
+.neurotype-state--questions span {
+  color: #DEB36F;
 }
 
 @media (max-width: 900px) {
-  .neurotype-accordion-heading {
-    grid-template-columns: 58px minmax(0, 1fr) 42px;
-    gap: 16px;
-  }
-
-  .neurotype-accordion-heading > p {
-    grid-column: 2 / 4;
-  }
-
-  .neurotype-accordion-toggle {
-    grid-column: 3;
-  }
-
   .neurotype-accordion-body {
     grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: 0;
   }
 
   .neurotype-accordion-avatar {
-    min-height: 380px;
+    width: min(100%, 360px);
+    height: 390px;
+    margin: 0 auto;
+  }
+
+  .neurotype-accordion-content {
+    min-height: 0;
+  }
+
+  .neurotype-accordion-states {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1408,13 +1447,27 @@ body.geniq-day-readable .dot-grid {
     font-size: 18px;
   }
 
-  .neurotype-accordion-title span {
-    font-size: 8px;
+  .neurotype-accordion-title {
+    display: contents;
   }
 
-  .neurotype-accordion-heading > p {
+  .neurotype-accordion-title > div {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .neurotype-accordion-title > div span {
+    font-size: 10px;
+  }
+
+  .neurotype-accordion-summary-lead,
+  .neurotype-accordion-summary-copy {
     grid-column: 1 / 4;
-    font-size: 12.5px;
+    font-size: 11.5px;
+  }
+
+  .neurotype-accordion-summary-copy {
+    margin-top: 0;
   }
 
   .neurotype-accordion-body {
@@ -1423,16 +1476,25 @@ body.geniq-day-readable .dot-grid {
   }
 
   .neurotype-accordion-avatar {
-    min-height: 360px;
+    height: 330px;
   }
 
   .neurotype-accordion-content {
     padding-top: 0;
   }
 
-  .neurotype-accordion-intro-grid,
-  .neurotype-accordion-grid {
+  .neurotype-accordion-highlights,
+  .neurotype-accordion-narratives,
+  .neurotype-accordion-states {
     grid-template-columns: 1fr;
+  }
+
+  .neurotype-accordion-narratives {
+    gap: 16px;
+  }
+
+  .neurotype-state {
+    min-height: 0;
   }
 }
 

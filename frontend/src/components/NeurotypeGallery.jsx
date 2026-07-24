@@ -19,6 +19,12 @@ const TYPES = [
   { code: "E3", name: "Драйвер", world: "E", mode: "Управленческий", profs: "предприниматель · лидер · продюсер · основатель", desc: "Энергия, напор, влияние. Раскрывается в лидерстве и запуске.", strength: "Лидерство и запуск", risk: "Давление и выгорание" },
 ];
 
+const WORLD_LABELS = {
+  S: "СМЫСЛОВ",
+  E: "ЭМОЦИЙ",
+  T: "МАТЕРИИ",
+};
+
 const useViewportWidth = () => {
   const [width, setWidth] = useState(() => (typeof window === "undefined" ? 1280 : window.innerWidth));
 
@@ -56,7 +62,7 @@ const useElementWidth = () => {
 };
 
 const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSelect }) => {
-  const color = NEUROTYPE_COLORS[type.code];
+  const color = type.code === "T2" ? "#747480" : NEUROTYPE_COLORS[type.code];
   const avatar = NEUROTYPE_AVATARS[type.code];
 
   return (
@@ -89,7 +95,9 @@ const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSele
         <div className="orbit-card-copy">
           <div className="orbit-card-code" style={{ color }}>{type.code}</div>
           <h3>{type.name}</h3>
-          <div className="orbit-card-mode">МИР {type.world} · {type.mode.toUpperCase()}</div>
+          <div className="orbit-card-mode">
+            МИР {expanded ? WORLD_LABELS[type.world] : type.world} · {type.mode.toUpperCase()}
+          </div>
           <div className="orbit-card-profs">{type.profs}</div>
           {expanded && (
             <div className="orbit-card-details animate-in fade-in duration-200">

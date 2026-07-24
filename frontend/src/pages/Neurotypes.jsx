@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Brain, Heart, Wrench, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  BatteryLow,
+  Brain,
+  Heart,
+  MessageCircle,
+  Siren,
+  Sparkles,
+  Star,
+  Wrench,
+  Zap,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CtaButton from "@/components/CtaButton";
@@ -42,6 +53,18 @@ const MATRIX = [
   ["E — эмоции", "E1 Эмпат", "E2 Артист", "E3 Драйвер"],
   ["T — материя", "T1 Систематик", "T2 Координатор", "T3 Оптимизатор"],
 ];
+
+const NEUROTYPE_SUMMARIES = {
+  S1: "Глубокое, концептуальное мышление. Раскрывается в исследовании и разработке идей.",
+  S2: "Ясно объясняет сложное, влияет через речь. Раскрывается в обучении, выступлениях и контенте.",
+  S3: "Системное, стратегическое мышление, видит закономерности. Раскрывается в сложных решениях.",
+  E1: "Высокая чувствительность и эмпатия. Раскрывается в помощи и работе с состояниями.",
+  E2: "Выразительность, харизма, живой контакт. Раскрывается на сцене, в медиа и контенте.",
+  E3: "Энергия, напор, влияние. Раскрывается в лидерстве и запуске.",
+  T1: "Точность, стабильность, внимание к деталям. Раскрывается в процессах и системной работе.",
+  T2: "Организует процессы, гибкий, практичный. Раскрывается в управлении и командах.",
+  T3: "Эффективность, практическая стратегия. Раскрывается в бизнесе и оптимизации.",
+};
 
 const NEUROTYPES = [
   {
@@ -223,14 +246,21 @@ const NeurotypeCard = ({ item, activeCode, setActiveCode }) => {
   const markerColor = item.code === "T2" ? "#747480" : color;
   const isOpen = activeCode === item.code;
   const avatar = NEUROTYPE_AVATARS[item.code];
-  const detailItems = [
+  const headline = item.formula.charAt(0).toUpperCase() + item.formula.slice(1);
+  const highlights = [
+    { label: "Суперсила", text: item.superpower, Icon: Zap },
+    { label: "Главная ценность", text: item.value, Icon: Star },
+  ];
+  const narratives = [
+    ["Кто это", item.who],
     ["Таланты", item.talents],
     ["Как выглядит со стороны", item.look],
-    ["Типичные вопросы", item.questions],
-    ["Заряжает", item.charge],
-    ["Истощает", item.drain],
-    ["Суперсила", item.superpower],
-    ["В стрессе", item.stress],
+  ];
+  const stateCards = [
+    { label: "Заряжает", text: item.charge, Icon: Heart, tone: "charge" },
+    { label: "Истощает", text: item.drain, Icon: BatteryLow, tone: "drain" },
+    { label: "В стрессе", text: item.stress, Icon: Siren, tone: "stress" },
+    { label: "Типичные вопросы", text: item.questions, Icon: MessageCircle, tone: "questions" },
   ];
 
   return (
@@ -252,10 +282,13 @@ const NeurotypeCard = ({ item, activeCode, setActiveCode }) => {
             {item.code}
           </span>
           <div className="neurotype-accordion-title">
-            <h3>{item.name}</h3>
-            <span>МИР {item.world} · {item.mode.toUpperCase()}</span>
+            <div>
+              <h3>{item.name}</h3>
+              <span>режим: {item.mode} · цвет: {item.colorName}</span>
+            </div>
+            <p className="neurotype-accordion-summary-lead">{NEUROTYPE_SUMMARIES[item.code]}</p>
+            <p className="neurotype-accordion-summary-copy">{item.collapsed}</p>
           </div>
-          <p>{item.collapsed}</p>
           <span className="neurotype-accordion-toggle" aria-hidden="true">
             <span />
             <span />
@@ -273,40 +306,34 @@ const NeurotypeCard = ({ item, activeCode, setActiveCode }) => {
             loading="lazy"
             draggable="false"
           />
-          <div>
-            <span style={{ color }}>{item.code}</span>
-            <strong>{item.name}</strong>
-            <small>МИР {item.world} · {item.mode.toUpperCase()}</small>
-          </div>
         </div>
 
         <div className="neurotype-accordion-content">
-          <div className="neurotype-accordion-intro">
-            <p className="neurotype-accordion-formula">«{item.formula}»</p>
-            <div className="neurotype-accordion-intro-grid">
-              <div>
-                <span>Кто это</span>
-                <p>{item.who}</p>
+          <p className="neurotype-accordion-formula">{headline}</p>
+
+          <div className="neurotype-accordion-highlights">
+            {highlights.map(({ label, text, Icon: HighlightIcon }) => (
+              <div key={label}>
+                <HighlightIcon aria-hidden="true" />
+                <span>{label}</span>
+                <p>{text}</p>
               </div>
-              <div>
-                <span>Главная ценность</span>
-                <p>{item.value}</p>
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="neurotype-accordion-grid">
-            {detailItems.map(([label, text]) => (
-              <div
-                key={label}
-                className={
-                  label === "Суперсила"
-                    ? "neurotype-detail--strength"
-                    : label === "В стрессе"
-                      ? "neurotype-detail--risk"
-                      : undefined
-                }
-              >
+          <div className="neurotype-accordion-narratives">
+            {narratives.map(([label, text]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="neurotype-accordion-states">
+            {stateCards.map(({ label, text, Icon: StateIcon, tone }) => (
+              <div key={label} className={`neurotype-state neurotype-state--${tone}`}>
+                <StateIcon aria-hidden="true" />
                 <span>{label}</span>
                 <p>{text}</p>
               </div>
