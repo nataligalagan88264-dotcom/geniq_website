@@ -510,6 +510,20 @@ h1, h2, h3, h4, h5, h6 {
     0 0 0 1px rgba(118, 76, 176, 0.25);
 }
 
+/* Keep the complete FAQ row, including its padding and plus control, clickable. */
+.faq-summary {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-summary > * {
+  pointer-events: none;
+}
+
 .geniq-glass {
   position: relative;
   background:

@@ -35,12 +35,12 @@ export const FaqSection = ({ withCta = true }) => {
         </div>
         <div className="space-y-3 max-w-4xl">
           {FAQ_ITEMS.map((f, i) => (
-            <details key={i} data-testid={`faq-${i}`} className="reveal geniq-card p-6 group cursor-pointer">
-              <summary className="flex items-start justify-between gap-4 list-none [&::-webkit-details-marker]:hidden">
+            <details key={i} data-testid={`faq-${i}`} className="reveal geniq-card group">
+              <summary className="faq-summary flex items-start justify-between gap-4 p-6 list-none [&::-webkit-details-marker]:hidden">
                 <h3 className="text-white text-[16px] font-medium leading-snug pr-4">{f.q}</h3>
                 <span className="text-[#B79BE0] text-2xl leading-none transition-transform group-open:rotate-45 shrink-0">+</span>
               </summary>
-              <div className="text-body text-[14px] leading-[1.75] mt-4 pt-4 border-t border-white/5 whitespace-pre-line">{f.a}</div>
+              <div className="faq-answer text-body text-[14px] leading-[1.75] px-6 pb-6 pt-4 border-t border-white/5 whitespace-pre-line">{f.a}</div>
             </details>
           ))}
         </div>
