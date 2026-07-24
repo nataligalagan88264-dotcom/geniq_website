@@ -885,7 +885,7 @@ body.geniq-day-readable .dot-grid {
   width: calc(100% - 40px);
   max-width: 1440px;
   margin: 0 auto;
-  height: clamp(420px, 34vw, 520px);
+  height: clamp(540px, 43vw, 650px);
   overflow: hidden;
   perspective: 1200px;
   background:
@@ -903,8 +903,8 @@ body.geniq-day-readable .dot-grid {
   position: absolute;
   left: 50%;
   top: 51%;
-  width: clamp(132px, 10.5vw, 176px);
-  aspect-ratio: 9 / 16;
+  width: clamp(232px, 20vw, 312px);
+  aspect-ratio: 312 / 443;
   appearance: none;
   border: 0;
   padding: 0;
@@ -932,12 +932,12 @@ body.geniq-day-readable .dot-grid {
 .orbit-card:focus-visible {
   outline: 2px solid var(--card-color);
   outline-offset: 6px;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
 .orbit-card-expanded {
-  width: clamp(214px, 18vw, 252px);
-  aspect-ratio: 9 / 16;
+  width: clamp(326px, 27vw, 429px);
+  aspect-ratio: 429 / 657;
   transition:
     transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
     opacity 0.2s ease,
@@ -946,22 +946,493 @@ body.geniq-day-readable .dot-grid {
     filter 0.24s ease;
 }
 
+.orbit-card-expanded .orbit-card-portrait {
+  min-height: 46%;
+}
+
+.orbit-card-shell {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 0.7px solid;
+  border-radius: 30px;
+  background: #130E24;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orbit-card-portrait {
+  position: relative;
+  min-height: 59.8%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.orbit-card-portrait::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 61%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--portrait-color);
+  opacity: 0.48;
+  filter: blur(28px);
+}
+
+.orbit-card-portrait img {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: 91%;
+  object-fit: contain;
+  object-position: center bottom;
+  user-select: none;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.35));
+}
+
+.orbit-card-copy {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 2px 24px 28px;
+  text-align: left;
+}
+
+.orbit-card-code {
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+}
+
+.orbit-card-copy h3 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.orbit-card-mode {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+}
+
+.orbit-card-profs {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.orbit-card-details {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.orbit-card-details > p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.orbit-card-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.orbit-card-facts span {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.orbit-card-fact--strength span {
+  color: #7EC8A0;
+}
+
+.orbit-card-fact--risk span {
+  color: #E78BB8;
+}
+
+.orbit-card-facts strong {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
 @media (max-width: 767px) {
   .orbit-stage {
     width: calc(100% + 32px);
     margin-left: -16px;
     margin-right: -16px;
-    height: 500px;
+    height: 520px;
   }
 
   .orbit-card {
-    width: clamp(146px, 46vw, 188px);
-    aspect-ratio: 9 / 16;
+    width: clamp(184px, 52vw, 224px);
+    aspect-ratio: 312 / 443;
   }
 
   .orbit-card-expanded {
-    width: min(78vw, 258px);
-    aspect-ratio: 9 / 16;
+    width: min(84vw, 326px);
+    aspect-ratio: 429 / 657;
+  }
+
+  .orbit-card-copy {
+    padding: 0 16px 18px;
+  }
+
+  .orbit-card-code {
+    font-size: 12px;
+  }
+
+  .orbit-card-copy h3 {
+    font-size: 16px;
+  }
+
+  .orbit-card-mode {
+    font-size: 8px;
+  }
+
+  .orbit-card-profs {
+    margin-top: 8px;
+    font-size: 9px;
+  }
+
+  .orbit-card-expanded .orbit-card-copy {
+    padding: 0 20px 22px;
+  }
+}
+
+/* ---------- Neurotype catalogue accordion ---------- */
+.neurotype-accordion {
+  --nt-color: #B79BE0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--nt-color) 44%, transparent);
+  border-radius: 28px;
+  background: #130E24;
+  box-shadow: 0 20px 45px -30px rgba(0, 0, 0, 0.8);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neurotype-accordion:hover,
+.neurotype-accordion[open] {
+  border-color: color-mix(in srgb, var(--nt-color) 76%, transparent);
+  box-shadow: 0 20px 60px -32px color-mix(in srgb, var(--nt-color) 42%, transparent);
+}
+
+.neurotype-accordion-summary {
+  min-height: 126px;
+  padding: 24px 30px;
+}
+
+.neurotype-accordion-summary:focus-visible {
+  outline: 2px solid var(--nt-color);
+  outline-offset: -4px;
+  border-radius: 27px;
+}
+
+.neurotype-accordion-heading {
+  display: grid;
+  grid-template-columns: 68px minmax(180px, 0.72fr) minmax(280px, 1.6fr) 42px;
+  align-items: center;
+  gap: 22px;
+  min-height: 76px;
+}
+
+.neurotype-accordion-code {
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 50%;
+  background: rgba(9, 7, 17, 0.75);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--nt-color) 28%, transparent);
+}
+
+.neurotype-accordion-title h3 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.neurotype-accordion-title span {
+  display: block;
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+}
+
+.neurotype-accordion-heading > p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.neurotype-accordion-toggle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  grid-column: 4;
+  grid-row: 1;
+  border: 1px solid color-mix(in srgb, var(--nt-color) 42%, transparent);
+  border-radius: 50%;
+}
+
+.neurotype-accordion-toggle span {
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  background: var(--nt-color);
+  transition: transform 0.25s ease;
+}
+
+.neurotype-accordion-toggle span:last-child {
+  transform: rotate(90deg);
+}
+
+.neurotype-accordion[open] .neurotype-accordion-toggle span:last-child {
+  transform: rotate(0deg);
+}
+
+.neurotype-accordion-body {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 2fr);
+  gap: 30px;
+  padding: 0 30px 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.neurotype-accordion-avatar {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portrait-color) 46%, transparent), transparent 44%),
+    rgba(7, 5, 14, 0.66);
+}
+
+.neurotype-accordion-avatar img {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: auto;
+  height: 72%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: center top;
+}
+
+.neurotype-accordion-avatar > div {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(to top, #0d091a 35%, transparent);
+}
+
+.neurotype-accordion-avatar span,
+.neurotype-accordion-avatar strong,
+.neurotype-accordion-avatar small {
+  display: block;
+}
+
+.neurotype-accordion-avatar span {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+}
+
+.neurotype-accordion-avatar strong {
+  margin-top: 6px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.neurotype-accordion-avatar small {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 10px;
+  letter-spacing: 0.13em;
+}
+
+.neurotype-accordion-content {
+  padding-top: 30px;
+}
+
+.neurotype-accordion-formula {
+  color: #fff;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.3;
+}
+
+.neurotype-accordion-intro-grid,
+.neurotype-accordion-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.neurotype-accordion-intro-grid {
+  grid-template-columns: 1fr 0.8fr;
+  margin-top: 24px;
+}
+
+.neurotype-accordion-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.neurotype-accordion-intro-grid > div,
+.neurotype-accordion-grid > div {
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(6, 5, 13, 0.38);
+}
+
+.neurotype-accordion-intro-grid span,
+.neurotype-accordion-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--nt-color);
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.neurotype-accordion-grid .neurotype-detail--strength {
+  border-color: rgba(126, 200, 160, 0.28);
+}
+
+.neurotype-accordion-grid .neurotype-detail--strength span {
+  color: #7EC8A0;
+}
+
+.neurotype-accordion-grid .neurotype-detail--risk {
+  border-color: rgba(231, 139, 184, 0.3);
+}
+
+.neurotype-accordion-grid .neurotype-detail--risk span {
+  color: #E78BB8;
+}
+
+.neurotype-accordion-intro-grid p,
+.neurotype-accordion-grid p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  line-height: 1.58;
+}
+
+@media (max-width: 900px) {
+  .neurotype-accordion-heading {
+    grid-template-columns: 58px minmax(0, 1fr) 42px;
+    gap: 16px;
+  }
+
+  .neurotype-accordion-heading > p {
+    grid-column: 2 / 4;
+  }
+
+  .neurotype-accordion-toggle {
+    grid-column: 3;
+  }
+
+  .neurotype-accordion-body {
+    grid-template-columns: 1fr;
+  }
+
+  .neurotype-accordion-avatar {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 600px) {
+  .neurotype-accordion {
+    border-radius: 22px;
+  }
+
+  .neurotype-accordion-summary {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .neurotype-accordion-heading {
+    grid-template-columns: 48px minmax(0, 1fr) 42px;
+    gap: 12px;
+  }
+
+  .neurotype-accordion-code {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+  }
+
+  .neurotype-accordion-title h3 {
+    font-size: 18px;
+  }
+
+  .neurotype-accordion-title span {
+    font-size: 8px;
+  }
+
+  .neurotype-accordion-heading > p {
+    grid-column: 1 / 4;
+    font-size: 12.5px;
+  }
+
+  .neurotype-accordion-body {
+    gap: 20px;
+    padding: 0 14px 14px;
+  }
+
+  .neurotype-accordion-avatar {
+    min-height: 360px;
+  }
+
+  .neurotype-accordion-content {
+    padding-top: 0;
+  }
+
+  .neurotype-accordion-intro-grid,
+  .neurotype-accordion-grid {
+    grid-template-columns: 1fr;
   }
 }
 

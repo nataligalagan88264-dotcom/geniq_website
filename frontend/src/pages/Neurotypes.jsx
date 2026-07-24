@@ -7,6 +7,7 @@ import CtaButton from "@/components/CtaButton";
 import LensSvg from "@/components/LensSvg";
 import EditableMedia from "@/components/EditableMedia";
 import { FORM_URL, NEUROTYPE_COLORS } from "@/lib/constants";
+import { NEUROTYPE_AVATARS } from "@/lib/neurotypeAssets";
 import siteContent from "@/content/site.json";
 
 const WORLDS = {
@@ -219,74 +220,99 @@ const useReveal = () => {
 
 const NeurotypeCard = ({ item, activeCode, setActiveCode }) => {
   const color = NEUROTYPE_COLORS[item.code] || "#B79BE0";
-  const markerColor = item.code === "T2" ? "#454552" : color;
+  const markerColor = item.code === "T2" ? "#747480" : color;
   const isOpen = activeCode === item.code;
+  const avatar = NEUROTYPE_AVATARS[item.code];
+  const detailItems = [
+    ["Таланты", item.talents],
+    ["Как выглядит со стороны", item.look],
+    ["Типичные вопросы", item.questions],
+    ["Заряжает", item.charge],
+    ["Истощает", item.drain],
+    ["Суперсила", item.superpower],
+    ["В стрессе", item.stress],
+  ];
 
   return (
     <details
       data-testid={`neurotype-${item.code}`}
-      className="geniq-card p-5 group animate-in fade-in duration-300"
-      style={{ "--nt-color": color }}
+      className="neurotype-accordion group animate-in fade-in duration-300"
+      style={{ "--nt-color": markerColor }}
       open={isOpen}
     >
       <summary
-        className="list-none [&::-webkit-details-marker]:hidden cursor-pointer"
+        className="neurotype-accordion-summary list-none [&::-webkit-details-marker]:hidden cursor-pointer"
         onClick={(event) => {
           event.preventDefault();
           setActiveCode((current) => current === item.code ? null : item.code);
         }}
       >
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex items-start gap-4">
-            <div
-              className="w-14 h-14 rounded-full border-[2px] flex items-center justify-center shrink-0"
-              style={{
-                borderColor: markerColor,
-                background: item.code === "T2" ? "rgba(15,15,24,0.92)" : `${color}12`,
-                boxShadow: `0 0 18px ${markerColor}20, inset 0 0 18px ${markerColor}12`,
-              }}
-            >
-              <div
-                className="w-9 h-9 rounded-full border flex items-center justify-center text-white text-[14px] font-semibold"
-                style={{
-                  borderColor: item.code === "T2" ? "rgba(120,120,138,0.52)" : `${color}80`,
-                  background: item.code === "T2" ? "rgba(25,25,36,0.94)" : "rgba(10,10,20,0.5)",
-                  textShadow: `0 0 10px ${markerColor}`,
-                }}
-              >
-                {item.code}
-              </div>
-            </div>
-            <div>
-              <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                <h3 className="text-white text-[18px] font-medium">{item.name}</h3>
-                <span className="text-white/45 text-[12px]">режим: {item.mode} · цвет: {item.colorName}</span>
-              </div>
-              <p className="text-[#B79BE0] text-[13px] leading-[1.55] mb-2">Формула: {item.formula}</p>
-              <p className="text-body text-[13.5px] leading-[1.6]">{item.collapsed}</p>
-            </div>
+        <div className="neurotype-accordion-heading">
+          <span className="neurotype-accordion-code" style={{ borderColor: markerColor, color: markerColor }}>
+            {item.code}
+          </span>
+          <div className="neurotype-accordion-title">
+            <h3>{item.name}</h3>
+            <span>МИР {item.world} · {item.mode.toUpperCase()}</span>
           </div>
-          <span className="text-[#B79BE0] text-2xl leading-none transition-transform group-open:rotate-45 shrink-0">+</span>
+          <p>{item.collapsed}</p>
+          <span className="neurotype-accordion-toggle" aria-hidden="true">
+            <span />
+            <span />
+          </span>
         </div>
       </summary>
 
-      <div className="mt-5 pt-5 border-t border-white/5 grid lg:grid-cols-2 gap-4 animate-in fade-in">
-        {[
-          ["Кто это", item.who],
-          ["Главная ценность", item.value],
-          ["Таланты", item.talents],
-          ["Как выглядит со стороны", item.look],
-          ["Типичные вопросы", item.questions],
-          ["Заряжает", item.charge],
-          ["Истощает", item.drain],
-          ["Суперсила", item.superpower],
-          ["В стрессе", item.stress],
-        ].map(([label, text]) => (
-          <div key={label} className="rounded-2xl border border-white/8 bg-black/25 p-4">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-2">{label}</div>
-            <p className="text-white/76 text-[13px] leading-[1.65]">{text}</p>
+      <div className="neurotype-accordion-body animate-in fade-in">
+        <div className="neurotype-accordion-avatar" style={{ "--portrait-color": color }}>
+          <img
+            src={avatar}
+            alt={`Нейротип ${item.name}`}
+            width="224"
+            height="300"
+            loading="lazy"
+            draggable="false"
+          />
+          <div>
+            <span style={{ color }}>{item.code}</span>
+            <strong>{item.name}</strong>
+            <small>МИР {item.world} · {item.mode.toUpperCase()}</small>
           </div>
-        ))}
+        </div>
+
+        <div className="neurotype-accordion-content">
+          <div className="neurotype-accordion-intro">
+            <p className="neurotype-accordion-formula">«{item.formula}»</p>
+            <div className="neurotype-accordion-intro-grid">
+              <div>
+                <span>Кто это</span>
+                <p>{item.who}</p>
+              </div>
+              <div>
+                <span>Главная ценность</span>
+                <p>{item.value}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="neurotype-accordion-grid">
+            {detailItems.map(([label, text]) => (
+              <div
+                key={label}
+                className={
+                  label === "Суперсила"
+                    ? "neurotype-detail--strength"
+                    : label === "В стрессе"
+                      ? "neurotype-detail--risk"
+                      : undefined
+                }
+              >
+                <span>{label}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </details>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NEUROTYPE_COLORS } from "@/lib/constants";
+import { NEUROTYPE_AVATARS } from "@/lib/neurotypeAssets";
 
 /**
  * Neurotype gallery — circular 3D carousel.
@@ -16,12 +17,6 @@ const TYPES = [
   { code: "E1", name: "Эмпат", world: "E", mode: "Генеративный", profs: "психолог · коуч · терапевт · помогающие профессии", desc: "Высокая чувствительность и эмпатия. Раскрывается в помощи и работе с состояниями.", strength: "Помощь и работа с состояниями", risk: "Перегруз чужими эмоциями" },
   { code: "E2", name: "Артист", world: "E", mode: "Коммуникативный", profs: "актёр · ведущий · артист · креатор · медиа", desc: "Выразительность, харизма, живой контакт. Раскрывается на сцене, в медиа, контенте.", strength: "Сцена, медиа и контент", risk: "Нестабильность" },
   { code: "E3", name: "Драйвер", world: "E", mode: "Управленческий", profs: "предприниматель · лидер · продюсер · основатель", desc: "Энергия, напор, влияние. Раскрывается в лидерстве и запуске.", strength: "Лидерство и запуск", risk: "Давление и выгорание" },
-];
-
-const SILHOUETTE_PATHS = [
-  "M 70 40 C 55 35, 45 50, 45 75 C 45 90, 48 105, 52 115 C 50 120, 50 128, 55 135 L 55 145 C 50 148, 48 155, 52 162 L 58 170 C 58 175, 60 182, 65 188 C 67 192, 70 195, 70 200 L 70 215 C 60 220, 50 230, 45 245 L 45 280 L 175 280 L 175 260 C 175 245, 165 232, 150 225 C 140 220, 130 215, 125 208 C 122 200, 118 195, 115 188 C 115 178, 118 168, 122 158 C 128 145, 130 130, 128 115 C 132 105, 134 90, 130 75 C 126 55, 110 42, 90 40 Z",
-  "M 75 35 C 55 30, 40 45, 38 70 C 36 85, 38 100, 42 112 C 38 118, 36 128, 40 138 L 45 150 C 40 156, 38 165, 42 175 L 50 185 C 50 192, 52 200, 58 205 L 65 215 C 55 222, 42 235, 38 250 C 36 260, 36 270, 38 280 L 175 280 L 175 258 C 175 245, 165 232, 152 225 C 142 220, 132 213, 128 205 C 125 198, 122 192, 120 185 C 122 175, 126 165, 130 155 C 134 145, 136 132, 134 120 C 138 110, 140 95, 138 80 C 134 55, 115 38, 95 36 Z",
-  "M 78 38 C 60 36, 48 50, 46 72 C 44 88, 46 102, 50 114 C 48 120, 48 128, 52 135 L 55 145 C 50 150, 48 158, 52 165 L 60 175 C 60 182, 62 190, 68 195 L 72 208 C 62 215, 52 225, 48 240 L 48 280 L 175 280 L 175 258 C 175 245, 166 234, 152 226 C 142 220, 135 215, 130 208 C 126 200, 122 192, 120 185 C 122 175, 126 165, 130 155 C 134 145, 138 130, 136 115 C 140 105, 142 90, 138 78 C 132 55, 115 40, 95 38 Z",
 ];
 
 const useViewportWidth = () => {
@@ -60,11 +55,9 @@ const useElementWidth = () => {
   return [ref, width];
 };
 
-const OrbitCard = ({ type, index, style, expanded, muted, onActivate, onRelease, onSelect }) => {
+const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSelect }) => {
   const color = NEUROTYPE_COLORS[type.code];
-  const variant = SILHOUETTE_PATHS[type.code.charCodeAt(1) % 3];
-  const grad = `orbit-grad-${type.code}-${index}`;
-  const filterId = `orbit-glow-${type.code}-${index}`;
+  const avatar = NEUROTYPE_AVATARS[type.code];
 
   return (
     <button
@@ -81,69 +74,34 @@ const OrbitCard = ({ type, index, style, expanded, muted, onActivate, onRelease,
       tabIndex={style.pointerEvents === "none" ? -1 : 0}
       style={{ ...style, "--card-color": color }}
     >
-      <div
-        className="absolute inset-0 overflow-hidden rounded-[20px] border transition-all duration-300"
-        style={{
-          borderColor: expanded ? color : "rgba(255,255,255,0.08)",
-          background: "rgba(8, 8, 15, 0.96)",
-          boxShadow: expanded
-            ? `0 0 68px -14px ${color}cc, 0 28px 60px rgba(0,0,0,0.62), inset 0 0 38px ${color}1f`
-            : `0 20px 54px rgba(0,0,0,0.58), inset 0 0 34px ${color}12`,
-        }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(75% 74% at 50% 34%, ${color}70, transparent 70%),
-              linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.34))
-            `,
-            opacity: expanded ? 0.9 : 0.74,
-          }}
-        />
-        <div className="absolute inset-0 dot-grid opacity-12 pointer-events-none" />
+      <div className="orbit-card-shell" style={{ borderColor: color, boxShadow: `0 20px 54px rgba(0,0,0,0.58), inset 0 0 34px ${color}12` }}>
+        <div className="orbit-card-portrait" style={{ "--portrait-color": color }}>
+          <img
+            src={avatar}
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+            width="224"
+            height="300"
+          />
+        </div>
 
-        <svg
-          viewBox="0 0 200 280"
-          className={`absolute left-1/2 -translate-x-1/2 top-[12%] h-auto transition-all duration-300 ${expanded ? "w-[39%] max-w-[118px]" : "w-[42%] max-w-[104px]"}`}
-        >
-          <defs>
-            <linearGradient id={grad} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor={color} stopOpacity="0.95" />
-              <stop offset="1" stopColor={color} stopOpacity="0.35" />
-            </linearGradient>
-            <filter id={filterId} x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <path d={variant} fill={`url(#${grad})`} opacity="0.9" />
-          <path d={variant} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth="0.5" />
-          <path d={variant} fill="none" stroke={color} strokeOpacity="0.7" strokeWidth="0.8" filter={`url(#${filterId})`} />
-        </svg>
-
-        <div className="absolute left-0 right-0 bottom-0 p-3.5 text-left sm:p-4">
-          <div className="text-[9px] uppercase tracking-[0.24em] mb-1.5" style={{ color }}>{type.code}</div>
-          <h3 className="text-white text-[15px] sm:text-[16px] font-medium leading-tight">{type.name}</h3>
-          <div className="text-white/42 text-[9px] mt-1.5 uppercase tracking-[0.18em]">
-            мир {type.world} · {type.mode.slice(0, 4).toLowerCase()}.
-          </div>
-          <div className="text-white/50 text-[9.5px] mt-2.5 leading-snug">{type.profs}</div>
-
+        <div className="orbit-card-copy">
+          <div className="orbit-card-code" style={{ color }}>{type.code}</div>
+          <h3>{type.name}</h3>
+          <div className="orbit-card-mode">МИР {type.world} · {type.mode.toUpperCase()}</div>
+          <div className="orbit-card-profs">{type.profs}</div>
           {expanded && (
-            <div className="mt-3 pt-3 border-t border-white/10 animate-in fade-in duration-200">
-              <p className="text-white/82 text-[10.5px] leading-[1.55]">{type.desc}</p>
-              <div className="grid grid-cols-2 gap-2 mt-3">
-                <div>
-                  <div className="text-[8px] uppercase tracking-[0.18em] text-[#7EC8A0]">Сила</div>
-                  <div className="text-white/70 text-[9px] leading-tight mt-0.5">{type.strength}</div>
+            <div className="orbit-card-details animate-in fade-in duration-200">
+              <p>{type.desc}</p>
+              <div className="orbit-card-facts">
+                <div className="orbit-card-fact orbit-card-fact--strength">
+                  <span>Сила</span>
+                  <strong>{type.strength}</strong>
                 </div>
-                <div>
-                  <div className="text-[8px] uppercase tracking-[0.18em] text-[#E78BB8]">Риск</div>
-                  <div className="text-white/70 text-[9px] leading-tight mt-0.5">{type.risk}</div>
+                <div className="orbit-card-fact orbit-card-fact--risk">
+                  <span>Риск</span>
+                  <strong>{type.risk}</strong>
                 </div>
               </div>
             </div>
@@ -197,10 +155,10 @@ export const NeurotypeGallery = () => {
   const isMobile = width < 768;
   const orbitWidth = stageWidth || width;
   const cardWidth = isMobile
-    ? Math.min(Math.max(orbitWidth * 0.46, 148), 188)
-    : Math.min(Math.max(orbitWidth * 0.105, 132), 176);
-  const cardGap = cardWidth * (isMobile ? 0.06 : 0.28);
-  const minScale = isMobile ? 0.84 : 0.8;
+    ? Math.min(Math.max(orbitWidth * 0.52, 184), 224)
+    : Math.min(Math.max(orbitWidth * 0.2, 232), 312);
+  const cardGap = cardWidth * (isMobile ? 0.08 : 0.1);
+  const minScale = isMobile ? 0.86 : 0.82;
   const maxVisibleOffset = orbitWidth / 2 / (cardWidth + cardGap) + 1.15;
   const fadeOffset = maxVisibleOffset + (isMobile ? 1.15 : 0.85);
   const verticalArc = isMobile ? 8 : 0;
@@ -359,7 +317,6 @@ export const NeurotypeGallery = () => {
             <OrbitCard
               key={type.code}
               type={type}
-              index={index}
               style={style}
               expanded={expanded}
               muted={muted}
