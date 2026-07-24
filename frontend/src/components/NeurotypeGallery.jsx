@@ -306,6 +306,9 @@ export const NeurotypeGallery = () => {
         }}
         onPointerLeave={(event) => {
           if (event.pointerType !== "mouse") return;
+          // The expanded card can move under the pointer while the carousel
+          // settles. Do not reset selection from this transient leave event.
+          if (selectedIndex !== null) return;
           cancelAnimationFrame(centeringFrameRef.current);
           centeringTargetRef.current = null;
           setCenteringIndex(null);
