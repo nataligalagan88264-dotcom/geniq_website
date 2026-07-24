@@ -29,6 +29,9 @@ export const FaqSection = ({ withCta = true }) => {
           <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-normal text-white leading-[1.1] mb-5">
             Частые <span className="gradient-text">вопросы</span>
           </h2>
+          <p className="text-body text-[15px] sm:text-[16px] leading-[1.65] max-w-2xl">
+            Ответы на самые частые вопросы про диагностику, нейротипы, подход и работу с GENIQ.
+          </p>
         </div>
         <div className="space-y-3 max-w-4xl">
           {FAQ_ITEMS.map((f, i) => (
