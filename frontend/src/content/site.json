@@ -10,7 +10,7 @@
   "navigation": [
     { "label": "О системе", "to": "/system" },
     { "label": "Нейротипы", "to": "/neurotypes" },
-    { "label": "Услуги", "to": "/#services" },
+    { "label": "Диагностика", "to": "/#services" },
     { "label": "Партнёрам", "to": "/partners" },
     { "label": "Блог", "to": "/blog" }
   ],
