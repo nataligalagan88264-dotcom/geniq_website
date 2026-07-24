@@ -8,7 +8,6 @@ import Neurotypes from "@/pages/Neurotypes";
 import Approach from "@/pages/Approach";
 import Blog from "@/pages/Blog";
 import Privacy from "@/pages/Privacy";
-import Faq from "@/pages/Faq";
 import Partners from "@/pages/Partners";
 import Seo from "@/components/Seo";
 
@@ -158,7 +157,6 @@ function App() {
           <Route path="/neurotypes" element={<Neurotypes />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/faq" element={<Faq />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<Navigate to="/" replace />} />

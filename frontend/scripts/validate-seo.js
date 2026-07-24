@@ -86,7 +86,7 @@ Object.entries(seo.pages).forEach(([pathname, page]) => {
     `Missing BreadcrumbList schema for ${pathname}`,
   );
 
-  if (pathname === "/faq") {
+  if (pathname === "/") {
     const faqSchema = graph.find((item) => item["@type"] === "FAQPage");
     assert(faqSchema, "Missing FAQPage schema");
     assert(

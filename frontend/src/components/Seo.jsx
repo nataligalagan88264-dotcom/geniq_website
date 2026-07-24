@@ -98,7 +98,7 @@ const buildStructuredData = (pathname, page, canonicalUrl) => {
     },
   ];
 
-  if (pathname === "/faq") {
+    if (pathname === "/") {
     graph.push({
       "@type": "FAQPage",
       "@id": `${canonicalUrl}#faq`,

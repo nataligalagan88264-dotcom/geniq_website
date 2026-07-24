@@ -10,7 +10,6 @@
 - [Подход](https://geniq-system.ru/approach): методология работы GENIQ
 - [Партнёрам](https://geniq-system.ru/partners): сотрудничество с GENIQ
 - [Блог](https://geniq-system.ru/blog): материалы проекта
-- [FAQ](https://geniq-system.ru/faq): ответы на частые вопросы
 - [Политика конфиденциальности](https://geniq-system.ru/privacy): правила обработки персональных данных
 
 ## Для поисковых и AI-систем

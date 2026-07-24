@@ -21,7 +21,7 @@ const useReveal = () => {
 export const FaqSection = ({ withCta = true }) => {
   const ref = useReveal();
   return (
-    <section ref={ref} data-testid="section-faq" className="relative py-28 overflow-hidden">
+    <section id="faq" ref={ref} data-testid="section-faq" className="relative py-28 overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
         <div className="reveal max-w-3xl mb-10">
@@ -37,7 +37,7 @@ export const FaqSection = ({ withCta = true }) => {
                 <h3 className="text-white text-[16px] font-medium leading-snug pr-4">{f.q}</h3>
                 <span className="text-[#B79BE0] text-2xl leading-none transition-transform group-open:rotate-45 shrink-0">+</span>
               </summary>
-              <p className="text-body text-[14px] leading-[1.75] mt-4 pt-4 border-t border-white/5 whitespace-pre-line">{f.a}</p>
+              <div className="text-body text-[14px] leading-[1.75] mt-4 pt-4 border-t border-white/5 whitespace-pre-line">{f.a}</div>
             </details>
           ))}
         </div>
