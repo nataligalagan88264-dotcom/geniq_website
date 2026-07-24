@@ -1139,6 +1139,12 @@ body.geniq-day-readable .dot-grid {
     height: 700px;
   }
 
+  .orbit-card .orbit-card-portrait {
+    flex: 0 0 clamp(197px, 17vw, 265px);
+    min-height: 0;
+    height: clamp(197px, 17vw, 265px);
+  }
+
   .orbit-card-expanded {
     width: clamp(232px, 20vw, 312px);
     height: 560px;
@@ -1160,6 +1166,12 @@ body.geniq-day-readable .dot-grid {
   .orbit-card {
     width: clamp(184px, 52vw, 224px);
     aspect-ratio: 312 / 443;
+  }
+
+  .orbit-card .orbit-card-portrait {
+    flex: 0 0 clamp(156px, 44vw, 190px);
+    min-height: 0;
+    height: clamp(156px, 44vw, 190px);
   }
 
   .orbit-card-expanded {
