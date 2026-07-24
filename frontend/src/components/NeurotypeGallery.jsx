@@ -340,6 +340,9 @@ export const NeurotypeGallery = () => {
               onRelease={(event) => {
                 if (event?.pointerType && event.pointerType !== "mouse") return;
                 if (centeringTargetRef.current === index) return;
+                // Clicking an expanded card can emit pointerleave during the
+                // re-render; keep the selected card open instead of resetting it.
+                if (selectedIndex !== null) return;
                 setHoveredIndex(null);
                 setSelectedIndex(null);
                 setPaused(false);
