@@ -1032,13 +1032,13 @@ body.geniq-day-readable .dot-grid {
   position: absolute;
   left: 50%;
   top: 52%;
-  width: 50%;
+  width: 42%;
   aspect-ratio: 1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background: var(--portrait-color);
-  opacity: 0.34;
-  filter: blur(22px);
+  opacity: 0.58;
+  filter: blur(18px);
 }
 
 .orbit-card-portrait img {
