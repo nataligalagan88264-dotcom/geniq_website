@@ -179,6 +179,18 @@ export default function About() {
           </div>
         </section>
 
+        <section className="mb-20 reveal">
+          <div className="geniq-glass rounded-[28px] px-6 py-8 sm:px-10 sm:py-10 max-w-4xl">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Главная формула</div>
+            <p className="text-white text-[25px] sm:text-[38px] leading-[1.15] font-normal">
+              <span className="gradient-text">9 нейротипов</span> = ваш режим взаимодействия с миром
+            </p>
+            <p className="text-body text-[15px] leading-[1.7] mt-5 max-w-2xl">
+              В вас есть все 9. Один ведущий задаёт способ восприятия, мышления и действия, а остальные дополняют вашу индивидуальную карту.
+            </p>
+          </div>
+        </section>
+
         <section data-testid="section-basket-metaphor" className="mb-16 sm:mb-20 reveal">
           <div className="grid lg:grid-cols-[6.5fr_5.5fr] gap-8 lg:gap-10 items-start">
             <div>
@@ -264,6 +276,11 @@ export default function About() {
         </section>
 
         <section className="mb-24">
+          <div className="reveal max-w-4xl mb-10">
+            <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
+              9 нейротипов понятно. <span className="gradient-text">А как собрать именно вашу карту?</span>
+            </p>
+          </div>
           <div className="reveal max-w-3xl mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">5 осей</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
@@ -310,6 +327,11 @@ export default function About() {
         </section>
 
         <section className="mb-24">
+          <div className="reveal max-w-4xl mb-10">
+            <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
+              <span className="gradient-text">Всё начинается с конкретных вопросов.</span>
+            </p>
+          </div>
           <div className="reveal max-w-4xl mb-12">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Нейротип</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
