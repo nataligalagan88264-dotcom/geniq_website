@@ -907,10 +907,6 @@ body.geniq-day-readable .dot-grid {
     #0C0A18;
 }
 
-.orbit-stage-expanded {
-  height: 700px;
-}
-
 .orbit-track {
   position: absolute;
   inset: 0;
@@ -1110,6 +1106,13 @@ body.geniq-day-readable .dot-grid {
   font-size: 10px;
   font-weight: 400;
   line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .orbit-stage {
+    /* Intermediate desktop widths need the expanded card's full height. */
+    height: 700px;
+  }
 }
 
 @media (max-width: 767px) {
