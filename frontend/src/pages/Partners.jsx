@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import { ArrowUpRight, Briefcase, GraduationCap, Cpu, Star, Users, BadgePercent, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HandshakeSvg from "@/components/HandshakeSvg";
-import EditableMedia from "@/components/EditableMedia";
 import { FORM_URL } from "@/lib/constants";
-import siteContent from "@/content/site.json";
 
 const BUSINESS_DIRECTIONS = [
   {
@@ -119,15 +116,14 @@ export default function Partners() {
                 className="absolute -inset-6 rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(118,76,176,0.16), transparent 60%)" }}
               />
-              {siteContent.media.partners_animation ? (
-                <EditableMedia
-                  src={siteContent.media.partners_animation}
-                  alt="Партнёрство с GENIQ"
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <HandshakeSvg />
-              )}
+              <img
+                src="/uploads/partnership-handshake.jpg"
+                alt="Партнёрство и сотрудничество с GENIQ"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                className="relative w-full aspect-square object-cover rounded-[30px] border border-[#764CB0]/25"
+              />
             </div>
           </div>
         </section>
