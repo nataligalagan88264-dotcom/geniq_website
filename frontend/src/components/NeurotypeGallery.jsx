@@ -178,10 +178,10 @@ export const NeurotypeGallery = () => {
 
   const moveBy = (delta) => {
     const current = ((Math.round(cycle) % TYPES.length) + TYPES.length) % TYPES.length;
-    centerCard((current + delta + TYPES.length) % TYPES.length, true);
+    centerCard((current + delta + TYPES.length) % TYPES.length, "none");
   };
 
-  const centerCard = (index, selectAfterMove = false) => {
+  const centerCard = (index, activation = "hover") => {
     if (centeringTargetRef.current !== null) return;
 
     const fullTurn = Math.PI * 2;
@@ -196,6 +196,9 @@ export const NeurotypeGallery = () => {
     setCenteringIndex(index);
     setPaused(true);
     setHoveredIndex(null);
+    if (activation === "none") {
+      setSelectedIndex(null);
+    }
 
     const move = (time) => {
       const progress = Math.min((time - startedAt) / duration, 1);
@@ -209,11 +212,14 @@ export const NeurotypeGallery = () => {
 
       centeringTargetRef.current = null;
       setCenteringIndex(null);
-      if (selectAfterMove) {
+      if (activation === "select") {
         setHoveredIndex(null);
         setSelectedIndex(index);
-      } else {
+      } else if (activation === "hover") {
         setHoveredIndex(index);
+      } else {
+        setHoveredIndex(null);
+        setSelectedIndex(null);
       }
     };
 
@@ -351,7 +357,7 @@ export const NeurotypeGallery = () => {
               }}
               onSelect={() => {
                 if (!centered) {
-                  if (isMobile) centerCard(index, true);
+                  if (isMobile) centerCard(index, "select");
                   return;
                 }
 
