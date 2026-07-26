@@ -112,17 +112,17 @@ export default function Partners() {
               </div>
             </div>
             <div className="reveal relative">
-              <div
-                className="absolute -inset-6 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(118,76,176,0.16), transparent 60%)" }}
-              />
               <img
                 src="/uploads/partnership-handshake.jpg"
                 alt="Партнёрство и сотрудничество с GENIQ"
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="relative w-full aspect-square object-cover rounded-[30px] border border-[#764CB0]/25"
+                className="relative w-full aspect-square object-contain mix-blend-lighten"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse 50% 44% at 50% 50%, #000 44%, rgba(0,0,0,0.88) 64%, transparent 100%)",
+                  maskImage: "radial-gradient(ellipse 50% 44% at 50% 50%, #000 44%, rgba(0,0,0,0.88) 64%, transparent 100%)",
+                }}
               />
             </div>
           </div>
