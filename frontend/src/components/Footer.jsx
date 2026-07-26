@@ -19,8 +19,16 @@ export const Footer = () => {
                 <div>ИНН: {LEGAL.inn}</div>
                 <div>ОГРНИП: {LEGAL.ogrnip}</div>
               </div>
-              <div className="mt-4">
+              <div className="mt-4 flex flex-col items-start gap-2">
                 <Link className="nav-link text-[12.5px]" to="/privacy">Политика конфиденциальности</Link>
+                <a
+                  className="nav-link text-[12.5px]"
+                  href="/documents/public-offer.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Публичная оферта
+                </a>
               </div>
             </div>
 
