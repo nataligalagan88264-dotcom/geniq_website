@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowUpRight,
   BatteryLow,
   Brain,
   Heart,
@@ -17,7 +16,7 @@ import Footer from "@/components/Footer";
 import CtaButton from "@/components/CtaButton";
 import LensSvg from "@/components/LensSvg";
 import EditableMedia from "@/components/EditableMedia";
-import { FORM_URL, NEUROTYPE_COLORS } from "@/lib/constants";
+import { NEUROTYPE_COLORS } from "@/lib/constants";
 import { NEUROTYPE_AVATARS } from "@/lib/neurotypeAssets";
 import siteContent from "@/content/site.json";
 
@@ -366,12 +365,17 @@ export default function Neurotypes() {
               Нейротипы <span className="gradient-text">GENIQ</span>
             </h1>
             <div className="space-y-5 text-body text-[15.5px] sm:text-[16.5px] leading-[1.75] max-w-[780px]">
-              <p>Представьте, что внутри у каждого человека есть все 9 нейротипов — как набор линз, через которые можно смотреть на свою жизнь.</p>
+              <p className="text-white/88 text-[19px] sm:text-[22px] leading-[1.55]">Представьте, что внутри у каждого человека есть <span className="text-[#B79BE0]">все 9 нейротипов</span> — как набор линз, через которые можно смотреть на свою жизнь.</p>
               <p>Снаружи мы делаем похожие вещи: думаем, принимаем решения, строим отношения, работаем, устаём, ищем своё место. Но внутри эти процессы запускаются по-разному — в зависимости от того, какую линзу вы используете в конкретный момент.</p>
               <p>Через одни линзы смотреть легко: они дают энергию, ясность и ощущение «я на своём месте». Через другие тяжело: приходится напрягаться, и даже простые задачи забирают слишком много сил. Это не значит, что с вами что-то не так. Это просто ваши слабые зоны — места, где нужны поддержка, обучение или делегирование.</p>
-              <p>Если не знать, какие линзы у вас есть, можно годами жить «на чужих настройках»: заставлять себя быть быстрее, спокойнее, жёстче или рациональнее только потому, что так принято или у кого-то получилось.</p>
-              <p>Нейротип — это не ярлык, а инструмент. Способ, которым ваш мозг воспринимает происходящее и выбирает действие.</p>
-              <p><span style={{ color: "#B79BE0" }}>9 нейротипов = 3 мира восприятия × 3 режима мышления.</span> Мир показывает, через какую оптику вы смотрите. Режим — как ваш ум с этим работает. На пересечении рождаются нейротипы: не клетки, в которые вас помещают, а набор возможностей.</p>
+              <blockquote className="rounded-[24px] border-l-2 border-[#B79BE0] bg-[#764CB0]/8 px-5 py-4 text-white/82 text-[18px] sm:text-[21px] leading-[1.55]">
+                Если не знать, какие линзы у вас есть, можно годами жить <span className="text-[#B79BE0]">«на чужих настройках»</span>.
+              </blockquote>
+              <p><span className="text-white/88">Нейротип — это не ярлык, а инструмент.</span> Способ, которым ваш мозг воспринимает происходящее и выбирает действие.</p>
+              <div className="rounded-[28px] border border-[#764CB0]/40 bg-white/[0.025] p-5 sm:p-7">
+                <p className="gradient-text text-[22px] sm:text-[30px] leading-[1.25]">9 нейротипов = 3 мира восприятия × 3 режима мышления</p>
+                <p className="mt-4 text-[14px] sm:text-[15.5px] leading-[1.7] text-white/62">Мир показывает, через какую оптику вы смотрите. Режим — как ваш ум с этим работает. На пересечении рождаются нейротипы: не клетки, в которые вас помещают, а набор возможностей.</p>
+              </div>
               <p>
                 Подробнее о том, как работает система — в разделе{" "}
                 <Link to="/system" className="text-[#B79BE0] hover:text-white transition-colors underline underline-offset-4">
@@ -420,11 +424,18 @@ export default function Neurotypes() {
               <tbody>
                 {MATRIX.map((row) => (
                   <tr key={row[0]} className="border-b border-white/5">
-                    {row.map((cell, index) => (
-                      <td key={cell} className={`py-4 text-[14px] ${index === 0 ? "text-[#B79BE0] pr-4" : "text-white/78 px-4"}`}>
-                        {cell}
-                      </td>
-                    ))}
+                    {row.map((cell, index) => {
+                      const code = index === 0 ? null : cell.split(" ")[0];
+                      return (
+                        <td
+                          key={cell}
+                          className={`py-4 text-[14px] ${index === 0 ? "text-[#B79BE0] pr-4" : "px-4"}`}
+                          style={code ? { color: NEUROTYPE_COLORS[code] } : undefined}
+                        >
+                          {cell}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
@@ -509,16 +520,8 @@ export default function Neurotypes() {
             <p className="text-body text-[15px] leading-[1.7] max-w-2xl mx-auto mb-8 relative z-10">
               Чтобы понять всю конфигурацию, важно смотреть не только CORE, но и мотивацию, действие, восстановление и тень.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
-              <Link to="/system" className="geniq-cta geniq-cta--ghost">
-                <span>О системе</span>
-                <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
-              </Link>
+            <div className="flex items-center justify-center relative z-10">
               <CtaButton testId="nt-test-cta">Пройти тест на ведущий нейротип</CtaButton>
-              <a href={FORM_URL} target="_blank" rel="noopener noreferrer" data-testid="nt-form-cta" className="geniq-cta geniq-cta--ghost">
-                <span>Пройти диагностику</span>
-                <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
-              </a>
             </div>
           </div>
         </section>

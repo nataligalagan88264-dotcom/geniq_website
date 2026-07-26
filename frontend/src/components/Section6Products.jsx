@@ -88,15 +88,15 @@ const TRACK_STAGES = [
 const LIMITATIONS = [
   {
     title: "Острое психическое состояние",
-    text: "GENIQ — не клиническая диагностика. При клинической депрессии, ОКР, шизофрении, а также при медикаментозном психиатрическом лечении и работе с психиатром сначала нужен профильный врач или психотерапевт. Совместная работа возможна, но только по согласованию с одним из этих специалистов.",
+    text: "GENIQ — не клиническая диагностика. При клинической депрессии, ОКР, шизофрении или психиатрическом лечении сначала нужен профильный врач или психотерапевт, и совместная работа возможна только по его согласованию.",
   },
   {
     title: "Неготовность разделить ответственность",
-    text: "В работе с GENIQ ответственность разделена: со стороны системы — точная карта и инструменты, со стороны человека — включённость в процесс и действия. Без этой включённости даже самая точная диагностика останется красивым документом.",
+    text: "С моей стороны — точная карта и инструменты, с вашей — включённость и действия. Без этого даже самая точная диагностика останется красивым документом.",
   },
   {
     title: "Неготовность идти до конца",
-    text: "Это не гадание и не мотивационная встряска. Это точечная работа, в которой приходится вытаскивать скелеты из шкафа. Она не всегда приятна: вы не всегда будете в ресурсе, а жизнь начнёт меняться — и это может пугать. Поэтому диагностика подойдёт тому, кто готов идти до конца.",
+    text: "Это не гадание и не мотивационная встряска: придётся доставать скелеты из шкафа, а жизнь начнёт меняться. Подойдёт тому, кто готов идти до конца.",
   },
 ];
 
@@ -180,19 +180,8 @@ export const Section6Products = () => {
                   ))}
                 </ul>
 
-                <a
-                  href={FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid={`product-cta-${p.id}`}
-                  className="geniq-cta self-start"
-                >
-                  <span>{p.cta}</span>
-                  <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
-                </a>
-
                 {p.id === "diagnostics" && (
-                  <details className="mt-6 rounded-2xl border border-white/10 bg-black/20 group">
+                  <details className="mb-6 rounded-2xl border border-white/10 bg-black/20 group">
                     <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer px-5 py-4 flex items-center justify-between gap-4 text-white/80 text-[13px]">
                       <span>Что внутри →</span>
                       <span className="text-[#B79BE0] text-xl transition-transform group-open:rotate-45">+</span>
@@ -218,7 +207,7 @@ export const Section6Products = () => {
                 )}
 
                 {p.id === "tracks" && (
-                  <details className="mt-6 rounded-2xl border border-white/10 bg-black/20 group">
+                  <details className="mb-6 rounded-2xl border border-white/10 bg-black/20 group">
                     <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer px-5 py-4 flex items-center justify-between gap-4 text-white/80 text-[13px]">
                       <span>Что внутри →</span>
                       <span className="text-[#B79BE0] text-xl transition-transform group-open:rotate-45">+</span>
@@ -256,13 +245,24 @@ export const Section6Products = () => {
                     </div>
                   </details>
                 )}
+
+                <a
+                  href={FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid={`product-cta-${p.id}`}
+                  className="geniq-cta self-start mt-auto"
+                >
+                  <span>{p.cta}</span>
+                  <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
+                </a>
               </div>
             );
           })}
         </div>
 
         <p className="reveal text-center text-white/45 text-[13px] mt-10 max-w-2xl mx-auto">
-          Оплат на сайте нет. Вы оставляете заявку — я связываюсь сама. Без срочности: приходите, когда готовы.
+          Кнопки ведут на небольшую анкету для знакомства. После её заполнения я лично свяжусь с вами для выбора дня и времени.
         </p>
 
         <div data-testid="section-limitations" className="reveal mt-20">
@@ -272,7 +272,7 @@ export const Section6Products = () => {
               Кому не подойдёт <span className="gradient-text">GENIQ</span>
             </h3>
             <p className="text-body text-[15px] leading-[1.7]">
-              У любой системы есть свои ограничения. Прочитайте внимательно, чтобы сразу понять, ваш ли это инструмент.
+              У любой системы есть ограничения. Проверьте сразу, ваш ли это инструмент.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-4">

@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import CtaButton from "@/components/CtaButton";
 import BasketSvg from "@/components/BasketSvg";
 import EditableMedia from "@/components/EditableMedia";
-import { FORM_URL } from "@/lib/constants";
 import siteContent from "@/content/site.json";
 
 const AXES = [
@@ -153,6 +152,18 @@ const MATRIX = [
   ["T — материя", "T1 Систематик", "T2 Координатор", "T3 Оптимизатор"],
 ];
 
+const NEUROTYPE_ROLES = [
+  "Систематики делают реальность надёжной.",
+  "Координаторы удерживают людей и пространство.",
+  "Оптимизаторы запускают движение и результат.",
+  "Мыслители создают глубину знания.",
+  "Ораторы переводят смыслы на живой язык.",
+  "Стратеги видят скрытые механизмы систем.",
+  "Эмпаты возвращают контакт с внутренней правдой.",
+  "Артисты оживляют пространство через выражение.",
+  "Драйверы превращают напряжение в прорыв.",
+];
+
 const useReveal = () => {
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
@@ -172,7 +183,7 @@ export default function About() {
       <main className="pt-52 sm:pt-56 pb-24 container-geniq relative">
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
-        <section className="max-w-4xl mb-20 reveal">
+        <section className="max-w-4xl mx-auto mb-20 reveal">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Система</div>
           <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
             <span className="gradient-text">О системе</span> GENIQ
@@ -467,12 +478,17 @@ export default function About() {
                 </tbody>
               </table>
             </div>
-            <p className="text-body text-[14px] leading-[1.75] max-w-4xl mt-7">
+            <p className="text-white/88 text-[21px] sm:text-[28px] leading-[1.45] max-w-4xl mt-9 text-center mx-auto">
               9 нейротипов нужны не для сравнения людей между собой. Все 9 функций нужны миру.
             </p>
-            <p className="text-body text-[14px] leading-[1.75] max-w-4xl mt-4">
-              Систематики делают реальность надёжной. Координаторы удерживают людей и пространство. Оптимизаторы запускают движение и результат. Мыслители создают глубину знания. Ораторы переводят смыслы на живой язык. Стратеги видят скрытые механизмы систем. Эмпаты возвращают контакт с внутренней правдой. Артисты оживляют пространство через выражение. Драйверы превращают напряжение в прорыв.
-            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-7">
+              {NEUROTYPE_ROLES.map((role, index) => (
+                <div key={role} className="rounded-2xl border border-white/8 bg-black/20 p-4 flex gap-3">
+                  <span className="text-[#B79BE0] text-[12px] mt-0.5">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="text-body text-[13.5px] leading-[1.6]">{role}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -514,15 +530,11 @@ export default function About() {
             <p className="text-body text-[15px] leading-[1.7] max-w-3xl mb-7">
               Чтобы увидеть все 9 базовых типов, перейдите в каталог нейротипов. Он разделён на 3 мира: S — смыслы, E — эмоции, T — материя.
             </p>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center">
               <Link to="/neurotypes" className="geniq-cta geniq-cta--ghost">
                 <span>Смотреть нейротипы</span>
                 <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
               </Link>
-              <a href={FORM_URL} target="_blank" rel="noopener noreferrer" data-testid="about-form-cta" className="geniq-cta geniq-cta--ghost">
-                <span>Пройти диагностику</span>
-                <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
-              </a>
             </div>
           </div>
         </section>

@@ -41,20 +41,13 @@ export const Section3 = () => {
       </div>
 
       <div className="container-geniq relative z-10 max-w-3xl text-center">
-        <div className="reveal mb-7 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B79BE0]" />
-          <span className="text-[10px] uppercase tracking-[0.22em] text-white/55">Переход</span>
-        </div>
-
         <h2 className="reveal text-[30px] sm:text-[40px] lg:text-[46px] leading-[1.18] font-normal text-white mb-10">
           Но что, если собирать себя вслепую — <span className="gradient-text">больше не единственный вариант?</span>
         </h2>
 
         <p className="reveal text-body text-[16px] sm:text-[17px] leading-[1.72] max-w-[680px] mx-auto">
-          <span style={{ color: "#B79BE0" }}>Путь не предопределён</span>. То, что вы решите сегодня,{" "}
-          <span style={{ color: "#B79BE0" }}>задаёт направление на годы вперёд</span>. Чтобы эту схему не приходилось собирать вслепую, и была создана GENIQ — она показывает вашу{" "}
-          <span style={{ color: "#B79BE0" }}>внутреннюю архитектуру</span> и превращает её в{" "}
-          <span style={{ color: "#B79BE0" }}>конкретный маршрут</span>.
+          <span style={{ color: "#B79BE0" }}>Путь не предопределён.</span> То, что вы решите сегодня,{" "}
+          <span style={{ color: "#B79BE0" }}>задаёт направление на годы вперёд.</span> Для помощи на этом пути и была создана GENIQ.
         </p>
       </div>
     </section>

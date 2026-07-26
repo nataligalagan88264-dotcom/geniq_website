@@ -26,9 +26,8 @@ export const Section5 = () => {
           <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full pointer-events-none"
                style={{ background: "radial-gradient(circle, rgba(96,128,241,0.10), transparent 60%)" }} />
 
-          <div className="text-[11px] uppercase tracking-[0.24em] text-white/45 mb-6 relative z-10">Главная мысль</div>
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.22] font-normal text-white max-w-[820px] mx-auto relative z-10">
-            Всё это — про одно: <span className="gradient-text">собрать новую версию себя</span>. Не другого человека — а <span className="gradient-text">себя, наконец понятого</span>.
+            Всё это — про одно: <span className="gradient-text">собрать о себе полную картину</span> и выстроить систему из этого понимания.
           </h2>
         </div>
       </div>

@@ -530,18 +530,15 @@ export const CodeMapSection = () => {
 
       <div className="container-geniq relative z-10">
         <div className="reveal max-w-3xl mx-auto text-center mb-10 lg:mb-6">
-          <h2 className="text-[40px] sm:text-[56px] lg:text-[64px] font-light leading-[1.02] text-white mb-5 lg:mb-4">
-            5 осей <br className="sm:hidden" />GENIQ
+          <h2 className="text-[28px] sm:text-[38px] lg:text-[44px] font-normal leading-[1.15] text-white mb-6">
+            «9 нейротипов — понятно. <span className="gradient-text">Но как это поможет собрать именно мою карту?»</span>
           </h2>
+          <h3 className="text-[24px] sm:text-[30px] lg:text-[34px] font-light leading-[1.08] text-white mb-5 lg:mb-4">
+            5 осей <br className="sm:hidden" />GENIQ
+          </h3>
           <div className="text-body text-[14.5px] lg:text-[14px] leading-[1.8] lg:leading-[1.65] max-w-2xl mx-auto space-y-3">
-            <p className="text-white/82 text-[16px] sm:text-[17px]">
-              «9 нейротипов — понятно. Но как это поможет собрать именно мою карту?»
-            </p>
-            <p>
-              1 нейротип — это только ядро. Вы — не 1 тип, а то, как он проявляется в разных частях вашей жизни.
-            </p>
-            <p className="text-white/72">
-              Эти части GENIQ и собирает в карту — через 5 осей.
+            <p className="text-white/76 text-[16px] sm:text-[17px]">
+              Каждый нейротип внутри вас просыпается в разных контекстах жизни. Эти контексты называются Оси. И благодаря им мы собираем вашу карту.
             </p>
           </div>
         </div>
@@ -637,10 +634,13 @@ export const CodeMapSection = () => {
 
         <div className="reveal max-w-4xl mx-auto text-center mt-8 lg:mt-4">
           <p className="text-body text-[15px] leading-[1.75]">
-            Нет лучших и худших нейротипов. Нейротип не определяет ваш интеллект, статус или успех. Он показывает одно: как вы устроены — как воспринимаете мир, как работаете и в каких условиях раскрываетесь.
+            Нет лучших и худших нейротипов. Нейротип не определяет ваш интеллект, статус или успех. Он показывает вашу карту талантов и особенностей, которые при достаточном внимании превращаются в гениальность.
           </p>
-          <p className="text-white/82 text-[17px] leading-[1.7] mt-6">
-            Всё начинается с конкретных вопросов: какой ваш природный код? В чём вы уникальны?
+          <p className="text-white/78 text-[18px] sm:text-[20px] leading-[1.6] mt-8">
+            Здесь важно задать честный вопрос:
+          </p>
+          <p className="text-[27px] sm:text-[36px] lg:text-[42px] leading-[1.18] mt-3">
+            <span className="gradient-text">Куда эти таланты направить так, чтобы они работали на вас?</span>
           </p>
         </div>
       </div>

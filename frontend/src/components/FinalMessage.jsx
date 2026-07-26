@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Hand } from "lucide-react";
 
 /**
  * Final message section — for readers who scrolled to the end.
@@ -53,21 +53,32 @@ export const FinalMessage = () => {
             Значит, внутри есть вопросы, на которые сложно ответить самому.
           </p>
 
-          <p className="text-body text-[15.5px] leading-[1.7] mb-5">
-            Сейчас вы можете закрыть эту страницу, сказать себе «подумаю об этом позже» — и остаться в том же круге мыслей без действий.
+          <p className="text-white/82 text-[20px] sm:text-[25px] leading-[1.55] mb-5">
+            Сейчас вы можете закрыть эту страницу, сказать себе <span className="text-[#B79BE0]">«подумаю об этом позже»</span> — и остаться в том же круге мыслей без действий.
           </p>
 
-          <p className="text-body text-[15.5px] leading-[1.7] mb-10">
-            А можете прийти ко мне на встречу-знакомство и приложить усилие к тому, чтобы ваш запрос обрёл форму. А возможно — и решение.
+          <p className="text-white/82 text-[20px] sm:text-[25px] leading-[1.55] mb-9">
+            А можете прийти ко мне на встречу-знакомство и приложить усилие к тому, чтобы ваш запрос обрёл форму. А возможно — и <span className="text-[#B79BE0]">решение</span>.
           </p>
+
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-[620px] mx-auto mb-10">
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.025] p-4 sm:p-6">
+              <Hand size={34} strokeWidth={1.2} className="mx-auto mb-3 text-white/45 -rotate-12" aria-hidden="true" />
+              <p className="text-[12px] sm:text-[14px] leading-[1.45] text-white/55">подумаю об этом позже</p>
+            </div>
+            <div className="rounded-[24px] border border-[#B79BE0]/45 bg-[#764CB0]/10 p-4 sm:p-6">
+              <Hand size={34} strokeWidth={1.2} className="mx-auto mb-3 text-[#B79BE0] rotate-12 scale-x-[-1]" aria-hidden="true" />
+              <p className="text-[12px] sm:text-[14px] leading-[1.45] text-white/82">хочу решить запрос</p>
+            </div>
+          </div>
 
           <button
             data-testid="back-to-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" })}
             className="group text-body text-[15.5px] leading-[1.7] mb-10 max-w-2xl mx-auto transition-colors hover:text-white"
           >
             Если выбираете второе — листайте вверх, к записи на встречу, и бронируйте место. Я найду для вас время.
-            <ArrowUp size={14} className="inline-block ml-2 text-[#B79BE0] transition-transform group-hover:-translate-y-1" />
+            <ArrowUp size={24} className="inline-block ml-2 text-[#B79BE0] transition-transform group-hover:-translate-y-1" />
           </button>
         </div>
       </div>
