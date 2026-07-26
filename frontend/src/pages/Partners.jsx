@@ -113,7 +113,7 @@ export default function Partners() {
             </div>
             <div className="reveal relative">
               <img
-                src="/uploads/partnership-handshake.jpg"
+                src="/uploads/partnership-handshake-dark.jpg"
                 alt="Партнёрство и сотрудничество с GENIQ"
                 loading="eager"
                 decoding="async"
