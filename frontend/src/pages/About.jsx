@@ -605,7 +605,7 @@ export default function About() {
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
                  style={{ background: "radial-gradient(circle, rgba(118,76,176,0.18), transparent 60%)" }} />
             <h2 className="text-[26px] sm:text-[34px] font-normal text-white leading-[1.2] max-w-2xl mx-auto mb-7 relative z-10">
-              Вся карта собирается на диагностике. Но первый слой — ваш ведущий нейротип — можно узнать уже сейчас.
+              Вся карта собирается на диагностике. <span className="gradient-text">Но первый слой</span> — ваш ведущий нейротип — можно узнать уже сейчас.
             </h2>
             <p className="text-body text-[15px] leading-[1.7] max-w-2xl mx-auto mb-8 relative z-10">
               Пройдите короткий тест: 5 минут, и вы увидите, через какой мир и режим вы воспринимаете реальность.
