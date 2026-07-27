@@ -183,23 +183,23 @@ export default function About() {
       <main className="pt-52 sm:pt-56 pb-24 container-geniq relative">
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
-        <section className="max-w-4xl mx-auto mb-20 reveal">
+        <section className="max-w-4xl mx-auto mb-20 reveal text-center">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Система</div>
           <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
             <span className="gradient-text">О системе</span> GENIQ
           </h1>
-          <div className="space-y-5 text-body text-[16px] sm:text-[17px] leading-[1.75] max-w-[780px]">
+          <div className="space-y-5 text-body text-[16px] sm:text-[17px] leading-[1.75] max-w-[780px] mx-auto">
             <p>Вы когда-нибудь чувствовали, что живёте вполсилы? Цели понятные, инструменты рабочие, а внутри либо постоянное сопротивление, либо батарейка садится слишком быстро.</p>
             <p>Обычно это списывают на лень или нехватку мотивации. В GENIQ мы смотрим глубже: дело не в вас. Просто вы едете по чужой карте и на неподходящем топливе.</p>
             <p>Личность — не набор случайных черт, а точная архитектура. Если вы гоночная машина, а пашете на себе поле, как трактор, рано или поздно будет поломка. Не потому что вы плохой трактор — потому что вы не трактор.</p>
           </div>
-          <blockquote className="mt-9 border-l-2 border-[#B79BE0] pl-5 sm:pl-7 text-white text-[21px] sm:text-[28px] leading-[1.35] max-w-3xl">
+          <blockquote className="mt-9 mx-auto border-l-2 border-[#B79BE0] px-5 sm:px-7 text-white text-[21px] sm:text-[28px] leading-[1.35] max-w-3xl">
             Дело не в вас. Просто вы едете по чужой карте и на неподходящем топливе.
           </blockquote>
         </section>
 
         <section className="mb-20 reveal">
-          <div className="geniq-glass rounded-[28px] px-6 py-8 sm:px-10 sm:py-10 max-w-4xl">
+          <div className="geniq-glass rounded-[28px] px-6 py-8 sm:px-10 sm:py-10 w-full">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Главная формула</div>
             <p className="text-white text-[25px] sm:text-[38px] leading-[1.15] font-normal">
               <span className="gradient-text">9 нейротипов</span> = ваш режим взаимодействия с миром

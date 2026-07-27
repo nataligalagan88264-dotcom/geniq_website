@@ -27,7 +27,7 @@ export const Section5 = () => {
                style={{ background: "radial-gradient(circle, rgba(96,128,241,0.10), transparent 60%)" }} />
 
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.22] font-normal text-white max-w-[820px] mx-auto relative z-10">
-            Всё это — про одно: <span className="gradient-text">собрать о себе полную картину</span> и выстроить систему из этого понимания.
+            Все это — про одно: <span className="gradient-text">собрать о себе полную картину</span> и выстроить систему из этого понимания.
           </h2>
         </div>
       </div>

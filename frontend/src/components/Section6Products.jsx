@@ -262,7 +262,7 @@ export const Section6Products = () => {
         </div>
 
         <p className="reveal text-center text-white/45 text-[13px] mt-10 max-w-2xl mx-auto">
-          Кнопки ведут на небольшую анкету для знакомства. После её заполнения я лично свяжусь с вами для выбора дня и времени.
+          Кнопки ведут на небольшую анкету для знакомства. После ее заполнения я лично свяжусь с вами для выбора дня и времени.
         </p>
 
         <div data-testid="section-limitations" className="reveal mt-20">

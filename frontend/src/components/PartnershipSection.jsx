@@ -60,11 +60,15 @@ export const PartnershipSection = () => {
               style={{ background: "radial-gradient(circle, rgba(118,76,176,0.14), transparent 66%)" }}
             />
             <img
-              src="/uploads/partnership-choice.jpg"
-              alt="Два варианта партнёрства с GENIQ"
+              src="/uploads/partnership-handshake-dark.jpg"
+              alt="Партнёрство и сотрудничество с GENIQ"
               loading="lazy"
               decoding="async"
-              className="relative w-full aspect-square object-cover rounded-[30px] border border-[#764CB0]/25"
+              className="relative w-full aspect-square object-contain mix-blend-lighten"
+              style={{
+                WebkitMaskImage: "radial-gradient(ellipse 50% 44% at 50% 50%, #000 44%, rgba(0,0,0,0.88) 64%, transparent 100%)",
+                maskImage: "radial-gradient(ellipse 50% 44% at 50% 50%, #000 44%, rgba(0,0,0,0.88) 64%, transparent 100%)",
+              }}
             />
           </div>
 

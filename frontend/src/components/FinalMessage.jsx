@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUp, Hand } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 /**
  * Final message section — for readers who scrolled to the end.
@@ -61,14 +61,17 @@ export const FinalMessage = () => {
             А можете прийти ко мне на встречу-знакомство и приложить усилие к тому, чтобы ваш запрос обрёл форму. А возможно — и <span className="text-[#B79BE0]">решение</span>.
           </p>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-[620px] mx-auto mb-10">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.025] p-4 sm:p-6">
-              <Hand size={34} strokeWidth={1.2} className="mx-auto mb-3 text-white/45 -rotate-12" aria-hidden="true" />
-              <p className="text-[12px] sm:text-[14px] leading-[1.45] text-white/55">подумаю об этом позже</p>
-            </div>
-            <div className="rounded-[24px] border border-[#B79BE0]/45 bg-[#764CB0]/10 p-4 sm:p-6">
-              <Hand size={34} strokeWidth={1.2} className="mx-auto mb-3 text-[#B79BE0] rotate-12 scale-x-[-1]" aria-hidden="true" />
-              <p className="text-[12px] sm:text-[14px] leading-[1.45] text-white/82">хочу решить запрос</p>
+          <div className="max-w-[860px] mx-auto mb-10">
+            <img
+              src="/uploads/final-choice-hands.png"
+              alt="Два возможных решения: отложить вопрос или перейти к его решению"
+              loading="lazy"
+              decoding="async"
+              className="w-full aspect-[3/2] object-contain"
+            />
+            <div className="grid grid-cols-2 gap-4 sm:gap-10 -mt-2 sm:-mt-4">
+              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/55">подумаю об этом позже</p>
+              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/88">хочу решить запрос</p>
             </div>
           </div>
 
@@ -78,7 +81,7 @@ export const FinalMessage = () => {
             className="group text-body text-[15.5px] leading-[1.7] mb-10 max-w-2xl mx-auto transition-colors hover:text-white"
           >
             Если выбираете второе — листайте вверх, к записи на встречу, и бронируйте место. Я найду для вас время.
-            <ArrowUp size={24} className="inline-block ml-2 text-[#B79BE0] transition-transform group-hover:-translate-y-1" />
+            <ArrowUp size={32} className="inline-block ml-2 text-[#B79BE0] transition-transform group-hover:-translate-y-1" />
           </button>
         </div>
       </div>
