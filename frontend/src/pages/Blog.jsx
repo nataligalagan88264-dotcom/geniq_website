@@ -28,7 +28,7 @@ export default function Blog() {
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
         {/* Hero */}
-        <div className="max-w-3xl mb-20 reveal">
+        <div className="mb-20 reveal">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">{blogContent.hero.eyebrow}</div>
           <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
             <span className="gradient-text">{blogContent.hero.title}</span> {blogContent.hero.title_suffix}
@@ -40,7 +40,7 @@ export default function Blog() {
 
         {/* Status */}
         <section className="mb-16 reveal">
-          <div className="geniq-glass rounded-[28px] p-8 sm:p-10 max-w-3xl relative overflow-hidden">
+          <div className="geniq-glass rounded-[28px] p-8 sm:p-10 relative overflow-hidden">
             <div className="flex items-start gap-5">
               <div className="w-12 h-12 rounded-full bg-[#764CB0]/15 border border-[#B79BE0]/50 flex items-center justify-center shrink-0">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#B79BE0] pulse-dot" />
@@ -60,7 +60,7 @@ export default function Blog() {
 
         {/* Categories preview */}
         <section className="mb-20">
-          <div className="reveal mb-8 max-w-3xl">
+          <div className="reveal mb-8">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">Coming categories</div>
             <h2 className="text-[24px] sm:text-[30px] font-normal text-white leading-[1.15]">
               О чём будет <span className="gradient-text">блог</span>
@@ -86,7 +86,7 @@ export default function Blog() {
 
         {/* Article teasers */}
         <section className="mb-24">
-          <div className="reveal mb-8 max-w-3xl">
+          <div className="reveal mb-8">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">Coming soon</div>
             <h2 className="text-[24px] sm:text-[30px] font-normal text-white leading-[1.15]">
               Первые <span className="gradient-text">статьи</span>

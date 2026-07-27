@@ -113,7 +113,7 @@ export const ReviewsMosaic = () => {
     <section ref={ref} data-testid="section-reviews" className="relative py-28 overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
-        <div className="max-w-3xl mb-14">
+        <div className="mb-14">
           <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Отзывы · Мозаика</div>
           <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
             Что говорят <span className="gradient-text">клиенты</span>

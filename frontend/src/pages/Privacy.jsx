@@ -113,7 +113,7 @@ export default function Privacy() {
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
         {/* Hero */}
-        <div className="max-w-3xl mb-16 reveal">
+        <div className="mb-16 reveal">
           <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">
             <Shield size={14} className="text-[#B79BE0]" />
             GENIQ · Privacy policy
@@ -127,7 +127,7 @@ export default function Privacy() {
         </div>
 
         {/* Sections */}
-        <div className="space-y-3 max-w-4xl">
+        <div className="space-y-3">
           {SECTIONS.map((s) => (
             <details key={s.n} data-testid={`privacy-${s.n}`} className="reveal geniq-card p-6 group cursor-pointer">
               <summary className="flex items-start justify-between gap-4 list-none [&::-webkit-details-marker]:hidden">
@@ -146,7 +146,7 @@ export default function Privacy() {
 
         {/* Contacts block */}
         <section className="reveal mt-16">
-          <div className="geniq-glass rounded-[28px] p-8 sm:p-10 max-w-4xl">
+          <div className="geniq-glass rounded-[28px] p-8 sm:p-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">13 · Реквизиты и контакты Оператора</div>
             <div className="grid sm:grid-cols-2 gap-6">
               <div>

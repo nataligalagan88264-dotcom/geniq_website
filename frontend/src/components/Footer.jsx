@@ -8,8 +8,8 @@ export const Footer = () => {
     <footer data-testid="site-footer" className="relative border-t border-white/5 mt-24">
       <div className="container-geniq py-12 sm:py-14">
         <div data-testid="footer-legal">
-          <div className="grid md:grid-cols-12 gap-9 md:gap-12">
-            <div className="md:col-span-7">
+          <div className="grid md:grid-cols-[minmax(0,1fr)_auto] gap-9 md:gap-16">
+            <div>
               <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">
                 <Shield size={12} className="text-[#B79BE0]" />
                 Юридическая информация
@@ -32,7 +32,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className="md:col-span-5">
+            <div className="md:justify-self-end md:min-w-[240px]">
               <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">Контактные данные</div>
               <ul className="flex flex-col gap-3 text-[13px] text-body">
                 <li className="flex items-center gap-2.5">

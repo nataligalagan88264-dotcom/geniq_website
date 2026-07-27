@@ -359,7 +359,7 @@ export default function Neurotypes() {
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
         <section className="grid lg:grid-cols-[6fr_6fr] gap-8 lg:gap-10 items-center mb-20">
-          <div className="max-w-4xl reveal">
+          <div className="reveal">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Нейротипы</div>
             <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
               Нейротипы <span className="gradient-text">GENIQ</span>
@@ -402,7 +402,7 @@ export default function Neurotypes() {
         </section>
 
         <section className="mb-24 reveal">
-          <div className="mb-8 max-w-3xl">
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <Sparkles size={20} className="text-[#B79BE0]" strokeWidth={1.5} />
               <div className="text-[11px] uppercase tracking-[0.22em] text-white/45">3 мира × 3 режима</div>
@@ -444,7 +444,7 @@ export default function Neurotypes() {
         </section>
 
         <section className="mb-24">
-          <div className="reveal max-w-3xl mb-8">
+          <div className="reveal mb-8">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Интерактивный каталог</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15]">
               Выберите <span className="gradient-text">мир восприятия</span>
@@ -498,11 +498,11 @@ export default function Neurotypes() {
         </section>
 
         <section className="mb-24 reveal">
-          <div className="geniq-glass rounded-[32px] p-8 sm:p-12 max-w-5xl">
+          <div className="geniq-glass rounded-[32px] p-8 sm:p-12">
             <h2 className="text-[26px] sm:text-[34px] font-normal text-white leading-[1.15] mb-6">
               Почему вы можете узнать себя <span className="gradient-text">в нескольких нейротипах</span>
             </h2>
-            <div className="space-y-4 text-body text-[15px] leading-[1.75] max-w-4xl">
+            <div className="space-y-4 text-body text-[15px] leading-[1.75]">
               <p>После чтения описаний может появиться ощущение: «Я и здесь, и здесь, и здесь». Это нормально.</p>
               <p>В GENIQ человек — это конфигурация. Один нейротип может быть ведущим, другой включаться в мотивации, третий быть инструментом действия, четвёртый отвечать за восстановление, пятый проявляться в тени.</p>
               <p>Эта страница не заменяет диагностику. Она даёт первое узнавание и язык для наблюдения за собой. Важно не просто найти похожее описание, а понять механизм: это ваша природа или адаптация, талант или компенсация, ресурс или защита, сила или привычный способ выживать.</p>

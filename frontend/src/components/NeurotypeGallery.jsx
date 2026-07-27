@@ -262,10 +262,10 @@ export const NeurotypeGallery = () => {
 
       <div className="container-geniq relative z-10 mb-8 sm:mb-10">
         <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">GENIQ · Принцип работы</div>
-        <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5 max-w-3xl">
+        <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
           Как работает <span className="gradient-text">система GENIQ</span>
         </h2>
-        <div className="reveal space-y-5 text-body text-[15px] leading-[1.7] max-w-4xl">
+        <div className="reveal space-y-5 text-body text-[15px] leading-[1.7]">
           <p>GENIQ рассматривает человека как целостную систему — не один ярлык, а сочетание. В её основе — <strong className="font-medium text-white/85">9 нейротипов</strong>.</p>
           <p className="text-white/55 italic">
             Как именно они складываются — подробнее на странице{" "}
@@ -287,7 +287,7 @@ export const NeurotypeGallery = () => {
           <h3 className="text-[24px] sm:text-[30px] font-medium pt-4"><span className="gradient-text">Система под вас — а не вы под систему</span></h3>
           <p>GENIQ не подгоняет вас под 1 нейротип. Она делает обратное — собирает карту из 9 нейротипов под вашу индивидуальность.</p>
           <p>Это глубже, чем определить 1 тип личности без учёта индивидуальных особенностей. Поэтому работа всегда личная и не массовая.</p>
-          <h3 className="text-white text-[20px] sm:text-[22px] font-medium pt-4">9 нейротипов</h3>
+          <h3 className="gradient-text text-[24px] sm:text-[30px] font-medium pt-4">9 нейротипов</h3>
           <p className="rounded-[24px] border border-white/10 bg-white/[0.025] p-5 sm:p-6 text-[16px] sm:text-[18px] leading-[1.7] text-white/76">
             Нейротип — это особая модель мышления, эмоций и действий, которая собирается в единый портрет для удобства. Всего таких портретов 9, и в вас есть они все. Однако <strong className="font-medium text-white">1 нейротип будет ведущим</strong>: он отвечает за ваше мышление, принципы, анализ и интуицию.
           </p>

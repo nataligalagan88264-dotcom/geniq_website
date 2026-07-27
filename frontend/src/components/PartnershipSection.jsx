@@ -33,7 +33,7 @@ export const PartnershipSection = () => {
            style={{ background: "radial-gradient(circle, rgba(118,76,176,0.12), transparent 60%)" }} />
 
       <div className="container-geniq relative z-10">
-        <div className="partnership-layout grid lg:grid-cols-2 gap-10 lg:gap-12 items-center max-w-6xl">
+        <div className="partnership-layout grid lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.9fr)] gap-10 lg:gap-14 items-center w-full">
           <div>
             <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Партнёрство</div>
             <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal text-white leading-[1.1] mb-7">
@@ -54,7 +54,7 @@ export const PartnershipSection = () => {
             </Link>
           </div>
 
-          <div className="reveal relative w-full max-w-[540px] mx-auto">
+          <div className="reveal relative w-full max-w-[560px] mx-auto lg:mr-0">
             <div
               className="absolute -inset-6 rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(118,76,176,0.14), transparent 66%)" }}

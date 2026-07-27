@@ -24,7 +24,7 @@ export const FaqSection = ({ withCta = true }) => {
     <section id="faq" ref={ref} data-testid="section-faq" className="relative py-28 overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
-        <div className="reveal max-w-3xl mb-10">
+        <div className="reveal mb-10">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">FAQ</div>
           <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-normal text-white leading-[1.1] mb-5">
             Частые <span className="gradient-text">вопросы</span>
@@ -33,7 +33,7 @@ export const FaqSection = ({ withCta = true }) => {
             Ответы на самые частые вопросы про диагностику, нейротипы, подход и работу с GENIQ.
           </p>
         </div>
-        <div className="space-y-3 max-w-4xl">
+        <div className="space-y-3">
           {FAQ_ITEMS.map((f, i) => (
             <details key={i} data-testid={`faq-${i}`} className="reveal geniq-card group">
               <summary className="faq-summary flex items-start justify-between gap-4 p-6 list-none [&::-webkit-details-marker]:hidden">

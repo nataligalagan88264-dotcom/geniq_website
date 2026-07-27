@@ -64,7 +64,7 @@ export default function Approach() {
         <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
         {/* Hero */}
-        <div className="max-w-3xl mb-20 reveal">
+        <div className="mb-20 reveal">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Approach</div>
           <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
             <span className="gradient-text">Подход</span> и методология
@@ -76,7 +76,7 @@ export default function Approach() {
 
         {/* Steps */}
         <section className="mb-24">
-          <div className="reveal mb-10 max-w-3xl">
+          <div className="reveal mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">How it works</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15]">
               Как работает <span className="gradient-text">диагностика</span>
@@ -98,7 +98,7 @@ export default function Approach() {
 
         {/* Compare */}
         <section className="mb-24">
-          <div className="reveal mb-10 max-w-3xl">
+          <div className="reveal mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Comparison</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15]">
               Чем GENIQ <span className="gradient-text">отличается</span> от MBTI и типологий
@@ -144,13 +144,13 @@ export default function Approach() {
 
         {/* FAQ */}
         <section className="mb-24">
-          <div className="reveal mb-10 max-w-3xl">
+          <div className="reveal mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">FAQ</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15]">
               Частые <span className="gradient-text">вопросы</span>
             </h2>
           </div>
-          <div className="space-y-3 max-w-4xl">
+          <div className="space-y-3">
             {FAQ.map((f, i) => (
               <details key={i} data-testid={`faq-${i}`} className="reveal geniq-card p-6 group cursor-pointer">
                 <summary className="flex items-start justify-between gap-4 list-none [&::-webkit-details-marker]:hidden">

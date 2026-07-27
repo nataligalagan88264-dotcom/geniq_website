@@ -124,7 +124,7 @@ export const Section6Products = () => {
            style={{ background: "radial-gradient(circle, rgba(118,76,176,0.12), transparent 60%)" }} />
 
       <div className="container-geniq relative z-10">
-        <div className="max-w-3xl mb-14">
+        <div className="mb-14">
           <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{PRODUCT_CONTENT.eyebrow}</div>
           <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
             {PRODUCT_CONTENT.title} <span className="gradient-text">{PRODUCT_CONTENT.accent_title}</span>
@@ -266,7 +266,7 @@ export const Section6Products = () => {
         </p>
 
         <div data-testid="section-limitations" className="reveal mt-20">
-          <div className="max-w-3xl mb-10">
+          <div className="mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Важно</div>
             <h3 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-4">
               Кому не подойдёт <span className="gradient-text">GENIQ</span>

@@ -181,7 +181,7 @@ export default function Partners() {
         </section>
 
         <section id="partners-business" className="container-geniq relative z-10 pt-4 sm:pt-8 scroll-mt-36">
-          <div className="reveal max-w-4xl mb-12">
+          <div className="reveal mb-12">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Для компаний</div>
             <h2 className="text-[30px] sm:text-[40px] lg:text-[44px] font-normal text-white leading-[1.12] mb-6 break-words">
               Для <span className="gradient-text">компаний</span>

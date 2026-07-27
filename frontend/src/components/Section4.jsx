@@ -46,7 +46,7 @@ export const Section4 = () => {
     <section ref={ref} data-testid="section-applications" className="relative py-28 overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
-        <div className="max-w-3xl mb-16">
+        <div className="mb-16">
           <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">GENIQ · Сферы применения</div>
           <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
             Для каких целей применима <span className="gradient-text">система</span>

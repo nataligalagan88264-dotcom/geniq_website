@@ -287,7 +287,7 @@ export default function About() {
         </section>
 
         <section className="mb-24 reveal">
-          <div className="max-w-3xl mb-10">
+          <div className="mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Главная идея</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
               Главная <span className="gradient-text">идея системы</span>
@@ -302,7 +302,7 @@ export default function About() {
               GENIQ помогает отделить:
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-4 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
               "природу от адаптации",
               "талант от компенсации",
@@ -315,18 +315,18 @@ export default function About() {
               </div>
             ))}
           </div>
-          <p className="text-body text-[15.5px] leading-[1.75] max-w-3xl mt-8">
+          <p className="text-body text-[15.5px] leading-[1.75] mt-8">
             Суть системы не в том, чтобы «починить» человека. Суть в том, чтобы понять его конфигурацию и выстроить жизнь так, чтобы она работала не через насилие над собой, а через точность.
           </p>
         </section>
 
         <section className="mb-24">
-          <div className="reveal max-w-4xl mb-10">
+          <div className="reveal mb-10">
             <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
               9 нейротипов понятно. <span className="gradient-text">А как собрать именно вашу карту?</span>
             </p>
           </div>
-          <div className="reveal max-w-3xl mb-10">
+          <div className="reveal mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">5 осей</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
               Из чего состоит <span className="gradient-text">GENIQ</span>
@@ -373,17 +373,17 @@ export default function About() {
         </section>
 
         <section className="mb-24">
-          <div className="reveal max-w-4xl mb-10">
+          <div className="reveal mb-10">
             <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
               <span className="gradient-text">Всё начинается с конкретных вопросов.</span>
             </p>
           </div>
-          <div className="reveal max-w-4xl mb-12">
+          <div className="reveal max-w-4xl mx-auto mb-12 text-center">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Нейротип</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
               Как устроен <span className="gradient-text">нейротип</span>
             </h2>
-            <div className="space-y-4 text-body text-[15px] leading-[1.75]">
+            <div className="space-y-4 text-body text-[15px] leading-[1.75] max-w-3xl mx-auto">
               <p>Нейротип в GENIQ — это не ярлык и не описание характера. Это базовый способ обработки реальности.</p>
               <p>Он показывает, как вы думаете, через что воспринимаете мир, как рождаются ваши идеи, где находится ваша природная сила, какая среда раскрывает вас лучше всего и почему в одних условиях вы оживаете, а в других быстро теряете ресурс.</p>
               <p>Нейротип складывается из 2 частей: мира восприятия и режима мышления.</p>
@@ -396,12 +396,12 @@ export default function About() {
             </div>
           </div>
 
-          <div className="reveal geniq-glass rounded-[28px] px-6 py-7 sm:px-10 sm:py-9 mb-12 max-w-5xl">
+          <div className="reveal geniq-glass rounded-[28px] px-6 py-7 sm:px-10 sm:py-9 mb-12 max-w-5xl mx-auto text-center">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Формула нейротипа</div>
             <p className="text-white text-[26px] sm:text-[38px] leading-[1.15]">
               <span className="gradient-text">3 мира</span> × <span className="gradient-text">3 режима</span> = 9 нейротипов
             </p>
-            <p className="text-body text-[14.5px] leading-[1.7] mt-4 max-w-3xl">
+            <p className="text-body text-[14.5px] leading-[1.7] mt-4 max-w-3xl mx-auto">
               Мир показывает, через что вы воспринимаете реальность. Режим — как превращаете восприятие в мысль, контакт или действие.
             </p>
           </div>
@@ -554,7 +554,7 @@ export default function About() {
         </section>
 
         <section className="mb-24 reveal">
-          <div className="max-w-4xl">
+          <div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">
               Почему вы можете узнавать себя <span className="gradient-text">в нескольких нейротипах</span>
             </h2>
@@ -570,12 +570,12 @@ export default function About() {
         </section>
 
         <section className="mb-24 reveal">
-          <div className="geniq-glass rounded-[32px] p-8 sm:p-12 max-w-5xl">
+          <div className="geniq-glass rounded-[32px] p-8 sm:p-12">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Практическое применение</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-6">
               Для чего нужна <span className="gradient-text">диагностика GENIQ</span>
             </h2>
-            <div className="space-y-4 text-body text-[15px] leading-[1.75] max-w-4xl">
+            <div className="space-y-4 text-body text-[15px] leading-[1.75]">
               <p>Диагностика нужна не для того, чтобы повесить на вас тип. Она нужна, чтобы собрать карту: как вы воспринимаете реальность, что вас включает, как вы действуете, где теряете энергию, как восстанавливаетесь, какие сценарии повторяете, где ваша сильная сторона, какая среда подходит вашей природе и какой следующий шаг будет действительно вашим.</p>
               <p className="text-white/78">GENIQ показывает не абстрактное описание личности, а практическую конфигурацию, с которой можно работать в профессии, отношениях, проектах, выборе среды и личной реализации.</p>
             </div>
@@ -583,7 +583,7 @@ export default function About() {
         </section>
 
         <section className="mb-8 reveal">
-          <div className="geniq-glass rounded-[32px] p-8 sm:p-12 max-w-5xl">
+          <div className="geniq-glass rounded-[32px] p-8 sm:p-12">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Переход к нейротипам</div>
             <h2 className="text-[26px] sm:text-[34px] font-normal text-white leading-[1.2] mb-5">
               Посмотрите все 9 базовых типов
