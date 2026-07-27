@@ -165,6 +165,10 @@ const NEUROTYPES = {
   T3: { name: "Оптимизатор", role: "Оптимизаторы запускают движение и результат." },
 };
 
+const getNeurotypeDisplayColor = (code) => (
+  code === "T2" ? "#A7A6AD" : NEUROTYPE_COLORS[code]
+);
+
 const useReveal = () => {
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
@@ -191,12 +195,24 @@ export default function About() {
             <span className="gradient-text">О системе</span> GENIQ
           </h1>
           <div className="space-y-5 text-body text-[16px] sm:text-[17px] leading-[1.75] max-w-[780px] mx-auto">
-            <p>Вы когда-нибудь чувствовали, что живёте вполсилы? Цели понятные, инструменты рабочие, а внутри либо постоянное сопротивление, либо батарейка садится слишком быстро.</p>
-            <p>Обычно это списывают на лень или нехватку мотивации. В GENIQ мы смотрим глубже: дело не в вас. Просто вы едете по чужой карте и на неподходящем топливе.</p>
-            <p>Личность — не набор случайных черт, а точная архитектура. Если вы гоночная машина, а пашете на себе поле, как трактор, рано или поздно будет поломка. Не потому что вы плохой трактор — потому что вы не трактор.</p>
+            <p>
+              Вы когда-нибудь чувствовали, что <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">живёте вполсилы?</span>{" "}
+              Цели понятные, инструменты рабочие, а внутри либо постоянное сопротивление, либо батарейка садится слишком быстро.
+            </p>
+            <p>
+              Обычно это списывают на лень или нехватку мотивации. В GENIQ мы смотрим глубже:{" "}
+              <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">дело не в вас.</span>{" "}
+              Просто вы едете <span className="text-[#B79BE0] font-medium">по чужой карте и на неподходящем топливе.</span>
+            </p>
+            <p>
+              <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">Личность — не набор случайных черт, а точная архитектура.</span>{" "}
+              Если вы гоночная машина, а пашете на себе поле, как трактор, рано или поздно будет поломка.
+              Не потому что вы плохой трактор — <span className="text-white font-medium">потому что вы не трактор.</span>
+            </p>
           </div>
-          <blockquote className="mt-9 mx-auto border-l-2 border-[#B79BE0] px-5 sm:px-7 text-white text-[21px] sm:text-[28px] leading-[1.35] max-w-3xl">
-            Дело не в вас. Просто вы едете по чужой карте и на неподходящем топливе.
+          <blockquote className="mt-9 mx-auto border-x-2 border-[#B79BE0] px-5 sm:px-8 text-white text-[21px] sm:text-[28px] leading-[1.35] max-w-3xl">
+            Дело не в вас. Просто вы едете{" "}
+            <span className="text-[#B79BE0]">по чужой карте и на неподходящем топливе.</span>
           </blockquote>
         </section>
 
@@ -481,10 +497,10 @@ export default function About() {
                               onClick={() => setActiveNeurotype(cell)}
                               className="w-full min-h-11 rounded-xl border px-3 py-2.5 text-left transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                               style={{
-                                color: cell === "T2" ? "#A7A6AD" : NEUROTYPE_COLORS[cell],
-                                borderColor: activeNeurotype === cell ? `${NEUROTYPE_COLORS[cell]}A6` : `${NEUROTYPE_COLORS[cell]}42`,
-                                background: activeNeurotype === cell ? `${NEUROTYPE_COLORS[cell]}18` : `${NEUROTYPE_COLORS[cell]}08`,
-                                boxShadow: activeNeurotype === cell ? `0 0 24px ${NEUROTYPE_COLORS[cell]}1F` : "none",
+                                color: getNeurotypeDisplayColor(cell),
+                                borderColor: activeNeurotype === cell ? `${getNeurotypeDisplayColor(cell)}A6` : `${getNeurotypeDisplayColor(cell)}42`,
+                                background: activeNeurotype === cell ? `${getNeurotypeDisplayColor(cell)}18` : `${getNeurotypeDisplayColor(cell)}08`,
+                                boxShadow: activeNeurotype === cell ? `0 0 24px ${getNeurotypeDisplayColor(cell)}1F` : "none",
                                 textShadow: cell === "T2" ? "0 0 10px rgba(167,166,173,0.28)" : `0 0 12px ${NEUROTYPE_COLORS[cell]}24`,
                               }}
                             >
@@ -508,18 +524,21 @@ export default function About() {
               aria-live="polite"
               className="mt-6 min-h-[116px] rounded-[22px] border px-5 py-5 sm:px-7 sm:py-6 transition-colors duration-200"
               style={{
-                borderColor: `${NEUROTYPE_COLORS[activeNeurotype]}70`,
-                background: `${NEUROTYPE_COLORS[activeNeurotype]}0D`,
+                borderColor: `${getNeurotypeDisplayColor(activeNeurotype)}70`,
+                background: `${getNeurotypeDisplayColor(activeNeurotype)}0D`,
               }}
             >
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
                 <span
                   className="text-[13px] tracking-[0.16em]"
-                  style={{ color: NEUROTYPE_COLORS[activeNeurotype] }}
+                  style={{ color: getNeurotypeDisplayColor(activeNeurotype) }}
                 >
                   {activeNeurotype}
                 </span>
-                <h3 className="text-white text-[20px] sm:text-[23px] font-medium">
+                <h3
+                  className="text-[20px] sm:text-[23px] font-medium"
+                  style={{ color: getNeurotypeDisplayColor(activeNeurotype) }}
+                >
                   {NEUROTYPES[activeNeurotype].name}
                 </h3>
               </div>
