@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRight, Brain, Battery, ChevronsRight, Flower2, Eye,
@@ -10,6 +10,7 @@ import CtaButton from "@/components/CtaButton";
 import BasketSvg from "@/components/BasketSvg";
 import EditableMedia from "@/components/EditableMedia";
 import siteContent from "@/content/site.json";
+import { NEUROTYPE_COLORS } from "@/lib/constants";
 
 const AXES = [
   {
@@ -147,22 +148,22 @@ const MODES = [
 ];
 
 const MATRIX = [
-  ["S — смыслы", "S1 Мыслитель", "S2 Оратор", "S3 Стратег"],
-  ["E — эмоции", "E1 Эмпат", "E2 Артист", "E3 Драйвер"],
-  ["T — материя", "T1 Систематик", "T2 Координатор", "T3 Оптимизатор"],
+  ["S — смыслы", "S1", "S2", "S3"],
+  ["E — эмоции", "E1", "E2", "E3"],
+  ["T — материя", "T1", "T2", "T3"],
 ];
 
-const NEUROTYPE_ROLES = [
-  "Систематики делают реальность надёжной.",
-  "Координаторы удерживают людей и пространство.",
-  "Оптимизаторы запускают движение и результат.",
-  "Мыслители создают глубину знания.",
-  "Ораторы переводят смыслы на живой язык.",
-  "Стратеги видят скрытые механизмы систем.",
-  "Эмпаты возвращают контакт с внутренней правдой.",
-  "Артисты оживляют пространство через выражение.",
-  "Драйверы превращают напряжение в прорыв.",
-];
+const NEUROTYPES = {
+  S1: { name: "Мыслитель", role: "Мыслители создают глубину знания." },
+  S2: { name: "Оратор", role: "Ораторы переводят смыслы на живой язык." },
+  S3: { name: "Стратег", role: "Стратеги видят скрытые механизмы систем." },
+  E1: { name: "Эмпат", role: "Эмпаты возвращают контакт с внутренней правдой." },
+  E2: { name: "Артист", role: "Артисты оживляют пространство через выражение." },
+  E3: { name: "Драйвер", role: "Драйверы превращают напряжение в прорыв." },
+  T1: { name: "Систематик", role: "Систематики делают реальность надёжной." },
+  T2: { name: "Координатор", role: "Координаторы удерживают людей и пространство." },
+  T3: { name: "Оптимизатор", role: "Оптимизаторы запускают движение и результат." },
+};
 
 const useReveal = () => {
   useEffect(() => {
@@ -176,6 +177,7 @@ const useReveal = () => {
 
 export default function About() {
   useReveal();
+  const [activeNeurotype, setActiveNeurotype] = useState("S1");
 
   return (
     <div data-testid="about-page" className="min-h-screen relative">
@@ -469,8 +471,29 @@ export default function About() {
                   {MATRIX.map((row) => (
                     <tr key={row[0]} className="border-b border-white/5">
                       {row.map((cell, i) => (
-                        <td key={cell} className={`py-4 text-[14px] ${i === 0 ? "text-[#B79BE0] pr-4" : "text-white/78 px-4"}`}>
-                          {cell}
+                        <td key={cell} className={`py-3 text-[14px] ${i === 0 ? "text-[#B79BE0] pr-4" : "px-2 sm:px-4"}`}>
+                          {i === 0 ? cell : (
+                            <button
+                              type="button"
+                              aria-pressed={activeNeurotype === cell}
+                              onMouseEnter={() => setActiveNeurotype(cell)}
+                              onFocus={() => setActiveNeurotype(cell)}
+                              onClick={() => setActiveNeurotype(cell)}
+                              className="w-full min-h-11 rounded-xl border px-3 py-2.5 text-left transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                              style={{
+                                color: cell === "T2" ? "#A7A6AD" : NEUROTYPE_COLORS[cell],
+                                borderColor: activeNeurotype === cell ? `${NEUROTYPE_COLORS[cell]}A6` : `${NEUROTYPE_COLORS[cell]}42`,
+                                background: activeNeurotype === cell ? `${NEUROTYPE_COLORS[cell]}18` : `${NEUROTYPE_COLORS[cell]}08`,
+                                boxShadow: activeNeurotype === cell ? `0 0 24px ${NEUROTYPE_COLORS[cell]}1F` : "none",
+                                textShadow: cell === "T2" ? "0 0 10px rgba(167,166,173,0.28)" : `0 0 12px ${NEUROTYPE_COLORS[cell]}24`,
+                              }}
+                            >
+                              <span className="mr-1.5 text-[11px] tracking-[0.12em]">
+                                {cell}
+                              </span>
+                              <span className="font-medium">{NEUROTYPES[cell].name}</span>
+                            </button>
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -478,17 +501,36 @@ export default function About() {
                 </tbody>
               </table>
             </div>
-            <p className="text-white/88 text-[21px] sm:text-[28px] leading-[1.45] max-w-4xl mt-9 text-center mx-auto">
-              9 нейротипов нужны не для сравнения людей между собой. Все 9 функций нужны миру.
+            <p className="mt-5 text-center text-white/42 text-[12px] sm:text-[13px] leading-[1.6]">
+              Чтобы узнать подробнее, наведите курсор на нейротип или нажмите на него.
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-7">
-              {NEUROTYPE_ROLES.map((role, index) => (
-                <div key={role} className="rounded-2xl border border-white/8 bg-black/20 p-4 flex gap-3">
-                  <span className="text-[#B79BE0] text-[12px] mt-0.5">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="text-body text-[13.5px] leading-[1.6]">{role}</p>
-                </div>
-              ))}
+            <div
+              aria-live="polite"
+              className="mt-6 min-h-[116px] rounded-[22px] border px-5 py-5 sm:px-7 sm:py-6 transition-colors duration-200"
+              style={{
+                borderColor: `${NEUROTYPE_COLORS[activeNeurotype]}70`,
+                background: `${NEUROTYPE_COLORS[activeNeurotype]}0D`,
+              }}
+            >
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+                <span
+                  className="text-[13px] tracking-[0.16em]"
+                  style={{ color: NEUROTYPE_COLORS[activeNeurotype] }}
+                >
+                  {activeNeurotype}
+                </span>
+                <h3 className="text-white text-[20px] sm:text-[23px] font-medium">
+                  {NEUROTYPES[activeNeurotype].name}
+                </h3>
+              </div>
+              <p className="text-white/76 text-[14px] sm:text-[16px] leading-[1.65]">
+                {NEUROTYPES[activeNeurotype].role}
+              </p>
             </div>
+            <p className="text-white/88 text-[21px] sm:text-[28px] leading-[1.45] max-w-4xl mt-9 text-center mx-auto">
+              9 нейротипов нужны <span className="text-[#B79BE0]">не для сравнения людей между собой.</span>
+              <span className="block mt-2">Все 9 функций нужны миру.</span>
+            </p>
           </div>
         </section>
 
