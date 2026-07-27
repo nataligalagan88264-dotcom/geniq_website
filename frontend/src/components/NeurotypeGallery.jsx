@@ -61,7 +61,7 @@ const useElementWidth = () => {
   return [ref, width];
 };
 
-const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSelect }) => {
+const OrbitCard = ({ type, style, expanded, muted, onSelect }) => {
   const color = type.code === "T2" ? "#747480" : NEUROTYPE_COLORS[type.code];
   const avatar = NEUROTYPE_AVATARS[type.code];
 
@@ -69,14 +69,13 @@ const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSele
     <button
       type="button"
       data-testid={`portrait-${type.code}`}
-      aria-label={`Открыть описание нейротипа ${type.name}`}
+      aria-label={`${expanded ? "Закрыть" : "Открыть"} описание нейротипа ${type.name}`}
+      aria-expanded={expanded}
       className={`orbit-card ${expanded ? "orbit-card-expanded" : ""} ${muted ? "orbit-card-muted" : ""}`}
-      onPointerEnter={onActivate}
       onClick={(event) => {
         event.stopPropagation();
         onSelect();
       }}
-      onPointerLeave={onRelease}
       tabIndex={style.pointerEvents === "none" ? -1 : 0}
       style={{ ...style, "--card-color": color }}
     >
@@ -123,16 +122,12 @@ const OrbitCard = ({ type, style, expanded, muted, onActivate, onRelease, onSele
 export const NeurotypeGallery = () => {
   const ref = useRef(null);
   const [stageRef, stageWidth] = useElementWidth();
-  const [paused, setPaused] = useState(false);
-  const [stageHovered, setStageHovered] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [centeringIndex, setCenteringIndex] = useState(null);
   const [angle, setAngle] = useState(0);
   const centeringFrameRef = useRef(null);
   const centeringTargetRef = useRef(null);
   const width = useViewportWidth();
-  const isPaused = true;
 
   useEffect(() => () => cancelAnimationFrame(centeringFrameRef.current), []);
 
@@ -145,20 +140,6 @@ export const NeurotypeGallery = () => {
     el.querySelectorAll(".reveal").forEach((n) => obs.observe(n));
     return () => obs.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (isPaused) return undefined;
-    let frame = 0;
-    let last = performance.now();
-    const rotate = (time) => {
-      const delta = Math.min(time - last, 48);
-      last = time;
-      setAngle((value) => value + delta * 0.000224);
-      frame = requestAnimationFrame(rotate);
-    };
-    frame = requestAnimationFrame(rotate);
-    return () => cancelAnimationFrame(frame);
-  }, [isPaused]);
 
   const isMobile = width < 768;
   const isIntermediate = width >= 768 && width <= 1100;
@@ -181,7 +162,7 @@ export const NeurotypeGallery = () => {
     centerCard((current + delta + TYPES.length) % TYPES.length, "none");
   };
 
-  const centerCard = (index, activation = "hover") => {
+  const centerCard = (index, activation = "none") => {
     if (centeringTargetRef.current !== null) return;
 
     const fullTurn = Math.PI * 2;
@@ -194,8 +175,6 @@ export const NeurotypeGallery = () => {
 
     centeringTargetRef.current = index;
     setCenteringIndex(index);
-    setPaused(true);
-    setHoveredIndex(null);
     if (activation === "none") {
       setSelectedIndex(null);
     }
@@ -213,12 +192,8 @@ export const NeurotypeGallery = () => {
       centeringTargetRef.current = null;
       setCenteringIndex(null);
       if (activation === "select") {
-        setHoveredIndex(null);
         setSelectedIndex(index);
-      } else if (activation === "hover") {
-        setHoveredIndex(index);
       } else {
-        setHoveredIndex(null);
         setSelectedIndex(null);
       }
     };
@@ -255,9 +230,9 @@ export const NeurotypeGallery = () => {
     const edgeVisibility = fadeEdge * fadeEdge * (3 - 2 * fadeEdge);
     const opacity = edgeVisibility * (0.44 + (1 - depthProgress) * 0.56);
     const centered = distance < 0.28;
-    const expanded = centered && (hoveredIndex === index || selectedIndex === index);
+    const expanded = centered && selectedIndex === index;
     const isCentering = centeringIndex === index;
-    const focusedIndex = centeringIndex ?? hoveredIndex ?? selectedIndex;
+    const focusedIndex = centeringIndex ?? selectedIndex;
     const compactSelected = expanded && selectedIndex === index && isMobile;
     const visible = expanded || edgeVisibility > visibilityThreshold;
 
@@ -270,9 +245,9 @@ export const NeurotypeGallery = () => {
       muted: !isMobile && focusedIndex !== null && focusedIndex !== index,
       style: {
         opacity: expanded || isCentering ? 1 : opacity,
-        pointerEvents: isMobile
-          ? (centeringIndex === null && visible && (selectedIndex === null || selectedIndex === index) ? "auto" : "none")
-          : (centeringIndex === null && visible && (hoveredIndex === null || hoveredIndex === index) ? "auto" : "none"),
+        pointerEvents: centeringIndex === null && visible && (selectedIndex === null || selectedIndex === index)
+          ? "auto"
+          : "none",
         zIndex: expanded || isCentering ? 120 : Math.round((depth + 1) * 30),
         transform: compactSelected
           ? "translate(-50%, -50%) translate3d(0px, 0px, 0) rotateY(0deg) scale(1)"
@@ -322,21 +297,8 @@ export const NeurotypeGallery = () => {
       <div
         ref={stageRef}
         className="reveal relative orbit-stage"
-        onPointerEnter={() => {}}
-        onPointerLeave={(event) => {
-          if (event.pointerType !== "mouse") return;
-          cancelAnimationFrame(centeringFrameRef.current);
-          centeringTargetRef.current = null;
-          setCenteringIndex(null);
-          setHoveredIndex(null);
-          setSelectedIndex(null);
-          setPaused(false);
-          setStageHovered(false);
-        }}
         onClick={() => {
           setSelectedIndex(null);
-          setHoveredIndex(null);
-          setPaused(false);
         }}
       >
         <div className="orbit-track">
@@ -347,37 +309,14 @@ export const NeurotypeGallery = () => {
               style={style}
               expanded={expanded}
               muted={muted}
-              onActivate={(event) => {
-                if (event?.pointerType && event.pointerType !== "mouse") return;
-                if (centered) {
-                  setPaused(true);
-                  setHoveredIndex(index);
-                } else {
-                  centerCard(index);
-                }
-              }}
-              onRelease={(event) => {
-                if (event?.pointerType && event.pointerType !== "mouse") return;
-                if (centeringTargetRef.current === index) return;
-                setHoveredIndex(null);
-                setSelectedIndex(null);
-                setPaused(false);
-              }}
               onSelect={() => {
                 if (!centered) {
-                  if (isMobile) centerCard(index, "select");
+                  centerCard(index, "select");
                   return;
                 }
 
                 setSelectedIndex((current) => {
-                  if (current === index) {
-                    setHoveredIndex(null);
-                    setPaused(false);
-                    return null;
-                  }
-                  setPaused(true);
-                  setHoveredIndex(index);
-                  return index;
+                  return current === index ? null : index;
                 });
               }}
             />
@@ -399,11 +338,9 @@ export const NeurotypeGallery = () => {
 
       <div className="container-geniq mt-7 text-center reveal">
         <div className="text-white/40 text-[11px] uppercase tracking-[0.2em]">
-          {selectedIndex !== null || hoveredIndex !== null
+          {selectedIndex !== null
             ? "Карусель остановлена · карточка раскрыта"
-            : stageHovered
-              ? "Карусель остановлена · выберите карточку"
-              : "9 нейротипов · 3 мира × 3 режима"}
+            : "Листайте стрелками · нажмите карточку, чтобы раскрыть"}
         </div>
       </div>
     </section>
