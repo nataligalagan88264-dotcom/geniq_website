@@ -302,8 +302,8 @@ export default function About() {
 
         <section className="mb-24">
           <div className="reveal max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="text-white text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.15]">
-              9 нейротипов понятно. А как собрать именно вашу карту?
+            <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.15]">
+              <span className="gradient-text">9 нейротипов понятно. А как собрать именно вашу карту?</span>
             </h2>
           </div>
           <div className="reveal mb-10">
