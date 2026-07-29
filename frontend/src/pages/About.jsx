@@ -191,41 +191,9 @@ export default function About() {
 
         <section className="max-w-4xl mx-auto mb-20 reveal text-center">
           <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Система</div>
-          <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05] mb-7">
+          <h1 className="text-[40px] sm:text-[56px] lg:text-[64px] font-normal text-white leading-[1.05]">
             <span className="gradient-text">О системе</span> GENIQ
           </h1>
-          <div className="space-y-5 text-body text-[16px] sm:text-[17px] leading-[1.75] max-w-[780px] mx-auto">
-            <p>
-              Вы когда-нибудь чувствовали, что <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">живёте вполсилы?</span>{" "}
-              Цели понятные, инструменты рабочие, а внутри либо постоянное сопротивление, либо батарейка садится слишком быстро.
-            </p>
-            <p>
-              Обычно это списывают на лень или нехватку мотивации. В GENIQ мы смотрим глубже:{" "}
-              <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">дело не в вас.</span>{" "}
-              Просто вы едете <span className="text-[#B79BE0] font-medium">по чужой карте и на неподходящем топливе.</span>
-            </p>
-            <p>
-              <span className="text-white text-[18px] sm:text-[20px] leading-[1.55]">Личность — не набор случайных черт, а точная архитектура.</span>{" "}
-              Если вы гоночная машина, а пашете на себе поле, как трактор, рано или поздно будет поломка.
-              Не потому что вы плохой трактор — <span className="text-white font-medium">потому что вы не трактор.</span>
-            </p>
-          </div>
-          <blockquote className="mt-9 mx-auto border-x-2 border-[#B79BE0] px-5 sm:px-8 text-white text-[21px] sm:text-[28px] leading-[1.35] max-w-3xl">
-            Дело не в вас. Просто вы едете{" "}
-            <span className="text-[#B79BE0]">по чужой карте и на неподходящем топливе.</span>
-          </blockquote>
-        </section>
-
-        <section className="mb-20 reveal">
-          <div className="geniq-glass rounded-[28px] px-6 py-8 sm:px-10 sm:py-10 w-full">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Главная формула</div>
-            <p className="text-white text-[25px] sm:text-[38px] leading-[1.15] font-normal">
-              <span className="gradient-text">9 нейротипов</span> = ваш режим взаимодействия с миром
-            </p>
-            <p className="text-body text-[15px] leading-[1.7] mt-5 max-w-2xl">
-              В вас есть все 9. Один ведущий задаёт способ восприятия, мышления и действия, а остальные дополняют вашу индивидуальную карту.
-            </p>
-          </div>
         </section>
 
         <section data-testid="section-basket-metaphor" className="mb-16 sm:mb-20 reveal">
@@ -320,11 +288,23 @@ export default function About() {
           </p>
         </section>
 
-        <section className="mb-24">
-          <div className="reveal mb-10">
-            <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
-              9 нейротипов понятно. <span className="gradient-text">А как собрать именно вашу карту?</span>
+        <section className="mb-20 reveal">
+          <div className="geniq-glass rounded-[28px] px-6 py-8 sm:px-10 sm:py-10 w-full">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Главная формула</div>
+            <p className="text-white text-[25px] sm:text-[38px] leading-[1.15] font-normal">
+              <span className="gradient-text">9 нейротипов</span> = ваш режим взаимодействия с миром
             </p>
+            <p className="text-body text-[15px] leading-[1.7] mt-5 max-w-2xl">
+              В вас есть все 9. Один ведущий задаёт способ восприятия, мышления и действия, а остальные дополняют вашу индивидуальную карту.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-24">
+          <div className="reveal max-w-5xl mx-auto mb-12 text-center">
+            <h2 className="text-white text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.15]">
+              9 нейротипов понятно. А как собрать именно вашу карту?
+            </h2>
           </div>
           <div className="reveal mb-10">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">5 осей</div>
@@ -373,11 +353,6 @@ export default function About() {
         </section>
 
         <section className="mb-24">
-          <div className="reveal mb-10">
-            <p className="text-white text-[24px] sm:text-[34px] leading-[1.2]">
-              <span className="gradient-text">Всё начинается с конкретных вопросов.</span>
-            </p>
-          </div>
           <div className="reveal max-w-4xl mx-auto mb-12 text-center">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Нейротип</div>
             <h2 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-5">

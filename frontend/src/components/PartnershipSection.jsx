@@ -78,7 +78,7 @@ export const PartnershipSection = () => {
               {PARTNERS.map((p, i) => {
                 const Icon = p.Icon;
                 return (
-                  <div key={i} data-testid={`partner-${i}`} className="geniq-card p-5 flex items-center xl:items-start gap-4">
+                  <div key={i} data-testid={`partner-${i}`} className="geniq-card p-5 flex items-center gap-4 h-full">
                     <div className="w-11 h-11 rounded-full border border-[#764CB0]/60 flex items-center justify-center bg-black/40 shrink-0">
                       <Icon size={18} strokeWidth={1.4} className="text-[#B79BE0]" />
                     </div>
