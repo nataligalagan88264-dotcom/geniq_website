@@ -30,18 +30,18 @@ export const Hero = () => {
 
       <div className="container-geniq flex items-center relative z-10 min-h-0 lg:min-h-[68vh]">
         {/* LEFT: text */}
-        <div className="max-w-[650px]">
+        <div className="max-w-[650px] xl:max-w-[740px]">
           <div className="inline-flex items-center gap-2 mb-7 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm reveal in">
             <span className="w-1.5 h-1.5 rounded-full bg-[#B79BE0] pulse-dot" />
             <span className="text-[11px] uppercase tracking-[0.22em] text-white/60">{HERO.eyebrow}</span>
           </div>
 
-          <h1 className="text-[44px] sm:text-[56px] lg:text-[64px] font-normal leading-[1.04] mb-7 reveal in">
+          <h1 className="max-w-[650px] text-[44px] sm:text-[56px] lg:text-[64px] font-normal leading-[1.04] mb-7 reveal in">
             <span className="block text-white">{HERO.title}</span>
             <span className="block gradient-text">{HERO.accent_title}</span>
           </h1>
 
-          <p className="text-body text-base sm:text-[17px] leading-[1.65] mb-10 max-w-[560px] reveal in" style={{ transitionDelay: '120ms' }}>
+          <p className="text-body text-base sm:text-[17px] leading-[1.65] mb-10 max-w-[560px] xl:max-w-[680px] reveal in" style={{ transitionDelay: '120ms' }}>
             {HERO.description}
           </p>
 

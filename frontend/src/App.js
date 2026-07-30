@@ -1,5 +1,4 @@
 import "@/App.css";
-import "@/components/SpotlightCard.css";
 import { useEffect, useLayoutEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Landing from "@/pages/Landing";

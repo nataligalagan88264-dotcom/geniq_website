@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-video-stage {
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   top: 92px;
   right: 0;
   width: min(50vw, 740px);
@@ -247,6 +247,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 1280px) {
+  .hero-head-video {
+    transform: scale(1.06);
+    transform-origin: center;
+  }
+
   .hero-video-stage {
     right: clamp(120px, 11vw, 240px);
     width: min(53vw, 800px);

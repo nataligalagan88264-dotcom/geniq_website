@@ -531,7 +531,7 @@ export const CodeMapSection = () => {
       <div className="container-geniq relative z-10">
         <div className="reveal max-w-3xl mx-auto text-center mb-10 lg:mb-6">
           <h2 className="text-[28px] sm:text-[38px] lg:text-[44px] font-normal leading-[1.15] text-white mb-6">
-            «9 нейротипов — понятно. <span className="gradient-text">Но как это поможет собрать именно мою карту?»</span>
+            «9 нейротипов — понятно. Но как это поможет собрать <span className="gradient-text">именно мою карту?</span>»
           </h2>
           <h3 className="text-[24px] sm:text-[30px] lg:text-[34px] font-light leading-[1.08] text-white mb-5 lg:mb-4">
             5 осей <br className="sm:hidden" />GENIQ
