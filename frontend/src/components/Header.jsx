@@ -22,6 +22,23 @@ export const Header = () => {
 
   useEffect(() => { setOpen(false); }, [location.pathname, location.hash]);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
   const isNavActive = (item) => {
     if (item.to === "/#services") {
       return location.pathname === "/" && location.hash === "#services";
@@ -80,9 +97,12 @@ export const Header = () => {
         {/* Mobile burger */}
         <button
           data-testid="mobile-menu-toggle"
-          onClick={() => setOpen(!open)}
-          className="xl:hidden text-white/80 p-2"
-          aria-label="menu"
+          type="button"
+          onClick={() => setOpen((current) => !current)}
+          className="xl:hidden relative z-[70] text-white/80 p-2"
+          aria-label={open ? "Закрыть меню" : "Открыть меню"}
+          aria-controls="mobile-navigation"
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -91,9 +111,13 @@ export const Header = () => {
       {/* Mobile drawer */}
       {open && (
         <div
+          id="mobile-navigation"
           data-testid="mobile-menu"
-          className="xl:hidden absolute top-full left-0 right-0 backdrop-blur-xl border-t border-white/5"
-          style={{ backgroundColor: "rgba(12, 10, 24, 0.97)" }}
+          className="xl:hidden absolute top-full left-0 right-0 overflow-y-auto border-t border-white/5"
+          style={{
+            height: "calc(100dvh - 84px)",
+            backgroundColor: "#0C0A18",
+          }}
         >
           <div className="container-geniq py-6 flex flex-col gap-4">
             {NAV.map((item) => {
