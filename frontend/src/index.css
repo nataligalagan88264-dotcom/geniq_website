@@ -231,7 +231,9 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   width: min(50vw, 740px);
   height: min(640px, calc(68dvh + 4px));
+  background-color: #0C0A18;
   overflow: hidden;
+  isolation: isolate;
   pointer-events: none;
 }
 
@@ -321,10 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-model-backdrop {
-  background:
-    radial-gradient(58% 48% at 50% 50%, rgba(20, 12, 35, 0.82), rgba(12, 10, 24, 0.88) 66%, transparent 78%),
-    linear-gradient(90deg, transparent 0%, rgba(12, 10, 24, 0.48) 16%, rgba(12, 10, 24, 0.58) 84%, transparent 100%);
-  opacity: 0.9;
+  background: #0C0A18;
 }
 
 @media (max-width: 560px) {
