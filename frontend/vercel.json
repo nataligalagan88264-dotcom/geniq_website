@@ -31,7 +31,6 @@
     { "source": "/approach", "destination": "/approach/index.html" },
     { "source": "/partners", "destination": "/partners/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/faq", "destination": "/faq/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" }
   ],
   "routes": [

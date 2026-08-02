@@ -174,6 +174,31 @@ collections:
               - { label: Вопрос, name: q, widget: string }
               - { label: Ответ, name: a, widget: text }
 
+      - name: reviews
+        label: Отзывы
+        file: frontend/src/content/reviews.json
+        format: json
+        fields:
+          - label: Отзывы клиентов
+            name: items
+            widget: list
+            summary: "{{fields.name}} — {{fields.neurotype}}"
+            fields:
+              - { label: Имя, name: name, widget: string }
+              - { label: Роль или профессия, name: role, widget: string, required: false }
+              - { label: Ник в Telegram, name: handle, widget: string, required: false }
+              - { label: Ссылка на Telegram, name: handleUrl, widget: string, required: false }
+              - { label: Нейротип, name: neurotype, widget: string }
+              - { label: Запрос, name: request, widget: text, required: false }
+              - { label: Главная цитата, name: quote, widget: text, required: false }
+              - { label: Основной текст, name: paragraphs, widget: list, required: false }
+              - { label: Аватар, name: avatar, widget: image, required: false }
+              - { label: Позиция аватара, name: avatarPosition, widget: string, required: false, hint: "Например: 50% 32%. Меняйте только если лицо в кружке обрезается." }
+              - { label: Видео, name: video, widget: file, required: false }
+              - { label: Обложка видео, name: poster, widget: image, required: false }
+              - { label: Описание видео для доступности, name: videoLabel, widget: string, required: false }
+              - { label: Показывать как Telegram-кружок, name: circle, widget: boolean, default: false, required: false }
+
       - name: seo
         label: SEO
         file: frontend/src/content/seo.json
@@ -264,19 +289,6 @@ collections:
                       - { label: Путь, name: path, widget: string }
               - label: Блог
                 name: "/blog"
-                widget: object
-                fields:
-                  - { label: Title, name: title, widget: string }
-                  - { label: Description, name: description, widget: text }
-                  - { label: Приоритет в sitemap, name: priority, widget: select, options: ["1.0", "0.9", "0.8", "0.7", "0.6", "0.5", "0.4", "0.3"] }
-                  - label: Хлебные крошки
-                    name: breadcrumbs
-                    widget: list
-                    fields:
-                      - { label: Название, name: name, widget: string }
-                      - { label: Путь, name: path, widget: string }
-              - label: Частые вопросы
-                name: "/faq"
                 widget: object
                 fields:
                   - { label: Title, name: title, widget: string }
