@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ArrowUpRight, Briefcase, GraduationCap, Cpu, Star, Users, BadgePercent, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { FORM_URL } from "@/lib/constants";
+import { TELEGRAM_URL } from "@/lib/constants";
 
 const BUSINESS_DIRECTIONS = [
   {
@@ -76,7 +76,7 @@ const useReveal = () => {
 
 const FormButton = ({ children, testId }) => (
   <a
-    href={FORM_URL}
+    href={TELEGRAM_URL}
     target="_blank"
     rel="noopener noreferrer"
     data-testid={testId}
