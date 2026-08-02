@@ -28,7 +28,6 @@ collections:
             widget: object
             fields:
               - { label: Подпись возле логотипа, name: tagline_lines, widget: list }
-              - { label: Описание в футере, name: footer_description, widget: text }
           - label: Навигация
             name: navigation
             widget: list
