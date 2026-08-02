@@ -7,6 +7,8 @@ const REVIEWS = [
     avatar: "/uploads/reviews/ivan-avatar.jpg",
     avatarPosition: "50% 34%",
     role: "Руководитель нотариальной палаты, ведущий игр «Мафия» и «Компас»",
+    handle: "@innuendo_travel",
+    handleUrl: "https://t.me/innuendo_travel",
     neurotype: "Стратег",
     request: "Понять себя на глубоком уровне и научиться удерживать фокус на важном, не распыляясь.",
     quote: "История про «зеркало эмоций» буквально поставила многое на свои места.",
@@ -21,6 +23,8 @@ const REVIEWS = [
     avatar: "/uploads/reviews/vladimir-avatar.jpg",
     avatarPosition: "50% 32%",
     role: "Мастер по работе с подсознанием",
+    handle: "@magi_money",
+    handleUrl: "https://t.me/magi_money",
     neurotype: "Драйвер",
     quote: "Мы как будто были на одной волне. Многие вещи понимались буквально с полуслова.",
     paragraphs: [
