@@ -10,6 +10,15 @@
     "title": "Блог запускается в конце 2026",
     "description": "Сейчас контент готовится. Если хотите узнать первыми, когда выйдет первая статья — оставьте заявку на бесплатный скрининг, и я добавлю вас в список."
   },
+  "sections": {
+    "categories_eyebrow": "Coming categories",
+    "categories_title": "О чём будет",
+    "categories_accent_title": "блог",
+    "articles_eyebrow": "Coming soon",
+    "articles_title": "Первые",
+    "articles_accent_title": "статьи",
+    "articles_count_suffix": "статей"
+  },
   "categories": [
     { "id": "neurotypes", "name": "Нейротипы", "icon": "brain", "count": 9 },
     { "id": "self", "name": "Самопонимание", "icon": "compass", "count": 12 },

@@ -10,96 +10,6 @@ const PRODUCTS = PRODUCT_CONTENT.items.map((product) => ({
   Icon: PRODUCT_ICONS[product.icon] || Compass,
 }));
 
-const DIAGNOSTIC_STAGES = [
-  {
-    title: "Встреча 1 — Диагностика 3 осей",
-    what: "Живой разбор, не тест. Определяем, как вы мыслите, что вами движет и как действуете.",
-    result: "Точную картину своего мышления, мотивации и сильных навыков.",
-    impact: "Видите в своих особенностях не недостаток, а механизм и талант.",
-  },
-  {
-    title: "Встреча 2 — Расшифровка вашей карты",
-    what: "Разбираем вашу карту — вы находите объяснение своим особенностям и понимаете, как ими управлять.",
-    result: "Нейропрофиль на 22 страницы и умение читать свою карту.",
-    impact: "У вас на руках инструкция к себе, и я показываю, как её читать, чтобы использовать для своих целей в разные периоды жизни.",
-  },
-  {
-    title: "Встреча 3 — Работа с вашим запросом",
-    what: "Накладываем карту на вашу реальную задачу.",
-    result: "Стратегию действий под вашу конфигурацию.",
-    impact: "Уходит «много думаю — мало делаю», появляется конкретный следующий шаг.",
-  },
-];
-
-const TRACKS = [
-  {
-    title: "Личный трек",
-    meta: "7 встреч + чат · для тех, кто выгорел",
-    paragraphs: [
-      "Вы держитесь, делаете что должны, со стороны всё в порядке — а внутри давно тихо. Лень тут ни при чём: вы живёте на чужих настройках, без опоры на свою природу.",
-    ],
-    bullets: [
-      "находим, что вас истощает и что на самом деле восстанавливает",
-      "достаём из подсознания сценарии, что заставляют тащить и терпеть, и меняем их",
-      "перестраиваем жизнь, тело и ритм под вашу природу, чтобы энергия копилась",
-    ],
-    result: "полную карту личности · формулу восстановления · новый ритм жизни · опору, на которую можно встать",
-  },
-  {
-    title: "Профессиональный трек",
-    meta: "9 встреч + 2 встречи с приглашёнными экспертами · упёрлись в потолок или чувствуете «не туда»",
-    paragraphs: [
-      "Должность, опыт, стабильность есть — а внутри всё чаще «и это всё?». Дело не в усталости: вы выросли из своей роли, а новую под себя пока не нашли.",
-    ],
-    bullets: [
-      "находим ваше направление: где сила и в каких ролях она включается",
-      "примеряете направления вживую и сужаете до одного",
-      "собираем карту компетенций и резюме, которое продаёт вашу уникальность",
-      "подключаются приглашённые эксперты",
-      "в финале — стратегия: какие компании, какой формат, что спрашивать на собеседовании",
-    ],
-    result: "ваше направление · карты компетенций и развития · 2 диаграммы Венна (кто вы с 7 лет и где ваш Икигай) · готовое резюме · вопросы для собеседования · режим против выгорания",
-  },
-  {
-    title: "Продуктовый трек",
-    meta: "12–14 встреч + 2 встречи с приглашёнными экспертами · хочу запустить своё",
-    paragraphs: [
-      "Экспертиза, идеи, желание сделать своё есть — а запуск год за годом откладывается. Дисциплина тут ни при чём: вы строите вслепую, не зная, какой продукт ваш и кому он нужен.",
-    ],
-    bullets: [
-      "находим продукт на пересечении вашей экспертизы, желания и реального спроса",
-      "сразу проверяем на живых людях: интервью с аудиторией до всякой упаковки",
-      "разбираем данные вместе, в том числе через нейросети",
-      "позиционирование и упаковка через нейротипы + приглашённые эксперты",
-      "стратегия выхода",
-    ],
-    result: "проверенную на людях гипотезу · полную стратегию продукта (позиционирование, аудитория, упаковка, воронка) · 2 диаграммы Венна · карту партнёров и найма",
-  },
-];
-
-const TRACK_STAGES = [
-  ["Полная карта личности", "Две диагностические сессии, собираем все 5 осей — включая RECOVERY (как вы по-настоящему восстанавливаетесь) и SHADOW (что годами держит вас на месте). Эти две раскрываются только в треке."],
-  ["Трек, цель и план", "Выбираете направление, вместе утверждаем конечную цель и план работы под неё."],
-  ["Три уровня: мышление, эмоции, действия", "Выстраиваем режим под вашу природу и проверяем собранную карту на ваших реальных задачах."],
-  ["Работа с подсознанием", "Авторскими практиками, которые используют специалисты мирового уровня, находим сценарии, что снова и снова возвращают вас в одну точку, и меняем их в корне. Меняется сам способ, которым вы реагируете, решаете и действуете."],
-  ["Распаковка талантов", "Достаём ваши сильные стороны и учимся усиливать их под конкретные задачи."],
-];
-
-const LIMITATIONS = [
-  {
-    title: "Острое психическое состояние",
-    text: "GENIQ — не клиническая диагностика. При клинической депрессии, ОКР, шизофрении или психиатрическом лечении сначала нужен профильный врач или психотерапевт, и совместная работа возможна только по его согласованию.",
-  },
-  {
-    title: "Неготовность разделить ответственность",
-    text: "С моей стороны — точная карта и инструменты, с вашей — включённость и действия. Без этого даже самая точная диагностика останется красивым документом.",
-  },
-  {
-    title: "Неготовность идти до конца",
-    text: "Это не гадание и не мотивационная встряска: придётся доставать скелеты из шкафа, а жизнь начнёт меняться. Подойдёт тому, кто готов идти до конца.",
-  },
-];
-
 const useReveal = () => {
   const ref = useRef(null);
   useEffect(() => {
@@ -149,7 +59,7 @@ export const Section6Products = () => {
               >
                 {p.featured && (
                   <div className="absolute top-5 right-5 px-3 py-1 rounded-full border border-[#B79BE0]/60 bg-[#764CB0]/15 text-[10px] uppercase tracking-[0.18em] text-[#C9B0F0]">
-                    Рекомендую
+                    {PRODUCT_CONTENT.recommended_label}
                   </div>
                 )}
 
@@ -183,15 +93,15 @@ export const Section6Products = () => {
                 {p.id === "diagnostics" && (
                   <details className="mb-6 rounded-2xl border border-white/10 bg-black/20 group">
                     <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer px-5 py-4 flex items-center justify-between gap-4 text-white/80 text-[13px]">
-                      <span>Что внутри →</span>
+                      <span>{PRODUCT_CONTENT.details_label}</span>
                       <span className="text-[#B79BE0] text-xl transition-transform group-open:rotate-45">+</span>
                     </summary>
                     <div className="border-t border-white/8 p-5">
                       <p className="text-body text-[13.5px] leading-[1.7] mb-5">
-                        Это не сухой тест с вариантами ответов, а живая интерактивная диагностика — разговор, где я задаю вопросы, а вы отвечаете своими словами.
+                        {PRODUCT_CONTENT.diagnostics.intro}
                       </p>
                       <div className="space-y-3">
-                        {DIAGNOSTIC_STAGES.map((stage) => (
+                        {PRODUCT_CONTENT.diagnostics.stages.map((stage) => (
                           <div key={stage.title} className="rounded-xl border border-white/8 bg-black/20 p-4">
                             <h4 className="text-white text-[14px] font-medium mb-2">{stage.title}</h4>
                             <div className="space-y-2 text-body text-[12.5px] leading-[1.65]">
@@ -209,21 +119,21 @@ export const Section6Products = () => {
                 {p.id === "tracks" && (
                   <details className="mb-6 rounded-2xl border border-white/10 bg-black/20 group">
                     <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer px-5 py-4 flex items-center justify-between gap-4 text-white/80 text-[13px]">
-                      <span>Что внутри →</span>
+                      <span>{PRODUCT_CONTENT.details_label}</span>
                       <span className="text-[#B79BE0] text-xl transition-transform group-open:rotate-45">+</span>
                     </summary>
                     <div className="border-t border-white/8 p-5">
                       <div className="space-y-4 text-body text-[13.5px] leading-[1.7] mb-5">
-                        <p>Здесь есть то, чего нет в диагностике: полная карта, работа с подсознанием и внедрение результата в вашу жизнь.</p>
+                        <p>{PRODUCT_CONTENT.tracks.intro}</p>
                         <ol className="space-y-3 list-decimal list-inside">
-                          {TRACK_STAGES.map(([title, text]) => (
-                            <li key={title}><strong className="font-medium text-white/85">{title}.</strong> {text}</li>
+                          {PRODUCT_CONTENT.tracks.stages.map((stage) => (
+                            <li key={stage.title}><strong className="font-medium text-white/85">{stage.title}.</strong> {stage.text}</li>
                           ))}
                         </ol>
-                        <p className="text-white/75"><strong className="font-medium">Итог:</strong> полная карта личности и новая версия себя — собранная, проверенная в деле, с видимым результатом.</p>
+                        <p className="text-white/75"><strong className="font-medium">Итог:</strong> {PRODUCT_CONTENT.tracks.result}</p>
                       </div>
                       <div className="space-y-3">
-                        {TRACKS.map((track) => (
+                        {PRODUCT_CONTENT.tracks.directions.map((track) => (
                           <details key={track.title} className="rounded-xl border border-white/8 bg-black/20 group/track">
                             <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer p-4 flex justify-between gap-4">
                               <div>
@@ -262,21 +172,21 @@ export const Section6Products = () => {
         </div>
 
         <p className="reveal text-center text-white/45 text-[13px] mt-10 max-w-2xl mx-auto">
-          Кнопки ведут на небольшую анкету для знакомства. После ее заполнения я лично свяжусь с вами для выбора дня и времени.
+          {PRODUCT_CONTENT.footer_note}
         </p>
 
         <div data-testid="section-limitations" className="reveal mt-20">
           <div className="mb-10">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Важно</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{PRODUCT_CONTENT.limitations.eyebrow}</div>
             <h3 className="text-[28px] sm:text-[36px] font-normal text-white leading-[1.15] mb-4">
-              Кому не подойдёт <span className="gradient-text">GENIQ</span>
+              {PRODUCT_CONTENT.limitations.title} <span className="gradient-text">{PRODUCT_CONTENT.limitations.accent_title}</span>
             </h3>
             <p className="text-body text-[15px] leading-[1.7]">
-              У любой системы есть ограничения. Проверьте сразу, ваш ли это инструмент.
+              {PRODUCT_CONTENT.limitations.description}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            {LIMITATIONS.map((item, i) => (
+            {PRODUCT_CONTENT.limitations.items.map((item, i) => (
               <div key={item.title} className="geniq-card p-6">
                 <div className="text-[#B79BE0] text-[18px] font-medium mb-3">0{i + 1}</div>
                 <h4 className="text-white text-[16px] font-medium leading-snug mb-3">{item.title}</h4>

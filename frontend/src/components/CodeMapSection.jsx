@@ -5,6 +5,7 @@ import {
   Plus, X,
 } from "lucide-react";
 import { TELEGRAM_URL } from "@/lib/constants";
+import homeSections from "@/content/home-sections.json";
 
 /* ---------- Data ---------- */
 
@@ -364,7 +365,7 @@ const DetailPanel = ({ axis }) => {
           style={{ boxShadow: "0 8px 30px -8px rgba(118,76,176,0.7)" }}
         >
           <Sparkles size={15} strokeWidth={1.7} />
-          Пройти диагностику
+          {homeSections.code_map.button}
         </a>
       </div>
     </div>
@@ -531,14 +532,14 @@ export const CodeMapSection = () => {
       <div className="container-geniq relative z-10">
         <div className="reveal max-w-3xl mx-auto text-center mb-10 lg:mb-6">
           <h2 className="text-[28px] sm:text-[38px] lg:text-[44px] font-normal leading-[1.15] text-white mb-6">
-            «9 нейротипов — понятно. Но как это поможет собрать <span className="gradient-text">именно мою карту?</span>»
+            «{homeSections.code_map.question_before} <span className="gradient-text">{homeSections.code_map.question_accent}</span>»
           </h2>
           <h3 className="text-[24px] sm:text-[30px] lg:text-[34px] font-light leading-[1.08] text-white mb-5 lg:mb-4">
-            5 осей <br className="sm:hidden" />GENIQ
+            {homeSections.code_map.title}
           </h3>
           <div className="text-body text-[14.5px] lg:text-[14px] leading-[1.8] lg:leading-[1.65] max-w-2xl mx-auto space-y-3">
             <p className="text-white/76 text-[16px] sm:text-[17px]">
-              Каждый нейротип внутри вас просыпается в разных контекстах жизни. Эти контексты называются Оси. И благодаря им мы собираем вашу карту.
+              {homeSections.code_map.description}
             </p>
           </div>
         </div>
@@ -634,13 +635,13 @@ export const CodeMapSection = () => {
 
         <div className="reveal max-w-4xl mx-auto text-center mt-8 lg:mt-4">
           <p className="text-body text-[15px] leading-[1.75]">
-            Нет лучших и худших нейротипов. Нейротип не определяет ваш интеллект, статус или успех. Он показывает вашу карту талантов и особенностей, которые при достаточном внимании превращаются в гениальность.
+            {homeSections.code_map.conclusion}
           </p>
           <p className="text-white/78 text-[18px] sm:text-[20px] leading-[1.6] mt-8">
-            Но гораздо важнее понять:
+            {homeSections.code_map.transition}
           </p>
           <p className="text-[27px] sm:text-[36px] lg:text-[42px] leading-[1.18] mt-3">
-            <span className="gradient-text">Куда эти таланты направить так, чтобы они работали на вас?</span>
+            <span className="gradient-text">{homeSections.code_map.final_question}</span>
           </p>
         </div>
       </div>

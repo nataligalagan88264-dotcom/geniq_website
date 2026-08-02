@@ -1,14 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Briefcase, GraduationCap, Cpu, Star, Mic, ArrowUpRight } from "lucide-react";
+import homeSections from "@/content/home-sections.json";
 
-const PARTNERS = [
-  { Icon: Briefcase, label: "HR-агентства" },
-  { Icon: GraduationCap, label: "Карьерные центры и продукты" },
-  { Icon: Cpu, label: "Курсы по обучению навыкам работы с ИИ" },
-  { Icon: Star, label: "Продюсерские центры" },
-  { Icon: Mic, label: "Психологи и коучи с блогом" },
-];
+const PARTNER_ICONS = {
+  briefcase: Briefcase,
+  "graduation-cap": GraduationCap,
+  cpu: Cpu,
+  star: Star,
+  mic: Mic,
+};
+const CONTENT = homeSections.partnership;
+const PARTNERS = CONTENT.partners.map((partner) => ({
+  ...partner,
+  Icon: PARTNER_ICONS[partner.icon] || Briefcase,
+}));
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -35,21 +41,21 @@ export const PartnershipSection = () => {
       <div className="container-geniq relative z-10">
         <div className="partnership-layout grid lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.9fr)] gap-10 lg:gap-14 items-center w-full">
           <div>
-            <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Партнёрство</div>
+            <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{CONTENT.eyebrow}</div>
             <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal text-white leading-[1.1] mb-7">
-              Станьте партнёром <span className="gradient-text">GENIQ</span>
+              {CONTENT.title} <span className="gradient-text">{CONTENT.accent_title}</span>
             </h2>
             <div className="reveal space-y-4 text-body text-[15px] leading-[1.7] mb-7">
-              <p className="text-white/85">Вы ведёте свою практику в помогающей профессии?<br />Ваш продукт помогает людям освоить новую профессию или навык?<br />У вас есть свой блог о саморазвитии?</p>
-              <p>Если да — нам точно есть о чём поговорить. <span style={{ color: "#B79BE0" }}>Давайте познакомимся поближе.</span></p>
-              <p className="text-white/75">Я адаптирую диагностику GENIQ под ваш проект — так, чтобы ваши клиенты получили максимум пользы и конкретный результат. А вы — выделились на рынке и смогли предложить действительно уникальную услугу внутри своего продукта.</p>
+              <p className="text-white/85 whitespace-pre-line">{CONTENT.intro}</p>
+              <p>{CONTENT.invitation_before} <span style={{ color: "#B79BE0" }}>{CONTENT.invitation_accent}</span></p>
+              <p className="text-white/75">{CONTENT.description}</p>
             </div>
             <Link
               to="/partners"
               data-testid="partnership-cta"
               className="geniq-cta"
             >
-              <span>Подробнее</span>
+              <span>{CONTENT.button}</span>
               <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
             </Link>
           </div>
@@ -60,8 +66,8 @@ export const PartnershipSection = () => {
               style={{ background: "radial-gradient(circle, rgba(118,76,176,0.14), transparent 66%)" }}
             />
             <img
-              src="/uploads/partnership-handshake-dark.jpg"
-              alt="Партнёрство и сотрудничество с GENIQ"
+              src={CONTENT.image}
+              alt={CONTENT.image_alt}
               loading="lazy"
               decoding="async"
               className="relative w-full aspect-square object-contain mix-blend-lighten"
@@ -73,7 +79,7 @@ export const PartnershipSection = () => {
           </div>
 
           <div className="reveal lg:col-span-2 mt-2">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">С кем получаются самые сильные коллаборации</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">{CONTENT.collaborations_title}</div>
             <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-3">
               {PARTNERS.map((p, i) => {
                 const Icon = p.Icon;

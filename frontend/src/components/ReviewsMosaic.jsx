@@ -3,6 +3,7 @@ import { Play, Quote, Send } from "lucide-react";
 import reviewsContent from "../content/reviews.json";
 
 const REVIEWS = reviewsContent.items;
+const CONTENT = reviewsContent.section;
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -34,7 +35,7 @@ const ReviewVideo = ({ review }) => (
       aria-label={review.videoLabel}
     >
       <source src={review.video} type="video/mp4" />
-      Ваш браузер не поддерживает воспроизведение видео.
+      {CONTENT.unsupported_video_text}
     </video>
     {review.circle && (
       <span className="review-video-circle-glow" aria-hidden="true" />
@@ -53,7 +54,7 @@ const ReviewCard = ({ review, idx }) => {
       <div className="review-card-topline">
         <div className="review-format-label">
           {review.circle ? <Send size={13} /> : isVideo ? <Play size={13} /> : <Quote size={13} />}
-          <span>{review.circle ? "Telegram-кружок" : isVideo ? "Видеоотзыв" : "Отзыв клиента"}</span>
+          <span>{review.circle ? CONTENT.circle_review_label : isVideo ? CONTENT.video_review_label : CONTENT.text_review_label}</span>
         </div>
         <span className="review-neurotype">{review.neurotype}</span>
       </div>
@@ -86,7 +87,7 @@ const ReviewCard = ({ review, idx }) => {
 
       {review.request && (
         <div className="review-request">
-          <span>Запрос</span>
+          <span>{CONTENT.request_label}</span>
           <p>{review.request}</p>
         </div>
       )}
@@ -118,12 +119,12 @@ export const ReviewsMosaic = () => {
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
         <div className="mb-14">
-          <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Отзывы · Реальные истории</div>
+          <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{CONTENT.eyebrow}</div>
           <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
-            Что говорят <span className="gradient-text">клиенты</span>
+            {CONTENT.title} <span className="gradient-text">{CONTENT.accent_title}</span>
           </h2>
           <p className="reveal text-body text-[15px] leading-[1.7] max-w-[640px]">
-            Не мои обещания, а слова людей, которые уже собрали свою карту: их запросы, открытия и первые изменения после диагностики.
+            {CONTENT.description}
           </p>
         </div>
 

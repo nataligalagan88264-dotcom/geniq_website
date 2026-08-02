@@ -3,64 +3,18 @@ import { ArrowUpRight, Briefcase, GraduationCap, Cpu, Star, Users, BadgePercent,
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { TELEGRAM_URL } from "@/lib/constants";
+import partnersContent from "@/content/partners.json";
 
-const BUSINESS_DIRECTIONS = [
-  {
-    Icon: Briefcase,
-    title: "HR-агентства",
-    subtitle: "Скрининг ключевых позиций",
-    pain: "Кандидат идеален на бумаге и на собеседовании — а через 3 месяца становится ясно, что в команду он не вписался или задачу не тянет. Резюме показывает опыт и навыки, но не то, как человек поведёт себя именно с этим руководителем и в этой команде. На ключевой роли цена такой ошибки — самая высокая.",
-    points: [
-      "Брифинг с нанимающим руководителем: какой человек нужен команде, продукту и позиции на самом деле, а не по формальным требованиям.",
-      "Целевая карта нейротипов под эту роль в этом контексте.",
-      "Кастомная анкета-тест под должность, команду, продукт и руководителя — сужает пул кандидатов без личной сессии с каждым (например, 10 → 3).",
-      "Глубокая работа только с финалистами: фоновое участие в собеседовании или отдельный час диагностики.",
-      "Заключение руководителю: кто подходит и почему, зоны риска, потенциал роста в компании, подход к мотивации и карта для адаптации нового сотрудника.",
-    ],
-    result: "Меньше ошибок найма и текучки в первые месяцы; параметр, которого нет у конкурентов, — основание держать более высокий чек за штучную экспертизу, а не за объём.",
-  },
-  {
-    Icon: GraduationCap,
-    title: "Карьерные центры",
-    subtitle: "Навигация вместо ярлыка",
-    pain: "Клиент приходит, не понимая, в чём его уникальность и чем он отличается от сотен таких же кандидатов. Чтобы выглядеть сильнее, люди дописывают опыт и придумывают кейсы — но на собеседовании это не держится, и человек всё равно сливается с общим потоком.",
-    points: [
-      "Человек понимает свою природу и описывает уникальность через прикладной язык, понятный работодателю, — вместо выдуманного опыта и несуществующих кейсов.",
-      "Карта компетенций — архитектура его реальных талантов и способностей, а не ярлык «вы вот такой тип».",
-      "Единый карьерный трек: куда идти, в какой среде и формате он раскроется, какие компании ему подходят.",
-      "Диагностика встраивается в вашу программу как этап, а не отдельный продукт со стороны.",
-    ],
-    result: "Кандидаты центра заметно выделяются и быстрее получают офферы, клиент уходит с ответом «кто я и куда иду», а не с типом личности. За такой результат центр держит более высокий чек, отстраивается от конкурентов не ценой и получает рекомендации и повторные обращения.",
-  },
-  {
-    Icon: Cpu,
-    title: "Курсы по AI и навыкам",
-    subtitle: "Диагностика на входе",
-    pain: "Люди заходят на курс с желанием изменить точку, в которой они находятся. Но за этим запалом — неуверенность в следующем шаге, а часто уже и выгорание от текущих задач. Поэтому 40%+ гаснут, так и не дойдя до конца.",
-    points: [
-      "Где расходятся его таланты и среда, в которой он их реализует, — туда ли он вообще идёт.",
-      "Истинную мотивацию — что реально им движет, чтобы он не саботировал собственный результат.",
-      "В каком формате изучать материал, чтобы он усваивался лучше.",
-      "Как усилить ключевые навыки и что добрать, — чтобы учиться прицельно, а не распыляться.",
-      "Где точки выгорания и как беречь ресурс: карта помогает вовремя заметить и предупредить — больше энергии на обучение.",
-    ],
-    afterPoints: "Человек видит свой путь с первого дня и не гаснет на первом сомнении, а понятный следующий шаг после курса даёт основание вернуться за следующей ступенью.",
-    result: "Выше доходимость и конверсия в запись, больше кейсов и отзывов, меньше возвратов.",
-  },
-  {
-    Icon: Star,
-    title: "Продюсерские центры",
-    subtitle: "Позиционирование от природы, а не от шаблона",
-    pain: "Талант яркий, но образ никак не сходится с ним самим: контент выходит натужным, аудитория не склеивается, а сам он выгорает, пытаясь быть кем-то другим. То, что «заходит» у других, на нём почему-то не работает.",
-    points: [
-      "Какое позиционирование органично именно этому человеку и какая аудитория к нему тянется сама.",
-      "Как эту аудиторию превращать в клиентов — через его сильные стороны, а не через чужие приёмы.",
-      "Какой продукт ему делать и кого нанимать в команду в первую очередь.",
-      "Что и когда делегировать, чтобы не выгореть на старте.",
-    ],
-    result: "Образ, который не приходится тянуть на себе, аудитория, которая склеивается органично, и талант, который не гаснет через полгода, — управляемый актив, а не разовый всплеск.",
-  },
-];
+const BUSINESS_ICONS = {
+  briefcase: Briefcase,
+  "graduation-cap": GraduationCap,
+  cpu: Cpu,
+  star: Star,
+};
+const BUSINESS_DIRECTIONS = partnersContent.business.directions.map((direction) => ({
+  ...direction,
+  Icon: BUSINESS_ICONS[direction.icon],
+}));
 
 const useReveal = () => {
   useEffect(() => {
@@ -99,22 +53,22 @@ export default function Partners() {
         <section className="container-geniq relative z-10 mb-20 sm:mb-24">
           <div className="grid lg:grid-cols-[7fr_5fr] gap-8 lg:gap-12 items-center">
             <div className="reveal">
-              <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">GENIQ · Партнёрство</div>
+              <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-5">{partnersContent.hero.eyebrow}</div>
               <h1 className="text-[38px] sm:text-[50px] lg:text-[58px] xl:text-[64px] font-normal text-white leading-[1.06] mb-7 max-w-[1050px] break-words">
-                Партнёрство с <span className="gradient-text">GENIQ</span>
+                {partnersContent.hero.title} <span className="gradient-text">{partnersContent.hero.accent_title}</span>
               </h1>
               <p className="text-body text-[16px] sm:text-[17px] leading-[1.75] max-w-[760px] mb-8">
-                2 формата сотрудничества — для тех, кто ведёт свою практику, и для компаний, которым нужно точное решение под конкретную задачу.
+                {partnersContent.hero.description}
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href="#partners-experts" className="geniq-cta"><span>Для экспертов</span></a>
-                <a href="#partners-business" className="geniq-cta"><span>Для компаний</span></a>
+                <a href="#partners-experts" className="geniq-cta"><span>{partnersContent.hero.experts_button}</span></a>
+                <a href="#partners-business" className="geniq-cta"><span>{partnersContent.hero.business_button}</span></a>
               </div>
             </div>
             <div className="reveal relative">
               <img
-                src="/uploads/partnership-handshake-dark.jpg"
-                alt="Партнёрство и сотрудничество с GENIQ"
+                src={partnersContent.hero.image}
+                alt={partnersContent.hero.image_alt}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
@@ -131,15 +85,12 @@ export default function Partners() {
         <section id="partners-experts" className="container-geniq relative z-10 pt-4 sm:pt-8 mb-24 sm:mb-28 scroll-mt-36">
           <div className="grid xl:grid-cols-[1.05fr_0.95fr] gap-8 sm:gap-10 xl:gap-14 items-start">
             <div className="reveal min-w-0 max-w-3xl">
-              <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Для экспертов</div>
+              <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{partnersContent.experts.eyebrow}</div>
               <h2 className="text-[30px] sm:text-[40px] lg:text-[44px] font-normal text-white leading-[1.12] mb-7 break-words">
-                Для <span className="gradient-text">экспертов</span>
+                {partnersContent.experts.title} <span className="gradient-text">{partnersContent.experts.accent_title}</span>
               </h2>
               <div className="space-y-5 text-body text-[15px] leading-[1.75]">
-                <p>Вы ведёте практику в помогающей профессии, запускаете курс или ведёте блог о саморазвитии. И, скорее всего, знаете эти 2 ощущения.</p>
-                <p>Клиент приходит за переменами — но до первого настоящего инсайта долгий путь, и по дороге он успевает остыть.</p>
-                <p>А доход упирается в количество личных часов: расти дальше некуда, кроме как работать ещё больше.</p>
-                <p className="text-white/82">Диагностика даёт клиенту конкретный результат уже на старте: он видит свою картину с первой встречи, остаётся с вами дольше и больше доверяет. А партнёрская модель добавляет доход, который не забирает ваше время.</p>
+                {partnersContent.experts.paragraphs.map((paragraph, index) => <p key={paragraph} className={index === partnersContent.experts.paragraphs.length - 1 ? "text-white/82" : ""}>{paragraph}</p>)}
               </div>
             </div>
 
@@ -149,56 +100,38 @@ export default function Partners() {
                   <BadgePercent size={20} className="text-[#B79BE0]" strokeWidth={1.4} />
                 </div>
                 <div>
-                  <div className="text-white text-[20px] font-medium">Партнёрская модель</div>
-                  <div className="text-[#B79BE0] text-[14px]">Вознаграждение от 10 до 20%</div>
+                  <div className="text-white text-[20px] font-medium">{partnersContent.experts.model_title}</div>
+                  <div className="text-[#B79BE0] text-[14px]">{partnersContent.experts.model_subtitle}</div>
                 </div>
               </div>
-              <p className="text-body text-[14px] leading-[1.7] mb-6">
-                Вы получаете персональный промокод. Клиент называет его при записи — и получает скидку на диагностику и карту своего ведущего нейротипа, которая не входит в базовый пакет.
-              </p>
-              <p className="text-body text-[14px] leading-[1.7] mb-6">
-                Вознаграждение — от 10 до 20% в зависимости от продукта и персональных условий. Точные условия обсудим под ваш проект.
-              </p>
-              <p className="text-body text-[14px] leading-[1.7] mb-6">
-                И то, что не про деньги: скидка 80% на диагностику для вас и вашей семьи, скидка 50% на треки и 2 часа личной работы со мной каждый месяц — на ваш запрос, продвижение проекта или разбор карты.
-              </p>
-              <div className="text-[11px] uppercase tracking-[0.18em] text-white/40 mb-4">Кому это подходит</div>
+              {partnersContent.experts.model_paragraphs.map((paragraph) => <p key={paragraph} className="text-body text-[14px] leading-[1.7] mb-6">{paragraph}</p>)}
+              <div className="text-[11px] uppercase tracking-[0.18em] text-white/40 mb-4">{partnersContent.experts.audience_title}</div>
               <ul className="space-y-3 mb-7">
-                {[
-                  "Психологи и коучи",
-                  "Авторы курсов",
-                  "Ведущие блога о саморазвитии",
-                ].map((item) => (
+                {partnersContent.experts.audience.map((item) => (
                   <li key={item} className="flex gap-3 text-white/75 text-[13.5px] leading-[1.55]">
                     <Check size={16} className="text-[#B79BE0] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <FormButton testId="partners-experts-cta">Обсудить партнёрство</FormButton>
+              <FormButton testId="partners-experts-cta">{partnersContent.experts.button}</FormButton>
             </div>
           </div>
         </section>
 
         <section id="partners-business" className="container-geniq relative z-10 pt-4 sm:pt-8 scroll-mt-36">
           <div className="reveal mb-12">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">Для компаний</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{partnersContent.business.eyebrow}</div>
             <h2 className="text-[30px] sm:text-[40px] lg:text-[44px] font-normal text-white leading-[1.12] mb-6 break-words">
-              Для <span className="gradient-text">компаний</span>
+              {partnersContent.business.title} <span className="gradient-text">{partnersContent.business.accent_title}</span>
             </h2>
             <div className="space-y-4 text-body text-[15px] leading-[1.75]">
-              <p>GENIQ для бизнеса работает иначе, чем оптовая диагностика или подписка. Методология та же, но фокус интерпретации, инструмент сбора данных и итоговый отчёт я собираю под вашу конкретную задачу и вашу аудиторию.</p>
-              <p>Работаю с ограниченным числом проектов одновременно, чтобы каждый разбор оставался таким же точным, как для частного клиента.</p>
+              {partnersContent.business.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
           </div>
 
           <div className="reveal grid sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-12">
-            {[
-              "Брифинг — ваша реальная задача, а не формальная анкета",
-              "Адаптация инструмента (анкета, тест или личная сессия) под неё",
-              "Сфокусированный отчёт под конкретное решение",
-              "Ограниченное число слотов на волну",
-            ].map((item, index) => (
+            {partnersContent.business.process.map((item, index) => (
               <div key={item} className="geniq-card p-5">
                 <div className="text-[#B79BE0] text-[13px] mb-3">0{index + 1}</div>
                 <p className="text-white/80 text-[14px] leading-[1.55]">{item}</p>
@@ -245,11 +178,11 @@ export default function Partners() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-3">
                 <Users size={19} className="text-[#B79BE0]" />
-                <h3 className="text-white text-[22px] font-medium">Условия обсуждаются после брифинга</h3>
+                <h3 className="text-white text-[22px] font-medium">{partnersContent.business.briefing_title}</h3>
               </div>
-              <p className="text-body text-[14px] leading-[1.7]">Формат и объём каждого проекта обсуждаем индивидуально, после брифинга. Механики слишком разные по глубине, чтобы укладывать их в один прайс.</p>
+              <p className="text-body text-[14px] leading-[1.7]">{partnersContent.business.briefing_text}</p>
             </div>
-            <FormButton testId="partners-business-cta">Обсудить сотрудничество</FormButton>
+            <FormButton testId="partners-business-cta">{partnersContent.business.button}</FormButton>
           </div>
         </section>
       </main>

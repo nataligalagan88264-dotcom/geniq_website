@@ -2,22 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NEUROTYPE_COLORS } from "@/lib/constants";
 import { NEUROTYPE_AVATARS } from "@/lib/neurotypeAssets";
+import homeSections from "@/content/home-sections.json";
 
 /**
  * Neurotype gallery — circular 3D carousel.
  */
 
-const TYPES = [
-  { code: "S1", name: "Мыслитель", world: "S", mode: "Генеративный", profs: "учёный · исследователь · философ · методолог", desc: "Глубокое, концептуальное мышление. Раскрывается в исследовании и разработке идей.", strength: "Видеть суть", risk: "Уйти в бесконечное обдумывание" },
-  { code: "S2", name: "Оратор", world: "S", mode: "Коммуникативный", profs: "преподаватель · спикер · блогер · эксперт", desc: "Ясно объясняет сложное, влияет через речь. Раскрывается в обучении, выступлениях, контенте.", strength: "Обучение и выступления", risk: "Распыление" },
-  { code: "S3", name: "Стратег", world: "S", mode: "Управленческий", profs: "стратег · консультант · аналитик · архитектор систем", desc: "Системное, стратегическое мышление, видит закономерности. Раскрывается в сложных решениях.", strength: "Сложные решения", risk: "Гиперконтроль" },
-  { code: "T1", name: "Систематик", world: "T", mode: "Генеративный", profs: "инженер · мастер · специалист · технолог", desc: "Точность, стабильность, внимание к деталям. Раскрывается в процессах и системной работе.", strength: "Процессы и системная работа", risk: "Застревание" },
-  { code: "T2", name: "Координатор", world: "T", mode: "Коммуникативный", profs: "менеджер проектов · координатор · организатор", desc: "Организует процессы, гибкий, практичный. Раскрывается в управлении и командах.", strength: "Управление и команды", risk: "Потеря глубины" },
-  { code: "T3", name: "Оптимизатор", world: "T", mode: "Управленческий", profs: "управленец · операционный директор · оптимизатор бизнеса", desc: "Эффективность, практическая стратегия. Раскрывается в бизнесе и оптимизации.", strength: "Бизнес и оптимизация", risk: "Жёсткость и перегрев" },
-  { code: "E1", name: "Эмпат", world: "E", mode: "Генеративный", profs: "психолог · коуч · терапевт · помогающие профессии", desc: "Высокая чувствительность и эмпатия. Раскрывается в помощи и работе с состояниями.", strength: "Помощь и работа с состояниями", risk: "Перегруз чужими эмоциями" },
-  { code: "E2", name: "Артист", world: "E", mode: "Коммуникативный", profs: "актёр · ведущий · артист · креатор · медиа", desc: "Выразительность, харизма, живой контакт. Раскрывается на сцене, в медиа, контенте.", strength: "Сцена, медиа и контент", risk: "Нестабильность" },
-  { code: "E3", name: "Драйвер", world: "E", mode: "Управленческий", profs: "предприниматель · лидер · продюсер · основатель", desc: "Энергия, напор, влияние. Раскрывается в лидерстве и запуске.", strength: "Лидерство и запуск", risk: "Давление и выгорание" },
-];
+const TYPES = homeSections.gallery.items;
 
 const WORLD_LABELS = {
   S: "СМЫСЛОВ",
@@ -261,35 +252,34 @@ export const NeurotypeGallery = () => {
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
 
       <div className="container-geniq relative z-10 mb-8 sm:mb-10">
-        <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">GENIQ · Принцип работы</div>
+        <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{homeSections.gallery.eyebrow}</div>
         <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
-          Как работает <span className="gradient-text">система GENIQ</span>
+          {homeSections.gallery.title} <span className="gradient-text">{homeSections.gallery.accent_title}</span>
         </h2>
         <div className="reveal space-y-5 text-body text-[15px] leading-[1.7]">
-          <p>GENIQ рассматривает человека как целостную систему — не один ярлык, а сочетание. В её основе — <strong className="font-medium text-white/85">9 нейротипов</strong>.</p>
+          <p>{homeSections.gallery.intro}</p>
           <p className="text-white/55 italic">
-            Как именно они складываются — подробнее на странице{" "}
             <Link to="/system" className="text-[#B79BE0] hover:text-white transition-colors underline underline-offset-4">
-              «О системе»
+              {homeSections.gallery.link_text}
             </Link>.
           </p>
-          <h3 className="text-[24px] sm:text-[30px] font-medium pt-4"><span className="gradient-text">На чём построена система</span></h3>
-          <p>Мир меняется — и люди вместе с ним. Поэтому подход к пониманию своей уникальности и талантов важно собирать под современную реальность, а не подгонять себя под модели прошлого века.</p>
+          <h3 className="text-[24px] sm:text-[30px] font-medium pt-4"><span className="gradient-text">{homeSections.gallery.foundation_title}</span></h3>
+          <p>{homeSections.gallery.foundation_text}</p>
           <div className="rounded-[24px] border border-[#764CB0]/35 bg-[#764CB0]/8 p-5 sm:p-7">
             <p className="text-[17px] sm:text-[20px] leading-[1.65] text-white/84">
-              GENIQ — <strong className="font-medium text-white">система нейропрофилирования нового поколения</strong>. Она собрана на сегодняшних данных:
+              {homeSections.gallery.system_lead}
             </p>
             <p className="mt-4 border-l-2 border-[#B79BE0]/70 pl-4 text-[14px] sm:text-[15px] text-white/65">
-              современных исследованиях работы мозга, когнитивных науках и новом понимании природы талантов. И не внутри одного подхода или убеждения, а шире — на пересечении нейропсихологии, когнитивных наук и психологии личности.
+              {homeSections.gallery.system_details}
             </p>
           </div>
-          <p>Часть опирается на признанные подходы. Но значительная часть — <strong className="font-medium text-white/85">авторские наработки Натали Галаган</strong>, проверенные на сотнях живых диагностик.</p>
-          <h3 className="text-[24px] sm:text-[30px] font-medium pt-4"><span className="gradient-text">Система под вас — а не вы под систему</span></h3>
-          <p>GENIQ не подгоняет вас под 1 нейротип. Она делает обратное — собирает карту из 9 нейротипов под вашу индивидуальность.</p>
-          <p>Это глубже, чем определить 1 тип личности без учёта индивидуальных особенностей. Поэтому работа всегда личная и не массовая.</p>
-          <h3 className="gradient-text text-[24px] sm:text-[30px] font-medium pt-4">9 нейротипов</h3>
+          <p>{homeSections.gallery.author_note}</p>
+          <h3 className="text-[24px] sm:text-[30px] font-medium pt-4"><span className="gradient-text">{homeSections.gallery.personal_title}</span></h3>
+          <p>{homeSections.gallery.personal_text}</p>
+          <p>{homeSections.gallery.personal_note}</p>
+          <h3 className="gradient-text text-[24px] sm:text-[30px] font-medium pt-4">{homeSections.gallery.types_title}</h3>
           <p className="rounded-[24px] border border-white/10 bg-white/[0.025] p-5 sm:p-6 text-[16px] sm:text-[18px] leading-[1.7] text-white/76">
-            Нейротип — это особая модель мышления, эмоций и действий, которая собирается в единый портрет для удобства. Всего таких портретов 9, и в вас есть они все. Однако <strong className="font-medium text-white">1 нейротип будет ведущим</strong>: он отвечает за ваше мышление, принципы, анализ и интуицию.
+            {homeSections.gallery.types_text}
           </p>
         </div>
       </div>

@@ -1,36 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { GraduationCap, ScrollText, Home, X } from "lucide-react";
 import WardrobeSvg from "./WardrobeSvg";
+import homeSections from "@/content/home-sections.json";
 
-const CARDS = [
-  {
-    id: "school",
-    title: "Школа",
-    text: "Учили быть удобным, покорным и не выделяться.",
-    Icon: GraduationCap,
-    accent: "#6080F1",
-  },
-  {
-    id: "university",
-    title: "Университет",
-    text: "Учили профессии — но не рассказали, как в ней развиваться именно вам.",
-    Icon: ScrollText,
-    accent: "#F1D160",
-  },
-  {
-    id: "family",
-    title: "Семья",
-    text: "Учили «как надо» — а не «как вам естественнее».",
-    Icon: Home,
-    accent: "#7EC8A0",
-  },
-];
-
-const STATS = [
-  { id: "s1", text: "Каждое утро миллионы людей просыпаются с одним вопросом:", highlight: "на правильном ли я пути?" },
-  { id: "s2", text: "выбрали бы другую профессию, будь возможность начать заново. Superjob, 2025", highlight: "55% людей" },
-  { id: "s3", text: "Многие ощущают в себе силу на большее, но годами", highlight: "держат идеи при себе" },
-];
+const CARD_ICONS = { school: GraduationCap, university: ScrollText, family: Home };
+const CARDS = homeSections.wardrobe.cards.map((card) => ({ ...card, Icon: CARD_ICONS[card.icon] || GraduationCap }));
+const STATS = homeSections.wardrobe.stats;
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -62,23 +37,13 @@ export const Section2 = () => {
           {/* LEFT: text + cards */}
           <div className="lg:col-span-7">
             <h2 className="reveal text-[34px] sm:text-[42px] lg:text-[48px] font-medium leading-[1.08] text-white mb-10 max-w-[640px]">
-              Где прячется наша уникальность
+              {homeSections.wardrobe.title}
             </h2>
 
             <div className="reveal space-y-5 text-body text-[15.5px] leading-[1.7] max-w-[600px]">
-              <p>
-                Представьте: вам дали шкаф и сказали собрать — сотни деталей, крепежей, панелей.{" "}
-                <span className="text-violet-strong" style={{ color: "#B79BE0" }}>И ни одной инструкции.</span>
-              </p>
-              <p>
-                Вы собираете наугад: <span style={{ color: "#B79BE0" }}>что-то держится, что-то рассыпается</span>. И устаёте, потому что без схемы любая сборка превращается в борьбу.
-              </p>
-              <p>
-                Именно это происходит, когда вы живёте <span style={{ color: "#B79BE0" }}>без понимания себя</span> и своих природных способностей.
-              </p>
-              <p>
-                <span style={{ color: "#B79BE0" }}>Инструкцию к себе приходится собирать по крупицам</span> — потому что её никто не дал:
-              </p>
+              {homeSections.wardrobe.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph.before}<span style={{ color: "#B79BE0" }}>{paragraph.accent}</span>{paragraph.after}</p>
+              ))}
             </div>
 
             {/* 3 cards */}
@@ -101,7 +66,7 @@ export const Section2 = () => {
             </div>
 
             <p className="reveal mt-8 text-body text-[15px] max-w-[600px]">
-              И вот вы, со всеми своими деталями, пытаетесь собрать себя <span style={{ color: "#B79BE0" }}>на ощупь и интуитивно</span>.
+              {homeSections.wardrobe.conclusion.before}<span style={{ color: "#B79BE0" }}>{homeSections.wardrobe.conclusion.accent}</span>{homeSections.wardrobe.conclusion.after}
             </p>
           </div>
 
@@ -118,7 +83,7 @@ export const Section2 = () => {
         {/* Statistics panel */}
         <div data-testid="stats-panel" className="reveal mt-20 geniq-glass rounded-[28px] p-7 sm:p-9 grid lg:grid-cols-4 gap-6 items-center">
           <div className="lg:col-span-1">
-            <div className="text-white text-[18px] font-medium mb-3">Это не единичная история</div>
+            <div className="text-white text-[18px] font-medium mb-3">{homeSections.wardrobe.stats_title}</div>
             <div className="h-px w-16 bg-gradient-to-r from-[#764CB0] to-transparent" />
             <div className="mt-3 w-2 h-2 rounded-full bg-[#B79BE0] pulse-dot" />
           </div>
@@ -128,9 +93,7 @@ export const Section2 = () => {
                 <X size={20} strokeWidth={1.4} className="text-[#B79BE0]" />
               </div>
               <p className="text-body text-[13px] leading-[1.55]">
-                {s.id === "s1" && <>{s.text} <span style={{ color: "#B79BE0" }}>{s.highlight}</span></>}
-                {s.id === "s2" && <><span style={{ color: "#B79BE0" }}>{s.highlight} </span>{s.text}</>}
-                {s.id === "s3" && <>{s.text} <span style={{ color: "#B79BE0" }}>{s.highlight}</span>, не решаясь начать.</>}
+                {s.before}<span style={{ color: "#B79BE0" }}>{s.highlight}</span>{s.after}
               </p>
             </div>
           ))}

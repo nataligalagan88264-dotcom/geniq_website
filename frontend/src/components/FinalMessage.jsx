@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import homeSections from "@/content/home-sections.json";
+
+const CONTENT = homeSections.final_message;
 
 /**
  * Final message section — for readers who scrolled to the end.
@@ -43,35 +46,35 @@ export const FinalMessage = () => {
 
       <div className="container-geniq relative z-10 max-w-3xl text-center">
         <div className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="text-[11px] uppercase tracking-[0.24em] text-white/45 mb-7">Послание дочитавшим</div>
+          <div className="text-[11px] uppercase tracking-[0.24em] text-white/45 mb-7">{CONTENT.eyebrow}</div>
 
           <p className="text-white/85 text-[20px] sm:text-[24px] leading-[1.5] mb-7 font-light">
-            Вы дочитали до конца и уделили этому <span className="gradient-text font-medium">{minutes} {minutes === 1 ? "минуту" : minutes < 5 ? "минуты" : "минут"}</span> своего времени.
+            {CONTENT.time_before} <span className="gradient-text font-medium">{minutes} {minutes === 1 ? "минуту" : minutes < 5 ? "минуты" : "минут"}</span> {CONTENT.time_after}
           </p>
 
           <p className="text-body text-[16px] leading-[1.7] mb-5">
-            Значит, внутри есть вопросы, на которые сложно ответить самому.
+            {CONTENT.intro}
           </p>
 
           <p className="text-white/82 text-[20px] sm:text-[25px] leading-[1.55] mb-5">
-            Сейчас вы можете закрыть эту страницу, сказать себе <span className="text-[#B79BE0]">«подумаю об этом позже»</span> — и остаться в том же круге мыслей без действий.
+            {CONTENT.choice_one_before} <span className="text-[#B79BE0]">{CONTENT.choice_one_accent}</span> {CONTENT.choice_one_after}
           </p>
 
           <p className="text-white/82 text-[20px] sm:text-[25px] leading-[1.55] mb-9">
-            А можете прийти ко мне на встречу-знакомство и приложить усилие к тому, чтобы ваш запрос обрёл форму. А возможно — и <span className="text-[#B79BE0]">решение</span>.
+            {CONTENT.choice_two_before} <span className="text-[#B79BE0]">{CONTENT.choice_two_accent}</span>{CONTENT.choice_two_after}
           </p>
 
           <div className="max-w-[860px] mx-auto mb-10">
             <img
-              src="/uploads/final-choice-hands.png"
-              alt="Два возможных решения: отложить вопрос или перейти к его решению"
+              src={CONTENT.image}
+              alt={CONTENT.image_alt}
               loading="lazy"
               decoding="async"
               className="w-full aspect-[3/2] object-contain"
             />
             <div className="grid grid-cols-2 gap-4 sm:gap-10 -mt-2 sm:-mt-4">
-              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/55">подумаю об этом позже</p>
-              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/88">хочу решить запрос</p>
+              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/55">{CONTENT.left_caption}</p>
+              <p className="text-[13px] sm:text-[16px] leading-[1.45] text-white/88">{CONTENT.right_caption}</p>
             </div>
           </div>
 
@@ -80,7 +83,7 @@ export const FinalMessage = () => {
             onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" })}
             className="group text-body text-[15.5px] leading-[1.7] mb-10 max-w-2xl mx-auto transition-colors hover:text-white"
           >
-            Если выбираете второе — листайте вверх, к записи на встречу, и бронируйте место. Я найду для вас время.
+            {CONTENT.back_to_top}
             <ArrowUp size={32} className="inline-block ml-2 text-[#B79BE0] transition-transform group-hover:-translate-y-1" />
           </button>
         </div>

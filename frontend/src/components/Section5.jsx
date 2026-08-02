@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import homeSections from "@/content/home-sections.json";
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -27,7 +28,7 @@ export const Section5 = () => {
                style={{ background: "radial-gradient(circle, rgba(96,128,241,0.10), transparent 60%)" }} />
 
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.22] font-normal text-white max-w-[820px] mx-auto relative z-10">
-            Все это — про одно: <span className="gradient-text">собрать о себе полную картину</span> и выстроить систему из этого понимания.
+            {homeSections.final_bridge.before} <span className="gradient-text">{homeSections.final_bridge.accent}</span> {homeSections.final_bridge.after}
           </h2>
         </div>
       </div>

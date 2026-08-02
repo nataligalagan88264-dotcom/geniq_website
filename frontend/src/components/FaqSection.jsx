@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import CtaButton from "./CtaButton";
 import faqItems from "@/content/faq.json";
+import homeSections from "@/content/home-sections.json";
 
 export const FAQ_ITEMS = faqItems.items;
+const CONTENT = homeSections.faq;
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -25,12 +27,12 @@ export const FaqSection = ({ withCta = true }) => {
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
         <div className="reveal mb-10">
-          <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">FAQ</div>
+          <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{CONTENT.eyebrow}</div>
           <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-normal text-white leading-[1.1] mb-5">
-            Частые <span className="gradient-text">вопросы</span>
+            {CONTENT.title} <span className="gradient-text">{CONTENT.accent_title}</span>
           </h2>
           <p className="text-body text-[15px] sm:text-[16px] leading-[1.65] max-w-2xl">
-            Ответы на самые частые вопросы про диагностику, нейротипы, подход и работу с GENIQ.
+            {CONTENT.description}
           </p>
         </div>
         <div className="space-y-3">
@@ -46,7 +48,7 @@ export const FaqSection = ({ withCta = true }) => {
         </div>
         {withCta && (
           <div className="reveal mt-10 flex justify-center">
-            <CtaButton testId="faq-cta">Пройти тест</CtaButton>
+            <CtaButton testId="faq-cta">{CONTENT.button}</CtaButton>
           </div>
         )}
       </div>

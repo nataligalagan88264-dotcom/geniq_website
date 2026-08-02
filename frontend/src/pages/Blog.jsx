@@ -61,9 +61,9 @@ export default function Blog() {
         {/* Categories preview */}
         <section className="mb-20">
           <div className="reveal mb-8">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">Coming categories</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">{blogContent.sections.categories_eyebrow}</div>
             <h2 className="text-[24px] sm:text-[30px] font-normal text-white leading-[1.15]">
-              О чём будет <span className="gradient-text">блог</span>
+              {blogContent.sections.categories_title} <span className="gradient-text">{blogContent.sections.categories_accent_title}</span>
             </h2>
           </div>
           <div className="blog-category-grid grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -76,7 +76,7 @@ export default function Blog() {
                   </div>
                   <div className="min-w-0">
                     <div className="text-white text-[14px] font-medium leading-tight">{c.name}</div>
-                    <div className="text-white/40 text-[11px] mt-1">~{c.count} статей</div>
+                    <div className="text-white/40 text-[11px] mt-1">~{c.count} {blogContent.sections.articles_count_suffix}</div>
                   </div>
                 </div>
               );
@@ -87,9 +87,9 @@ export default function Blog() {
         {/* Article teasers */}
         <section className="mb-24">
           <div className="reveal mb-8">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">Coming soon</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">{blogContent.sections.articles_eyebrow}</div>
             <h2 className="text-[24px] sm:text-[30px] font-normal text-white leading-[1.15]">
-              Первые <span className="gradient-text">статьи</span>
+              {blogContent.sections.articles_title} <span className="gradient-text">{blogContent.sections.articles_accent_title}</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-5">

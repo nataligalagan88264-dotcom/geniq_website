@@ -91,7 +91,7 @@ export const Header = () => {
         </nav>
 
         <div className="hidden xl:flex items-center">
-          <CtaButton testId="header-cta">Пройти тест</CtaButton>
+          <CtaButton testId="header-cta">{siteContent.header_cta}</CtaButton>
         </div>
 
         {/* Mobile burger */}
@@ -135,7 +135,7 @@ export const Header = () => {
               );
             })}
             <div className="pt-2">
-              <CtaButton testId="mobile-header-cta">Пройти тест</CtaButton>
+              <CtaButton testId="mobile-header-cta">{siteContent.header_cta}</CtaButton>
             </div>
           </div>
         </div>

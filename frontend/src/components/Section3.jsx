@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import homeSections from "@/content/home-sections.json";
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -42,12 +43,12 @@ export const Section3 = () => {
 
       <div className="container-geniq relative z-10 max-w-3xl text-center">
         <h2 className="reveal text-[30px] sm:text-[40px] lg:text-[46px] leading-[1.18] font-normal text-white mb-10">
-          Но что, если собирать себя вслепую — <span className="gradient-text">больше не единственный вариант?</span>
+          {homeSections.bridge.title} <span className="gradient-text">{homeSections.bridge.accent_title}</span>
         </h2>
 
         <p className="reveal text-body text-[16px] sm:text-[17px] leading-[1.72] max-w-[680px] mx-auto">
-          <span style={{ color: "#B79BE0" }}>Путь не предопределён.</span> То, что вы решите сегодня,{" "}
-          <span style={{ color: "#B79BE0" }}>задаёт направление на годы вперёд.</span> Для помощи на этом пути и была создана GENIQ.
+          {homeSections.bridge.text_before}<span style={{ color: "#B79BE0" }}>{homeSections.bridge.text_accent}</span>{homeSections.bridge.text_middle}
+          <span style={{ color: "#B79BE0" }}>{homeSections.bridge.text_second_accent}</span>{homeSections.bridge.text_after}
         </p>
       </div>
     </section>

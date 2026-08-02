@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Eye, Box, ArrowUp, Battery, Target, Sparkles } from "lucide-react";
+import homeSections from "@/content/home-sections.json";
 
-const APPS = [
-  { id: "self", title: "Для понимания себя", text: "Увидеть, как вы устроены на глубоком уровне, и перестать считать свои особенности дефектом.", Icon: Eye },
-  { id: "product", title: "Для создания своего продукта / бизнеса", text: "Понять, какой продукт вы можете создать, и собрать его на базе своих талантов и экспертизы.", Icon: Box },
-  { id: "ceiling", title: "Пробить стеклянный потолок", text: "Увидеть, что годами держит вас на одном уровне дохода и роста, — и сдвинуться с места.", Icon: ArrowUp },
-  { id: "energy", title: "Для энергии и ресурса", text: "Выйти из выгорания: понять, что вас истощает, а что восстанавливает — конкретную формулу ресурса.", Icon: Battery },
-  { id: "focus", title: "Для фокуса и действия", text: "Перестать распыляться и начать доводить идеи до реализации, а не гаснуть на старте.", Icon: Target },
-  { id: "shadow", title: "Выйти из тени", text: "Начать делиться знаниями и выйти к своей аудитории без саботажа.", Icon: Sparkles },
-];
+const APP_ICONS = { eye: Eye, box: Box, arrow: ArrowUp, battery: Battery, target: Target, sparkles: Sparkles };
+const APPS = homeSections.applications.items.map((item) => ({ ...item, Icon: APP_ICONS[item.icon] || Sparkles }));
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -47,9 +42,9 @@ export const Section4 = () => {
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="container-geniq relative z-10">
         <div className="mb-16">
-          <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">GENIQ · Сферы применения</div>
+          <div className="reveal text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{homeSections.applications.eyebrow}</div>
           <h2 className="reveal text-[32px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.1] text-white mb-5">
-            Для каких целей применима <span className="gradient-text">система</span>
+            {homeSections.applications.title} <span className="gradient-text">{homeSections.applications.accent_title}</span>
           </h2>
         </div>
 

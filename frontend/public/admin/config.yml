@@ -35,6 +35,7 @@ collections:
             fields:
               - { label: Название, name: label, widget: string }
               - { label: Ссылка, name: to, widget: string }
+          - { label: Текст кнопки в шапке, name: header_cta, widget: string }
           - label: Ссылки и медиа
             name: links
             widget: object
@@ -96,6 +97,61 @@ collections:
               - { label: Цветная часть, name: accent_title, widget: string }
               - { label: Описание, name: description, widget: text }
               - { label: Примечание, name: note, widget: text }
+              - { label: Метка рекомендуемой карточки, name: recommended_label, widget: string }
+              - { label: Текст раскрытия, name: details_label, widget: string }
+              - label: Подробности диагностики
+                name: diagnostics
+                widget: object
+                fields:
+                  - { label: Введение, name: intro, widget: text }
+                  - label: Встречи
+                    name: stages
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Заголовок, name: title, widget: string }
+                      - { label: Что происходит, name: what, widget: text }
+                      - { label: Что получает клиент, name: result, widget: text }
+                      - { label: На что влияет, name: impact, widget: text }
+              - label: Подробности индивидуальных треков
+                name: tracks
+                widget: object
+                fields:
+                  - { label: Введение, name: intro, widget: text }
+                  - label: 5 этапов
+                    name: stages
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Заголовок, name: title, widget: string }
+                      - { label: Текст, name: text, widget: text }
+                  - { label: Итог, name: result, widget: text }
+                  - label: Направления
+                    name: directions
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Название, name: title, widget: string }
+                      - { label: Формат, name: meta, widget: text }
+                      - { label: Абзацы, name: paragraphs, widget: list }
+                      - { label: Что входит, name: bullets, widget: list }
+                      - { label: Что забирает клиент, name: result, widget: text }
+              - { label: Подпись под карточками, name: footer_note, widget: text }
+              - label: Кому не подойдёт GENIQ
+                name: limitations
+                widget: object
+                fields:
+                  - { label: Надпись сверху, name: eyebrow, widget: string }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Цветная часть, name: accent_title, widget: string }
+                  - { label: Описание, name: description, widget: text }
+                  - label: Ограничения
+                    name: items
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Заголовок, name: title, widget: string }
+                      - { label: Текст, name: text, widget: text }
               - label: Карточки
                 name: items
                 widget: list
@@ -112,6 +168,612 @@ collections:
                   - { label: Пункты, name: bullets, widget: list }
                   - { label: Кнопка, name: cta, widget: string }
                   - { label: Рекомендуемая, name: featured, widget: boolean, default: false }
+
+      - name: home_sections
+        label: Главная — смысловые блоки
+        file: frontend/src/content/home-sections.json
+        format: json
+        fields:
+          - label: История про шкаф
+            name: wardrobe
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - label: Абзацы
+                name: paragraphs
+                widget: list
+                fields:
+                  - { label: Текст до акцента, name: before, widget: text, required: false }
+                  - { label: Акцент, name: accent, widget: string, required: false }
+                  - { label: Текст после акцента, name: after, widget: text, required: false }
+              - label: Карточки
+                name: cards
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Иконка, name: icon, widget: select, options: [school, university, family] }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Текст, name: text, widget: text }
+                  - { label: Цвет, name: accent, widget: color }
+              - label: Вывод
+                name: conclusion
+                widget: object
+                fields:
+                  - { label: До акцента, name: before, widget: text }
+                  - { label: Акцент, name: accent, widget: string }
+                  - { label: После акцента, name: after, widget: text, required: false }
+              - { label: Заголовок фактов, name: stats_title, widget: string }
+              - label: Факты
+                name: stats
+                widget: list
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: До акцента, name: before, widget: text }
+                  - { label: Акцент, name: highlight, widget: string }
+                  - { label: После акцента, name: after, widget: text, required: false }
+          - label: Переход к системе
+            name: bridge
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть заголовка, name: accent_title, widget: string }
+              - { label: Текст до первого акцента, name: text_before, widget: text }
+              - { label: Первый акцент, name: text_accent, widget: string }
+              - { label: Средняя часть, name: text_middle, widget: text }
+              - { label: Второй акцент, name: text_second_accent, widget: string }
+              - { label: Текст после акцента, name: text_after, widget: text }
+          - label: Где применяется GENIQ
+            name: applications
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - label: Направления
+                name: items
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Иконка, name: icon, widget: select, options: [eye, box, arrow, battery, target, sparkles] }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Текст, name: text, widget: text }
+          - label: Переход к нейротипам
+            name: final_bridge
+            widget: object
+            fields:
+              - { label: До акцента, name: before, widget: text }
+              - { label: Акцент, name: accent, widget: string }
+              - { label: После акцента, name: after, widget: text }
+          - label: Блок 9 нейротипов
+            name: gallery
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Вступление, name: intro, widget: text }
+              - { label: Заголовок о типах, name: types_title, widget: string }
+              - { label: Текст о типах, name: types_text, widget: text }
+              - { label: Заголовок об основе, name: foundation_title, widget: string }
+              - { label: Текст об основе, name: foundation_text, widget: text }
+              - { label: Заголовок об индивидуальности, name: personal_title, widget: string }
+              - { label: Текст об индивидуальности, name: personal_text, widget: text }
+              - { label: Дополнение об индивидуальности, name: personal_note, widget: text }
+              - { label: Ведущая фраза, name: system_lead, widget: text }
+              - { label: Подробности, name: system_details, widget: text }
+              - { label: Авторская пометка, name: author_note, widget: text }
+              - { label: Текст ссылки, name: link_text, widget: string }
+              - label: Карточки нейротипов
+                name: items
+                widget: list
+                summary: "{{fields.code}} — {{fields.name}}"
+                fields:
+                  - { label: Код, name: code, widget: string }
+                  - { label: Название, name: name, widget: string }
+                  - { label: Мир, name: world, widget: select, options: [S, E, T] }
+                  - { label: Режим, name: mode, widget: select, options: [Генеративный, Коммуникативный, Управленческий] }
+                  - { label: Профессии, name: profs, widget: text }
+                  - { label: Описание, name: desc, widget: text }
+                  - { label: Сила, name: strength, widget: text }
+                  - { label: Риск, name: risk, widget: text }
+          - label: Блок 5 осей
+            name: code_map
+            widget: object
+            fields:
+              - { label: Вопрос до акцента, name: question_before, widget: string }
+              - { label: Акцент вопроса, name: question_accent, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Вывод, name: conclusion, widget: text }
+              - { label: Переход, name: transition, widget: text }
+              - { label: Финальный вопрос, name: final_question, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+          - label: Партнёрство на главной
+            name: partnership
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Вопросы аудитории, name: intro, widget: text }
+              - { label: Приглашение, name: invitation_before, widget: string }
+              - { label: Цветная часть приглашения, name: invitation_accent, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+              - { label: Изображение, name: image, widget: image }
+              - { label: Описание изображения, name: image_alt, widget: string }
+              - { label: Заголовок коллабораций, name: collaborations_title, widget: string }
+              - label: Направления партнёрства
+                name: partners
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: Иконка, name: icon, widget: select, options: [briefcase, graduation-cap, cpu, star, mic] }
+                  - { label: Название, name: label, widget: string }
+          - label: Оформление FAQ на главной
+            name: faq
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+          - label: Послание дочитавшим
+            name: final_message
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Текст перед временем, name: time_before, widget: string }
+              - { label: Текст после времени, name: time_after, widget: string }
+              - { label: Введение, name: intro, widget: text }
+              - { label: Первый выбор — начало, name: choice_one_before, widget: text }
+              - { label: Первый выбор — акцент, name: choice_one_accent, widget: string }
+              - { label: Первый выбор — окончание, name: choice_one_after, widget: text }
+              - { label: Второй выбор — начало, name: choice_two_before, widget: text }
+              - { label: Второй выбор — акцент, name: choice_two_accent, widget: string }
+              - { label: Второй выбор — окончание, name: choice_two_after, widget: string }
+              - { label: Изображение, name: image, widget: image }
+              - { label: Описание изображения, name: image_alt, widget: string }
+              - { label: Левая подпись, name: left_caption, widget: string }
+              - { label: Правая подпись, name: right_caption, widget: string }
+              - { label: Подсказка возврата, name: back_to_top, widget: text }
+
+      - name: author
+        label: Главная — об авторе
+        file: frontend/src/content/author.json
+        format: json
+        fields:
+          - { label: Надпись сверху, name: eyebrow, widget: string }
+          - { label: Заголовок, name: title, widget: string }
+          - { label: Цветная часть, name: accent_title, widget: string }
+          - { label: Продолжение заголовка, name: title_suffix, widget: string }
+          - label: Карточка автора
+            name: card
+            widget: object
+            fields:
+              - { label: Описание фото, name: alt, widget: string }
+              - { label: Надпись, name: eyebrow, widget: string }
+              - { label: Имя, name: name, widget: string }
+              - { label: Роль, name: role, widget: string }
+              - { label: Подтверждение опыта, name: proof, widget: string }
+          - label: История автора
+            name: paragraphs
+            widget: list
+            summary: "{{fields.variant}} — {{fields.text}}"
+            fields:
+              - { label: Оформление, name: variant, widget: select, options: [normal, lead, quote, proof, transition] }
+              - { label: Текст, name: text, widget: text }
+
+      - name: about
+        label: Страница «О системе»
+        file: frontend/src/content/about.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Продолжение, name: title_suffix, widget: string }
+          - label: Метафора с корзиной
+            name: basket
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Карточки, name: cards, widget: list }
+              - { label: Описание медиа, name: media_alt, widget: string }
+          - label: Главная идея
+            name: main_idea
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Пункты, name: points, widget: list }
+              - { label: Вывод, name: conclusion, widget: text }
+          - label: Главная формула
+            name: main_formula
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Текст, name: text, widget: string }
+              - { label: Акцент, name: accent, widget: string }
+              - { label: Окончание, name: suffix, widget: string }
+          - label: Переход к 5 осям
+            name: axes_intro
+            widget: object
+            fields:
+              - { label: Вопрос, name: question, widget: text }
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+          - label: Введение в нейротипы
+            name: neurotype_intro
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Надпись над формулой, name: formula_eyebrow, widget: string }
+              - { label: Формула, name: formula, widget: string }
+              - { label: Пояснение формулы, name: formula_text, widget: text }
+              - { label: Ссылка на каталог, name: catalog_text, widget: string }
+          - label: Матрица 9 нейротипов
+            name: matrix
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Подсказка, name: hint, widget: text }
+              - { label: Вывод, name: conclusion, widget: text }
+              - { label: Окончание вывода, name: conclusion_suffix, widget: text }
+              - label: Строки таблицы
+                name: rows
+                widget: list
+                summary: "{{fields.world}}"
+                fields:
+                  - { label: Мир, name: world, widget: string }
+                  - { label: Режим 1, name: mode_1, widget: string }
+                  - { label: Режим 2, name: mode_2, widget: string }
+                  - { label: Режим 3, name: mode_3, widget: string }
+              - label: Подписи 9 нейротипов
+                name: neurotypes
+                widget: list
+                summary: "{{fields.code}} — {{fields.name}}"
+                fields:
+                  - { label: Код, name: code, widget: string }
+                  - { label: Название, name: name, widget: string }
+                  - { label: Роль в мире, name: role, widget: text }
+          - label: 5 осей GENIQ
+            name: axes
+            widget: list
+            summary: "{{fields.code}} — {{fields.title}}"
+            fields:
+              - { label: Код, name: code, widget: string }
+              - { label: Название, name: title, widget: string }
+              - { label: Вопрос, name: question, widget: string }
+              - { label: Краткое описание, name: subtitle, widget: text }
+              - { label: Иконка, name: icon, widget: select, options: [brain, battery, chevrons-right, flower, eye] }
+              - { label: Полное описание, name: text, widget: text }
+              - { label: Параметры, name: params, widget: list }
+          - label: 3 мира восприятия
+            name: worlds
+            widget: list
+            summary: "{{fields.code}} — {{fields.title}}"
+            fields:
+              - { label: Код, name: code, widget: select, options: [S, E, T] }
+              - { label: Название, name: title, widget: string }
+              - { label: Описание, name: text, widget: text }
+              - { label: Функция, name: function, widget: text }
+              - { label: Нейротипы, name: neurotypes, widget: string }
+              - { label: Иконка, name: icon, widget: select, options: [brain, sparkles, layers] }
+          - label: 3 режима мышления
+            name: modes
+            widget: list
+            summary: "{{fields.code}} — {{fields.title}}"
+            fields:
+              - { label: Код, name: code, widget: select, options: ['1', '2', '3'] }
+              - { label: Название, name: title, widget: string }
+              - { label: Действие, name: action, widget: string }
+              - { label: Описание, name: text, widget: text }
+              - { label: Функция, name: function, widget: text }
+              - { label: Нейротипы, name: neurotypes, widget: string }
+          - label: Все 9 нейротипов
+            name: multiple
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Цитата, name: quote, widget: text }
+          - label: Диагностика
+            name: diagnostics
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+          - label: Ссылка на каталог
+            name: catalog_cta
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Текст, name: text, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+          - label: Финальный призыв
+            name: final_cta
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Продолжение, name: title_suffix, widget: string }
+              - { label: Текст, name: text, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+
+      - name: neurotypes_page
+        label: Страница «Нейротипы»
+        file: frontend/src/content/neurotypes-page.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Ведущий абзац, name: lead, widget: text }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Цитата, name: quote, widget: text }
+              - { label: Формула, name: formula, widget: string }
+              - { label: Пояснение формулы, name: formula_text, widget: text }
+              - { label: Описание инструмента, name: tool_text, widget: text }
+              - { label: Текст ссылки на систему, name: system_link_text, widget: string }
+              - { label: Описание медиа, name: media_alt, widget: string }
+          - label: Заголовок матрицы
+            name: matrix
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - label: Строки таблицы
+                name: rows
+                widget: list
+                summary: "{{fields.world}}"
+                fields:
+                  - { label: Мир, name: world, widget: string }
+                  - { label: Режим 1, name: mode_1, widget: string }
+                  - { label: Режим 2, name: mode_2, widget: string }
+                  - { label: Режим 3, name: mode_3, widget: string }
+          - label: Заголовок каталога
+            name: catalog
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+          - label: 3 мира восприятия
+            name: worlds
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Код, name: code, widget: select, options: [S, E, T] }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Иконка, name: icon, widget: select, options: [brain, heart, wrench] }
+              - { label: Введение, name: lead, widget: text }
+              - { label: Описание, name: text, widget: text }
+              - { label: Что внутри, name: inside, widget: text }
+          - label: Все 9 нейротипов
+            name: multiple
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+          - label: Краткие описания карточек
+            name: summaries
+            widget: list
+            summary: "{{fields.code}}"
+            fields:
+              - { label: Код, name: code, widget: string }
+              - { label: Описание, name: text, widget: text }
+          - label: Подробные карточки 9 нейротипов
+            name: neurotypes
+            widget: list
+            summary: "{{fields.code}} — {{fields.name}}"
+            fields:
+              - { label: Код, name: code, widget: string }
+              - { label: Название, name: name, widget: string }
+              - { label: Мир, name: world, widget: select, options: [S, E, T] }
+              - { label: Режим, name: mode, widget: string }
+              - { label: Название цвета, name: colorName, widget: string }
+              - { label: Формула, name: formula, widget: text }
+              - { label: Краткое описание, name: collapsed, widget: text }
+              - { label: Кто это, name: who, widget: text }
+              - { label: Главная ценность, name: value, widget: text }
+              - { label: Таланты, name: talents, widget: text }
+              - { label: Как выглядит со стороны, name: look, widget: text }
+              - { label: Типичные вопросы, name: questions, widget: text }
+              - { label: Заряжает, name: charge, widget: text }
+              - { label: Истощает, name: drain, widget: text }
+              - { label: Суперсила, name: superpower, widget: text }
+              - { label: В стрессе, name: stress, widget: text }
+          - label: Финальный призыв
+            name: cta
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Текст, name: text, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+
+      - name: approach
+        label: Страница «Подход»
+        file: frontend/src/content/approach.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Продолжение, name: title_suffix, widget: string }
+              - { label: Описание, name: description, widget: text }
+          - label: Этапы работы
+            name: steps_section
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - label: Этапы
+                name: items
+                widget: list
+                summary: "{{fields.n}} — {{fields.title}}"
+                fields:
+                  - { label: Номер, name: n, widget: string }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Текст, name: text, widget: text }
+          - label: Сравнение подходов
+            name: comparison
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Продолжение, name: title_suffix, widget: string }
+              - label: Колонки сравнения
+                name: items
+                widget: list
+                fields:
+                  - { label: Метка, name: label, widget: string }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Приглушённая колонка, name: muted, widget: boolean, default: false }
+                  - { label: Пункты, name: points, widget: list }
+              - { label: Метафора, name: metaphor, widget: text }
+          - label: Принцип работы
+            name: principle
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Текст, name: text, widget: text }
+          - label: Вопросы и ответы
+            name: faq_section
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - label: Вопросы
+                name: items
+                widget: list
+                summary: "{{fields.q}}"
+                fields:
+                  - { label: Вопрос, name: q, widget: string }
+                  - { label: Ответ, name: a, widget: text }
+          - label: Финальный призыв
+            name: cta
+            widget: object
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Продолжение, name: title_suffix, widget: string }
+              - { label: Основная кнопка, name: primary_button, widget: string }
+              - { label: Вторая кнопка, name: secondary_button, widget: string }
+
+      - name: partners
+        label: Страница «Партнёрам»
+        file: frontend/src/content/partners.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Кнопка для экспертов, name: experts_button, widget: string }
+              - { label: Кнопка для бизнеса, name: business_button, widget: string }
+              - { label: Изображение, name: image, widget: image }
+              - { label: Описание изображения, name: image_alt, widget: string }
+          - label: Для экспертов
+            name: experts
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Заголовок модели, name: model_title, widget: string }
+              - { label: Подзаголовок модели, name: model_subtitle, widget: string }
+              - { label: Описание модели, name: model_paragraphs, widget: list }
+              - { label: Заголовок аудитории, name: audience_title, widget: string }
+              - { label: Аудитория, name: audience, widget: list }
+              - { label: Кнопка, name: button, widget: string }
+          - label: Для бизнеса
+            name: business
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - label: Направления для компаний
+                name: directions
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Иконка, name: icon, widget: select, options: [briefcase, graduation-cap, cpu, star] }
+                  - { label: Заголовок, name: title, widget: string }
+                  - { label: Подзаголовок, name: subtitle, widget: string }
+                  - { label: Проблема, name: pain, widget: text }
+                  - { label: Что даёт GENIQ, name: points, widget: list }
+                  - { label: Переход после пунктов, name: afterPoints, widget: text, required: false }
+                  - { label: Итог, name: result, widget: text }
+              - { label: Этапы процесса, name: process, widget: list }
+              - { label: Заголовок брифинга, name: briefing_title, widget: string }
+              - { label: Текст брифинга, name: briefing_text, widget: text }
+              - { label: Кнопка, name: button, widget: string }
+
+      - name: privacy
+        label: Политика конфиденциальности
+        file: frontend/src/content/privacy.json
+        format: json
+        fields:
+          - label: Первый экран
+            name: hero
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+          - label: Разделы политики
+            name: sections
+            widget: list
+            hint: Юридические формулировки следует менять только после согласования с юристом. Переменные в фигурных скобках оставляйте без изменений.
+            summary: "{{fields.number}}. {{fields.title}}"
+            fields:
+              - { label: Номер, name: number, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Абзацы, name: paragraphs, widget: list }
+              - { label: Списки, name: bullets, widget: list, required: false }
+          - { label: Заголовок контактов, name: contacts_title, widget: string }
 
       - name: blog
         label: Блог
@@ -133,6 +795,17 @@ collections:
               - { label: Надпись, name: eyebrow, widget: string }
               - { label: Заголовок, name: title, widget: string }
               - { label: Описание, name: description, widget: text }
+          - label: Заголовки разделов
+            name: sections
+            widget: object
+            fields:
+              - { label: Надпись над категориями, name: categories_eyebrow, widget: string }
+              - { label: Заголовок категорий, name: categories_title, widget: string }
+              - { label: Цветная часть заголовка категорий, name: categories_accent_title, widget: string }
+              - { label: Надпись над статьями, name: articles_eyebrow, widget: string }
+              - { label: Заголовок статей, name: articles_title, widget: string }
+              - { label: Цветная часть заголовка статей, name: articles_accent_title, widget: string }
+              - { label: Подпись количества статей, name: articles_count_suffix, widget: string }
           - label: Категории
             name: categories
             widget: list
@@ -179,6 +852,19 @@ collections:
         file: frontend/src/content/reviews.json
         format: json
         fields:
+          - label: Оформление блока
+            name: section
+            widget: object
+            fields:
+              - { label: Надпись сверху, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Цветная часть, name: accent_title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Подпись запроса, name: request_label, widget: string }
+              - { label: Подпись текстового отзыва, name: text_review_label, widget: string }
+              - { label: Подпись видеоотзыва, name: video_review_label, widget: string }
+              - { label: Подпись Telegram-кружка, name: circle_review_label, widget: string }
+              - { label: Текст при ошибке видео, name: unsupported_video_text, widget: string }
           - label: Отзывы клиентов
             name: items
             widget: list
