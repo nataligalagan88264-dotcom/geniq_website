@@ -1829,7 +1829,7 @@ body.geniq-day-readable .dot-grid {
   padding: 20px 22px;
   border: 1px solid rgba(183, 155, 224, 0.28);
   border-left: 2px solid rgba(183, 155, 224, 0.82);
-  border-radius: 0 18px 18px 0;
+  border-radius: 6px 18px 18px 6px;
   color: rgba(255, 255, 255, 0.88);
   background:
     linear-gradient(110deg, rgba(118, 76, 176, 0.14), rgba(12, 10, 24, 0.18) 70%);
