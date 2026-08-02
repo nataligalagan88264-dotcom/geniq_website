@@ -192,8 +192,9 @@ const ReviewCard = ({ review, idx }) => {
 
       {review.quote && (
         <blockquote className="review-quote">
-          <Quote size={20} aria-hidden="true" />
+          <Quote className="review-quote-opening" size={20} aria-hidden="true" />
           <p>«{review.quote}»</p>
+          <Quote className="review-quote-closing" size={20} aria-hidden="true" />
         </blockquote>
       )}
 
