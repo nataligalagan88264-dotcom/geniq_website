@@ -4,6 +4,8 @@ import { Play, Quote, Send } from "lucide-react";
 const REVIEWS = [
   {
     name: "Иван",
+    avatar: "/uploads/reviews/ivan-avatar.jpg",
+    avatarPosition: "50% 34%",
     role: "Руководитель нотариальной палаты, ведущий игр «Мафия» и «Компас»",
     neurotype: "Стратег",
     request: "Понять себя на глубоком уровне и научиться удерживать фокус на важном, не распыляясь.",
@@ -16,6 +18,8 @@ const REVIEWS = [
   },
   {
     name: "Владимир",
+    avatar: "/uploads/reviews/vladimir-avatar.jpg",
+    avatarPosition: "50% 32%",
     role: "Мастер по работе с подсознанием",
     neurotype: "Драйвер",
     quote: "Мы как будто были на одной волне. Многие вещи понимались буквально с полуслова.",
@@ -27,6 +31,8 @@ const REVIEWS = [
   },
   {
     name: "Алина Г.",
+    avatar: "/uploads/reviews/alina-g-avatar.jpg",
+    avatarPosition: "48% 39%",
     role: "Аромадиагност и аромапрактик",
     handle: "@goosevaa",
     handleUrl: "https://t.me/goosevaa",
@@ -42,6 +48,8 @@ const REVIEWS = [
   },
   {
     name: "Анна",
+    avatar: "/uploads/reviews/anna-avatar.jpg",
+    avatarPosition: "50% 32%",
     handle: "@AnnieSphene",
     handleUrl: "https://t.me/AnnieSphene",
     neurotype: "Стратег",
@@ -54,6 +62,8 @@ const REVIEWS = [
   },
   {
     name: "Алёна",
+    avatar: "/uploads/reviews/alena-avatar.jpg",
+    avatarPosition: "50% 28%",
     handle: "@alyamoure",
     handleUrl: "https://t.me/alyamoure",
     neurotype: "Стратег",
@@ -144,12 +154,26 @@ const ReviewCard = ({ review, idx }) => {
       </div>
 
       <header className="review-person">
-        <h3>{review.name}</h3>
-        {review.role && <p>{review.role}</p>}
-        {review.handle && (
-          <a href={review.handleUrl} target="_blank" rel="noreferrer">
-            {review.handle}
-          </a>
+        <div className="review-person-copy">
+          <h3>{review.name}</h3>
+          {review.role && <p>{review.role}</p>}
+          {review.handle && (
+            <a href={review.handleUrl} target="_blank" rel="noreferrer">
+              {review.handle}
+            </a>
+          )}
+        </div>
+        {review.avatar && !isVideo && (
+          <img
+            className="review-avatar"
+            src={review.avatar}
+            alt=""
+            width="76"
+            height="76"
+            loading="lazy"
+            decoding="async"
+            style={{ objectPosition: review.avatarPosition }}
+          />
         )}
       </header>
 

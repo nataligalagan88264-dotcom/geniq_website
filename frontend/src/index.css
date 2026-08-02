@@ -1739,7 +1739,30 @@ body.geniq-day-readable .dot-grid {
 }
 
 .review-person {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
   margin-bottom: 20px;
+}
+
+.review-person-copy {
+  min-width: 0;
+}
+
+.review-avatar {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(183, 155, 224, 0.46);
+  border-radius: 50%;
+  object-fit: cover;
+  background: #0C0A18;
+  box-shadow:
+    0 0 0 5px rgba(118, 76, 176, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.32);
 }
 
 .review-person h3 {
@@ -1896,5 +1919,14 @@ body.geniq-day-readable .dot-grid {
 
   .review-video-circle-wrap {
     width: min(82vw, 300px);
+  }
+
+  .review-person {
+    gap: 14px;
+  }
+
+  .review-avatar {
+    width: 66px;
+    height: 66px;
   }
 }
