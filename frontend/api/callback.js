@@ -1,3 +1,11 @@
+const crypto = require("crypto");
+const {
+  getOAuthOrigin,
+  getOAuthRedirectUri,
+  serializeForInlineScript,
+  setOAuthResponseHeaders,
+} = require("../lib/oauth-security");
+
 const parseCookies = (header = "") =>
   Object.fromEntries(
     header
@@ -6,38 +14,58 @@ const parseCookies = (header = "") =>
       .filter(([key, value]) => key && value)
   );
 
-const renderResult = (status, content) => `<!doctype html>
+const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html>
 <html lang="ru">
-  <head><meta charset="utf-8"><title>GENIQ CMS</title></head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>GENIQ CMS</title>
+  </head>
   <body>
-    <script>
+    <script nonce="${nonce}">
+      const expectedOrigin = ${serializeForInlineScript(expectedOrigin)};
       const receiveMessage = (message) => {
+        if (message.source !== window.opener || message.origin !== expectedOrigin) return;
         window.opener.postMessage(
-          ${JSON.stringify(`authorization:github:${status}:`)} + ${JSON.stringify(JSON.stringify(content))},
-          message.origin
+          ${serializeForInlineScript(`authorization:github:${status}:`)} + ${serializeForInlineScript(JSON.stringify(content))},
+          expectedOrigin
         );
         window.removeEventListener("message", receiveMessage, false);
       };
       window.addEventListener("message", receiveMessage, false);
-      window.opener.postMessage("authorizing:github", "*");
+      if (window.opener) window.opener.postMessage("authorizing:github", expectedOrigin);
     </script>
   </body>
 </html>`;
 
 module.exports = async function handler(req, res) {
+  setOAuthResponseHeaders(res);
+
+  if (req.method !== "GET") {
+    res.setHeader("Allow", "GET");
+    return res.status(405).send("Method Not Allowed");
+  }
+
   const clientId = process.env.GITHUB_CLIENT_ID;
   const clientSecret = process.env.GITHUB_CLIENT_SECRET;
   const { code, state } = req.query;
   const cookies = parseCookies(req.headers.cookie);
-  const protocol = req.headers["x-forwarded-proto"] || "https";
-  const host = req.headers["x-forwarded-host"] || req.headers.host;
-  const redirectUri = `${protocol}://${host}/api/callback`;
+  const expectedOrigin = getOAuthOrigin();
+  const redirectUri = getOAuthRedirectUri();
+  const nonce = crypto.randomBytes(18).toString("base64");
+
+  res.setHeader(
+    "Content-Security-Policy",
+    `default-src 'none'; script-src 'nonce-${nonce}'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'`
+  );
 
   if (!clientId || !clientSecret) {
-    return res.status(500).send("GitHub OAuth environment variables are not configured");
+    return res.status(500).send("GitHub authentication is unavailable");
   }
   if (!code || !state || state !== cookies.decap_oauth_state) {
-    return res.status(401).send(renderResult("error", { message: "Invalid OAuth state" }));
+    return res
+      .status(401)
+      .send(renderResult("error", { message: "Invalid OAuth state" }, expectedOrigin, nonce));
   }
 
   try {
@@ -59,23 +87,37 @@ module.exports = async function handler(req, res) {
 
     res.setHeader(
       "Set-Cookie",
-      "decap_oauth_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0"
+      "decap_oauth_state=; Path=/api/callback; HttpOnly; Secure; SameSite=Lax; Max-Age=0"
     );
     res.setHeader("Content-Type", "text/html; charset=utf-8");
 
     if (!response.ok || result.error || !result.access_token) {
-      return res.status(401).send(renderResult("error", result));
+      return res.status(401).send(
+        renderResult(
+          "error",
+          { message: "GitHub authorization failed" },
+          expectedOrigin,
+          nonce
+        )
+      );
     }
 
     return res.status(200).send(
-      renderResult("success", {
-        token: result.access_token,
-        provider: "github"
-      })
+      renderResult(
+        "success",
+        { token: result.access_token, provider: "github" },
+        expectedOrigin,
+        nonce
+      )
     );
-  } catch (error) {
+  } catch (_error) {
     return res.status(500).send(
-      renderResult("error", { message: error.message || "OAuth request failed" })
+      renderResult(
+        "error",
+        { message: "OAuth request failed" },
+        expectedOrigin,
+        nonce
+      )
     );
   }
 };

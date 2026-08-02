@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "npm ci --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "trailingSlash": false,
@@ -9,42 +9,50 @@
   ],
   "headers": [
     {
+      "source": "/:path*",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" }
+      ]
+    },
+    {
       "source": "/admin/:path*",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "no-store" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://github.com; script-src 'self' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self' data: https:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://api.github.com https://github.com; worker-src 'self' blob:; upgrade-insecure-requests" }
+      ]
+    },
+    {
+      "source": "/api/:path*",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
         { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {
-      "source": "/api/:path*",
+      "source": "/static/:path*",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/models/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
       ]
     }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/:path*", "destination": "/admin/:path*" },
     { "source": "/system", "destination": "/system/index.html" },
     { "source": "/neurotypes", "destination": "/neurotypes/index.html" },
     { "source": "/approach", "destination": "/approach/index.html" },
     { "source": "/partners", "destination": "/partners/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
-      "continue": true
-    },
-    {
-      "src": "/models/(.*)",
-      "headers": { "Cache-Control": "public, max-age=2592000, stale-while-revalidate=86400" },
-      "continue": true
-    },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
   ]
 }

@@ -4,11 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://github.com; script-src 'self' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self' data: https:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://api.github.com https://github.com; worker-src 'self' blob:; upgrade-insecure-requests"
+    />
     <link rel="icon" href="/favicon.svg" />
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
     <title>GENIQ — редактор сайта</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
+    <script
+      src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"
+      integrity="sha384-Vwwn7nyPZTJRhuncX5Dci57xwjBjzTzQLSJefKuvOaT3x952fh4vT96UuHDi34zb"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
