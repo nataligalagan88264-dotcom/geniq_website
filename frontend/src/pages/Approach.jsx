@@ -136,7 +136,7 @@ export default function Approach() {
               {approachContent.cta.title} <span className="gradient-text">{approachContent.cta.accent_title}</span> {approachContent.cta.title_suffix}
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
-              <a href={FORM_URL} target="_blank" rel="noopener noreferrer" data-testid="approach-form-cta" className="geniq-cta">
+              <a href={FORM_URL} target="_blank" rel="noopener noreferrer" data-testid="approach-form-cta" data-ym-goal="form_open" className="geniq-cta">
                 <span>{approachContent.cta.primary_button}</span>
                 <span className="arrow"><ArrowUpRight size={18} strokeWidth={1.6} /></span>
               </a>

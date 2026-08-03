@@ -161,6 +161,7 @@ export const Section6Products = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`product-cta-${p.id}`}
+                  data-ym-goal="form_open"
                   className="geniq-cta self-start mt-auto"
                 >
                   <span>{p.cta}</span>

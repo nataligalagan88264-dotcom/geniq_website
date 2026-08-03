@@ -35,6 +35,12 @@ collections:
               - { label: Название, name: label, widget: string }
               - { label: Ссылка, name: to, widget: string }
           - { label: Текст кнопки в шапке, name: header_cta, widget: string }
+          - label: Аналитика
+            name: analytics
+            widget: object
+            hint: Укажите только числовой номер счётчика. После сохранения CMS автоматически опубликует Метрику на всех страницах.
+            fields:
+              - { label: Номер счётчика Яндекс.Метрики, name: yandex_metrica_id, widget: string, required: false, pattern: ['^\d*$', 'Допустимы только цифры'] }
           - label: Ссылки и медиа
             name: links
             widget: object

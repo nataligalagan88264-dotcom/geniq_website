@@ -26,6 +26,7 @@ export const Footer = () => {
                   href="/documents/public-offer.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-ym-goal="document_open"
                 >
                   Публичная оферта
                 </a>
@@ -37,19 +38,19 @@ export const Footer = () => {
               <ul className="flex flex-col gap-3 text-[13px] text-body">
                 <li className="flex items-center gap-2.5">
                   <Mail size={13} className="text-white/40" />
-                  <a href={`mailto:${LEGAL.email}`} className="hover:text-[#B79BE0] transition-colors">{LEGAL.email}</a>
+                  <a href={`mailto:${LEGAL.email}`} data-ym-goal="contact_click" data-ym-label="Email" className="hover:text-[#B79BE0] transition-colors">{LEGAL.email}</a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Phone size={13} className="text-white/40" />
-                  <a href={`tel:${LEGAL.phone.replace(/\s/g, "")}`} className="hover:text-[#B79BE0] transition-colors">{LEGAL.phone}</a>
+                  <a href={`tel:${LEGAL.phone.replace(/\s/g, "")}`} data-ym-goal="contact_click" data-ym-label="Телефон" className="hover:text-[#B79BE0] transition-colors">{LEGAL.phone}</a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Send size={13} className="text-white/40" />
-                  <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#B79BE0] transition-colors">@natali_galagan</a>
+                  <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" data-ym-goal="contact_click" data-ym-label="Telegram" className="hover:text-[#B79BE0] transition-colors">@natali_galagan</a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Instagram size={13} className="text-white/40" />
-                  <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#B79BE0] transition-colors">natali_talent</a>
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-ym-goal="contact_click" data-ym-label="Instagram" className="hover:text-[#B79BE0] transition-colors">natali_talent</a>
                 </li>
               </ul>
             </div>

@@ -34,6 +34,7 @@ const FormButton = ({ children, testId }) => (
     target="_blank"
     rel="noopener noreferrer"
     data-testid={testId}
+    data-ym-goal="partner_contact"
     className="geniq-cta"
   >
     <span>{children}</span>
@@ -61,8 +62,8 @@ export default function Partners() {
                 {partnersContent.hero.description}
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href="#partners-experts" className="geniq-cta"><span>{partnersContent.hero.experts_button}</span></a>
-                <a href="#partners-business" className="geniq-cta"><span>{partnersContent.hero.business_button}</span></a>
+                <a href="#partners-experts" data-ym-goal="partner_section_view" data-ym-label="Партнёрство со специалистами" className="geniq-cta"><span>{partnersContent.hero.experts_button}</span></a>
+                <a href="#partners-business" data-ym-goal="partner_section_view" data-ym-label="Партнёрство для бизнеса" className="geniq-cta"><span>{partnersContent.hero.business_button}</span></a>
               </div>
             </div>
             <div className="reveal relative">

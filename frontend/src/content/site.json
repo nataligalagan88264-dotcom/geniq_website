@@ -29,6 +29,9 @@
     }
   ],
   "header_cta": "Пройти тест",
+  "analytics": {
+    "yandex_metrica_id": ""
+  },
   "links": {
     "form_url": "https://t.me/neurotype_test_yaroslav_bot",
     "telegram_url": "https://t.me/natali_galagan",

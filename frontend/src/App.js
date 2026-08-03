@@ -9,6 +9,7 @@ import Blog from "@/pages/Blog";
 import Privacy from "@/pages/Privacy";
 import Partners from "@/pages/Partners";
 import Seo from "@/components/Seo";
+import YandexMetrica from "@/components/YandexMetrica";
 
 const HashScroll = () => {
   const location = useLocation();
@@ -148,6 +149,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Seo />
+        <YandexMetrica />
         <HashScroll />
         <Routes>
           <Route path="/" element={<Landing />} />

@@ -361,6 +361,7 @@ const DetailPanel = ({ axis }) => {
           target="_blank"
           rel="noopener noreferrer"
           data-testid="code-map-test-cta"
+          data-ym-goal="test_start"
           className="flex w-full items-center justify-center gap-2 h-12 rounded-full bg-[#764CB0] hover:bg-[#8A5DCC] transition-all text-white text-[13px] font-medium"
           style={{ boxShadow: "0 8px 30px -8px rgba(118,76,176,0.7)" }}
         >

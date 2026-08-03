@@ -18,6 +18,7 @@ export const CtaButton = ({
   onClick,
   variant = "primary",
   testId,
+  analyticsGoal,
   className = "",
 }) => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ export const CtaButton = ({
     return (
       <a
         data-testid={testId}
+        data-ym-goal={analyticsGoal ?? (isTestButton ? "test_start" : undefined)}
         href={effectiveHref}
         target="_blank"
         rel="noopener noreferrer"
@@ -54,7 +56,12 @@ export const CtaButton = ({
   };
 
   return (
-    <button data-testid={testId} onClick={handleClick} className={baseClasses}>
+    <button
+      data-testid={testId}
+      data-ym-goal={analyticsGoal ?? (isTestButton ? "test_start" : undefined)}
+      onClick={handleClick}
+      className={baseClasses}
+    >
       {content}
     </button>
   );
