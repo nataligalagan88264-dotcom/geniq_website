@@ -18,22 +18,65 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
 <html lang="ru">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>GENIQ CMS</title>
   </head>
   <body>
+    <main>
+      <p id="oauth-status">Завершаем вход в GENIQ CMS…</p>
+      <noscript>Для входа в GENIQ CMS необходимо включить JavaScript.</noscript>
+    </main>
     <script nonce="${nonce}">
       const expectedOrigin = ${serializeForInlineScript(expectedOrigin)};
+      const authorizationMessage =
+        ${serializeForInlineScript(`authorization:github:${status}:`)} +
+        ${serializeForInlineScript(JSON.stringify(content))};
+      const statusElement = document.getElementById("oauth-status");
+      let authorizationDelivered = false;
+
+      const postToOpener = (payload) => {
+        if (!window.opener || window.opener.closed) return false;
+        window.opener.postMessage(payload, expectedOrigin);
+        return true;
+      };
+
+      const deliverAuthorization = () => {
+        if (!postToOpener(authorizationMessage)) return false;
+        statusElement.textContent =
+          ${serializeForInlineScript(status === "success"
+            ? "Вход выполнен. Возвращаемся в редактор…"
+            : "Не удалось войти. Закройте это окно и повторите попытку.")};
+        return true;
+      };
+
       const receiveMessage = (message) => {
         if (message.source !== window.opener || message.origin !== expectedOrigin) return;
-        window.opener.postMessage(
-          ${serializeForInlineScript(`authorization:github:${status}:`)} + ${serializeForInlineScript(JSON.stringify(content))},
-          expectedOrigin
-        );
+        authorizationDelivered = true;
+        deliverAuthorization();
         window.removeEventListener("message", receiveMessage, false);
       };
+
       window.addEventListener("message", receiveMessage, false);
-      if (window.opener) window.opener.postMessage("authorizing:github", expectedOrigin);
+      postToOpener("authorizing:github");
+
+      // Edge can miss the first popup handshake after returning from GitHub.
+      // Retry both the handshake and the final message without widening the
+      // target origin or persisting the access token in browser storage.
+      [250, 750, 1500].forEach((delay) => {
+        window.setTimeout(() => {
+          if (authorizationDelivered) return;
+          postToOpener("authorizing:github");
+          deliverAuthorization();
+        }, delay);
+      });
+
+      window.setTimeout(() => {
+        if (!authorizationDelivered) {
+          statusElement.textContent =
+            "Не удалось связаться с редактором. Закройте это окно, обновите страницу CMS и повторите вход.";
+        }
+      }, 2500);
     </script>
   </body>
 </html>`;
