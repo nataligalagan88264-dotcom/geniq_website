@@ -56,7 +56,7 @@ collections:
               - { label: Карточки диагностики — заявка, name: diagnostic_form, widget: string }
               - { label: Страница «О системе» — заявка, name: approach_form, widget: string }
               - { label: Партнёрам — обсудить сотрудничество, name: partner_contact, widget: string }
-              - { label: Карта личности — связаться, name: code_map_contact, widget: string }
+              - { label: Карта личности — «Пройти диагностику», name: code_map_contact, widget: string }
               - { label: Футер — публичная оферта, name: public_offer, widget: string }
           - label: Ссылки и медиа
             name: links
