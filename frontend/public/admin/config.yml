@@ -62,7 +62,6 @@ collections:
             name: links
             widget: object
             fields:
-              - { label: Ссылка на форму, name: form_url, widget: string }
               - { label: Telegram URL, name: telegram_url, widget: string }
               - { label: Telegram, name: telegram_handle, widget: string }
               - { label: Instagram URL, name: instagram_url, widget: string }
