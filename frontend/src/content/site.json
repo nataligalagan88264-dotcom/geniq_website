@@ -32,6 +32,20 @@
   "analytics": {
     "yandex_metrica_id": ""
   },
+  "button_links": {
+    "header_test": "https://t.me/natali_galagan",
+    "hero_test": "https://t.me/natali_galagan",
+    "faq_test": "https://t.me/natali_galagan",
+    "approach_test": "https://t.me/natali_galagan",
+    "neurotypes_test": "https://t.me/natali_galagan",
+    "about_test": "https://t.me/natali_galagan",
+    "blog_test": "https://t.me/natali_galagan",
+    "diagnostic_form": "https://docs.google.com/forms/d/e/1FAIpQLSdoeqjILTzC6vwNhv2WuXNFM_5zcGe_uTHUSG99WBqJUrgQcw/viewform?usp=dialog",
+    "approach_form": "https://docs.google.com/forms/d/e/1FAIpQLSdoeqjILTzC6vwNhv2WuXNFM_5zcGe_uTHUSG99WBqJUrgQcw/viewform?usp=dialog",
+    "partner_contact": "https://t.me/natali_galagan",
+    "code_map_contact": "https://t.me/natali_galagan",
+    "public_offer": "/documents/public-offer.pdf"
+  },
   "links": {
     "form_url": "https://t.me/neurotype_test_yaroslav_bot",
     "telegram_url": "https://t.me/natali_galagan",

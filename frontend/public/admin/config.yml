@@ -28,6 +28,12 @@ collections:
             widget: object
             fields:
               - { label: Подпись возле логотипа, name: tagline_lines, widget: list }
+          - label: Аналитика
+            name: analytics
+            widget: object
+            hint: Укажите только числовой номер счётчика. После сохранения CMS автоматически опубликует Метрику на всех страницах.
+            fields:
+              - { label: Номер счётчика Яндекс.Метрики, name: yandex_metrica_id, widget: string, required: false, pattern: ['^[0-9]*$', 'Допустимы только цифры'] }
           - label: Навигация
             name: navigation
             widget: list
@@ -35,12 +41,23 @@ collections:
               - { label: Название, name: label, widget: string }
               - { label: Ссылка, name: to, widget: string }
           - { label: Текст кнопки в шапке, name: header_cta, widget: string }
-          - label: Аналитика
-            name: analytics
+          - label: Ссылки кнопок
+            name: button_links
             widget: object
-            hint: Укажите только числовой номер счётчика. После сохранения CMS автоматически опубликует Метрику на всех страницах.
+            hint: Меняйте ссылку конкретной кнопки здесь. Изменение применяется ко всем её версиям на сайте.
             fields:
-              - { label: Номер счётчика Яндекс.Метрики, name: yandex_metrica_id, widget: string, required: false, pattern: ['^\d*$', 'Допустимы только цифры'] }
+              - { label: Шапка — «Пройти тест», name: header_test, widget: string }
+              - { label: Главный экран — «Пройти тест», name: hero_test, widget: string }
+              - { label: FAQ — «Пройти тест», name: faq_test, widget: string }
+              - { label: Страница «О системе» — «Пройти тест», name: approach_test, widget: string }
+              - { label: Страница «Нейротипы» — «Пройти тест», name: neurotypes_test, widget: string }
+              - { label: Страница «О системе» — финальная кнопка, name: about_test, widget: string }
+              - { label: Блог — «Пройти тест», name: blog_test, widget: string }
+              - { label: Карточки диагностики — заявка, name: diagnostic_form, widget: string }
+              - { label: Страница «О системе» — заявка, name: approach_form, widget: string }
+              - { label: Партнёрам — обсудить сотрудничество, name: partner_contact, widget: string }
+              - { label: Карта личности — связаться, name: code_map_contact, widget: string }
+              - { label: Футер — публичная оферта, name: public_offer, widget: string }
           - label: Ссылки и медиа
             name: links
             widget: object

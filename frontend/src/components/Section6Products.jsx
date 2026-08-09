@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Sparkles, Compass, Map, ArrowUpRight } from "lucide-react";
-import { FORM_URL } from "@/lib/constants";
+import { FORM_URL, getButtonLink } from "@/lib/constants";
 import homeContent from "@/content/home.json";
 
 const PRODUCT_ICONS = { compass: Compass, sparkles: Sparkles, map: Map };
@@ -157,7 +157,7 @@ export const Section6Products = () => {
                 )}
 
                 <a
-                  href={FORM_URL}
+                  href={getButtonLink("diagnostic_form", FORM_URL)}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`product-cta-${p.id}`}

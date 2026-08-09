@@ -409,7 +409,7 @@ export default function About() {
               {aboutContent.final_cta.text}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
-              <CtaButton testId="about-test-cta">{aboutContent.final_cta.button}</CtaButton>
+              <CtaButton testId="about-test-cta" linkKey="about_test">{aboutContent.final_cta.button}</CtaButton>
             </div>
           </div>
         </section>

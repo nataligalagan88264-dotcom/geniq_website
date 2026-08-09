@@ -48,7 +48,7 @@ export const FaqSection = ({ withCta = true }) => {
         </div>
         {withCta && (
           <div className="reveal mt-10 flex justify-center">
-            <CtaButton testId="faq-cta">{CONTENT.button}</CtaButton>
+            <CtaButton testId="faq-cta" linkKey="faq_test">{CONTENT.button}</CtaButton>
           </div>
         )}
       </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ArrowUpRight, Briefcase, GraduationCap, Cpu, Star, Users, BadgePercent, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { TELEGRAM_URL } from "@/lib/constants";
+import { TELEGRAM_URL, getButtonLink } from "@/lib/constants";
 import partnersContent from "@/content/partners.json";
 
 const BUSINESS_ICONS = {
@@ -30,7 +30,7 @@ const useReveal = () => {
 
 const FormButton = ({ children, testId }) => (
   <a
-    href={TELEGRAM_URL}
+    href={getButtonLink("partner_contact", TELEGRAM_URL)}
     target="_blank"
     rel="noopener noreferrer"
     data-testid={testId}

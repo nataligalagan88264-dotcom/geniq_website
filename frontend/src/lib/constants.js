@@ -3,6 +3,8 @@ import siteContent from "@/content/site.json";
 
 export const FORM_URL = siteContent.links.form_url;
 export const TELEGRAM_URL = siteContent.links.telegram_url;
+export const BUTTON_LINKS = siteContent.button_links || {};
+export const getButtonLink = (key, fallback) => BUTTON_LINKS[key] || fallback;
 export const TELEGRAM_HANDLE = siteContent.links.telegram_handle;
 export const INSTAGRAM_URL = siteContent.links.instagram_url;
 export const NATALI_PHOTO = siteContent.links.author_photo;

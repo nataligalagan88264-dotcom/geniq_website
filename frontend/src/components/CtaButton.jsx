@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { TELEGRAM_URL } from "@/lib/constants";
+import { getButtonLink, TELEGRAM_URL } from "@/lib/constants";
 
 /**
  * Unified pill-shaped CTA.
@@ -19,13 +19,16 @@ export const CtaButton = ({
   variant = "primary",
   testId,
   analyticsGoal,
+  linkKey,
   className = "",
 }) => {
   const navigate = useNavigate();
 
   // Default: test button goes to Telegram
   const isTestButton = typeof children === "string" && children.toLowerCase().includes("тест");
-  const effectiveHref = href ?? (isTestButton && !to && !onClick ? TELEGRAM_URL : null);
+  const effectiveHref = href ?? (isTestButton && !to && !onClick
+    ? getButtonLink(linkKey, TELEGRAM_URL)
+    : null);
 
   const baseClasses = `geniq-cta ${variant === "ghost" ? "geniq-cta--ghost" : ""} ${variant === "soft" ? "geniq-cta--soft" : ""} ${className}`;
   const content = (

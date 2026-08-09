@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Send, Mail, Phone, Shield, Instagram } from "lucide-react";
-import { LEGAL, TELEGRAM_URL, INSTAGRAM_URL } from "@/lib/constants";
+import { LEGAL, TELEGRAM_URL, INSTAGRAM_URL, getButtonLink } from "@/lib/constants";
 
 export const Footer = () => {
   return (
@@ -23,7 +23,7 @@ export const Footer = () => {
                 <Link className="nav-link text-[12.5px]" to="/privacy">Политика конфиденциальности</Link>
                 <a
                   className="nav-link text-[12.5px]"
-                  href="/documents/public-offer.pdf"
+                  href={getButtonLink("public_offer", "/documents/public-offer.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-ym-goal="document_open"

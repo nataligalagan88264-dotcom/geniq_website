@@ -318,7 +318,7 @@ export default function Neurotypes() {
               {neurotypesPage.cta.text}
             </p>
             <div className="flex items-center justify-center relative z-10">
-              <CtaButton testId="nt-test-cta">{neurotypesPage.cta.button}</CtaButton>
+              <CtaButton testId="nt-test-cta" linkKey="neurotypes_test">{neurotypesPage.cta.button}</CtaButton>
             </div>
           </div>
         </section>

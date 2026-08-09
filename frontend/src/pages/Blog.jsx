@@ -119,7 +119,7 @@ export default function Blog() {
               {blogContent.cta.title} <span className="gradient-text">{blogContent.cta.accent_title}</span>
             </h2>
             <div className="flex justify-center relative z-10">
-              <CtaButton testId="blog-test-cta">{blogContent.cta.button}</CtaButton>
+              <CtaButton testId="blog-test-cta" linkKey="blog_test">{blogContent.cta.button}</CtaButton>
             </div>
           </div>
         </section>

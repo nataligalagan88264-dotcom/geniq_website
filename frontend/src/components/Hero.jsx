@@ -46,7 +46,7 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 reveal in" style={{ transitionDelay: '200ms' }}>
-            <CtaButton testId="hero-cta">{HERO.button}</CtaButton>
+            <CtaButton testId="hero-cta" linkKey="hero_test">{HERO.button}</CtaButton>
             <div className="hidden sm:flex items-center gap-3 text-white/50 text-xs uppercase tracking-[0.2em]">
               <span className="w-8 h-px bg-white/20" />
               {HERO.meta}

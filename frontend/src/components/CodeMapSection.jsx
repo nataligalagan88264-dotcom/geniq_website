@@ -4,7 +4,7 @@ import {
   Brain, FlaskConical, Database, Sun, Heart, Activity, MessageCircleHeart,
   Plus, X,
 } from "lucide-react";
-import { TELEGRAM_URL } from "@/lib/constants";
+import { TELEGRAM_URL, getButtonLink } from "@/lib/constants";
 import homeSections from "@/content/home-sections.json";
 
 /* ---------- Data ---------- */
@@ -357,7 +357,7 @@ const DetailPanel = ({ axis }) => {
       {/* CTA */}
       <div>
         <a
-          href={TELEGRAM_URL}
+          href={getButtonLink("code_map_contact", TELEGRAM_URL)}
           target="_blank"
           rel="noopener noreferrer"
           data-testid="code-map-test-cta"
