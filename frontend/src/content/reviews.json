@@ -98,18 +98,6 @@
       "role": "Духовный проводник, таролог",
       "videoLabel": "Видеоотзыв Алины К.",
       "video": "/uploads/reviews/alina-k-review.mp4"
-    },
-    {
-      "handleUrl": "https://t.me/over_the_heaven",
-      "handle": "@over_the_heaven",
-      "name": "Алина В.",
-      "poster": "/uploads/reviews/alina-v-review-poster.jpg",
-      "request": "Понять, как притянуть свою аудиторию и клиентов.",
-      "circle": true,
-      "neurotype": "Стратег",
-      "role": "Юрист-консультант",
-      "videoLabel": "Видеоотзыв Алины В.",
-      "video": "/uploads/reviews/alina-v-telegram-review.mp4"
     }
   ]
 }
