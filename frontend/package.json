@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "5.56.2",
+    "express": "4.22.2",
     "lucide-react": "0.516.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -12,6 +13,7 @@
   },
   "scripts": {
     "start": "craco start",
+    "start:production": "node server.js",
     "build": "craco build && node scripts/generate-seo-pages.js && node scripts/validate-seo.js",
     "seo:check": "node scripts/validate-seo.js",
     "test": "craco test"
