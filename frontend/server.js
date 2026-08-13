@@ -6,7 +6,7 @@ const callbackHandler = require("./api/callback");
 
 const app = express();
 const buildDirectory = path.join(__dirname, "build");
-const port = Number(process.env.PORT) || 8080;
+const port = Number(process.env.GENIQ_PORT) || 8080;
 
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
