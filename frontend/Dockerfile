@@ -9,6 +9,10 @@ RUN npm run build
 
 FROM node:22-bookworm-slim AS runtime
 
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends curl \
+  && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8080
@@ -28,3 +32,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD ["node", "-e", "require('fs').accessSync('/app/build/index.html')"]
 
 CMD ["node", "server.js"]
+
