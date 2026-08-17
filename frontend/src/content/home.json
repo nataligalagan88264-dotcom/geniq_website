@@ -6,7 +6,7 @@
     "description": "Диагностическая система нового поколения. Расшифруйте свой код гениальности, чтобы выйти на качественно новый уровень жизни.",
     "button": "Пройти тест",
     "meta": "~ 5 минут · 9 нейротипов",
-    "video": "/models/geniq-hero-head.mp4",
+    "video": "/models/geniq-hero-head-final.mp4",
     "axes": [
       {
         "id": "thinking",
