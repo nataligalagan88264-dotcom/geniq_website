@@ -34,6 +34,9 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
         ${serializeForInlineScript(JSON.stringify(content))};
       const statusElement = document.getElementById("oauth-status");
       let authorizationDelivered = false;
+      const authorizationChannel = "BroadcastChannel" in window
+        ? new BroadcastChannel("geniq-cms-oauth-v1")
+        : null;
 
       const postToOpener = (payload) => {
         if (!window.opener || window.opener.closed) return false;
@@ -41,8 +44,18 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
         return true;
       };
 
+      const postToAuthorizationChannel = (payload) => {
+        if (!authorizationChannel) return false;
+        authorizationChannel.postMessage(payload);
+        return true;
+      };
+
       const deliverAuthorization = () => {
-        if (!postToOpener(authorizationMessage)) return false;
+        const delivered =
+          postToOpener(authorizationMessage) ||
+          postToAuthorizationChannel(authorizationMessage);
+        if (!delivered) return false;
+        authorizationDelivered = true;
         statusElement.textContent =
           ${serializeForInlineScript(status === "success"
             ? "Вход выполнен. Возвращаемся в редактор…"
@@ -59,6 +72,7 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
 
       window.addEventListener("message", receiveMessage, false);
       postToOpener("authorizing:github");
+      postToAuthorizationChannel("authorizing:github");
 
       // Edge can miss the first popup handshake after returning from GitHub.
       // Retry both the handshake and the final message without widening the
@@ -67,6 +81,7 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
         window.setTimeout(() => {
           if (authorizationDelivered) return;
           postToOpener("authorizing:github");
+          postToAuthorizationChannel("authorizing:github");
           deliverAuthorization();
         }, delay);
       });
@@ -76,6 +91,7 @@ const renderResult = (status, content, expectedOrigin, nonce) => `<!doctype html
           statusElement.textContent =
             "Не удалось связаться с редактором. Закройте это окно, обновите страницу CMS и повторите вход.";
         }
+        authorizationChannel?.close();
       }, 2500);
     </script>
   </body>
